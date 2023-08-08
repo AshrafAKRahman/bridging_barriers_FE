@@ -83,7 +83,6 @@ export const AuthContextProvider = ({ children }) => {
         user,
         newUser,
         signIn,
-        googleSignIn,
         sendEmailLink,
         logOut,
         resetPassword,
