@@ -1,31 +1,88 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Header from "./components/header/header";
 import SubHeader from "./components/subHeader/subheader";
 import LargeButton from "./components/buttons/largeButton";
+import { Asap_Condensed } from "@next/font/google";
+import { Righteous } from "@next/font/google";
+import { gsap } from "gsap";
+
+const asap = Asap_Condensed({
+  subsets: ["latin"],
+  weight: "400",
+  preload: true,
+});
+
+const righteous = Righteous({
+  subsets: ["latin"],
+  weight: "400",
+  preload: true,
+});
 
 export default function Home() {
+  useEffect(() => {
+    const revealAnim = () => {
+      const TLFADE = gsap.timeline();
+
+      TLFADE.from(".header, .largeBtn", {
+        autoAlpha: 0,
+        y: -50,
+        duration: 1,
+        delay: 0.75,
+        stagger: 1,
+      });
+    };
+    revealAnim();
+  }, []);
+
+  useEffect(() => {
+    const revealImg = () => {
+      const TLFADE = gsap.timeline();
+      TLFADE.from(".lpImage", {
+        autoAlpha: 0,
+        x: +50,
+        duration: 1,
+        delay: 0.75,
+      });
+    };
+    revealImg();
+  }, []);
+
+  useEffect(() => {
+    const revealSubheader = () => {
+      const TLFADE = gsap.timeline();
+      TLFADE.from(".subheader", {
+        autoAlpha: 0,
+        y: +50,
+        duration: 1,
+        delay: 2.5,
+      });
+    };
+    revealSubheader();
+  }, []);
+
   return (
-    <main className="bg-blue-700 w-screen h-screen">
-      <div className="">
-        <Header
-          titleClassName=" text-lg absolute left-0 right-10 mt-36 transform translate-x-6 translate-y-58 text-white"
-          title="Welcome to the Bridging Barriers Portal"
-        />
-        <div className="mx-auto">
-          <hr className="mt-56 w-1/2 border-none bg-gradient-to-r from-blue-600 to-gray-100 h-2" />
+    <div>
+      <div className="bg-blue-700 w-screen h-screen flex">
+        <div className={asap.className}>
+          <Header
+            titleClassName="header tracking-widest absolute mt-36 text-white invisible"
+            title={
+              <div className="ml-20">
+                <span className="block text-8xl">Welcome to</span>
+                <span className="block mt-4">The Bridging Barriers Portal</span>
+              </div>
+            }
+          />
         </div>
 
-        <SubHeader
-          titleClassName="text-2xl mt-10 text-white text-center md:ml-10 flex"
-          title="Developing lasting relationships"
-        />
-        <div className="flex justify-end mt-20">
-          <div className="md:ml-20 md:w-1/2 flex flex-col mr-20 md:items-start justify-start">
+        <div className="w-1/2">
+          <div className="largeBtn mt-[420px]  flex justify-center invisible ">
             <LargeButton
-              className="mb-16 shadow-2xl"
+              className="ml-20 mr-10 shadow-2xl"
               text="Create Profile"
-              href="/CreateProfileOne"
+              href="/emailLink"
             />
             <LargeButton
               className="shadow-2xl"
@@ -33,21 +90,49 @@ export default function Home() {
               href="@/pages/CreateProfileOne"
             />
           </div>
-          <div className="w-full md:w-1/2 hidden md:block">
-            <div className="imageContainer">
+          <div className={righteous.className}>
+            <div className=" ml-9 mt-24">
+              <SubHeader
+                titleClassName="subheader text-4xl text-blue-300 invisible"
+                title="Moulding Diverse Talent For Tomorrow's Workforce"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="lpImage mt-40 ml-72 w-1/2 relative invisible">
+          <Image
+            className="absolute ml-20 mt-12 z-10"
+            src="/bb_landingPage.png"
+            alt="landing_img"
+            objectFit="cover"
+            layout="fixed"
+            height={280}
+            width={490}
+          />
+          <div className="relative">
+            <Image
+              className="rounded-lg shadow-2xl shadow-black right-5"
+              src="/bb_landingPage_backdrop_orange.png"
+              alt="landing_img"
+              objectFit="cover"
+              layout="fixed"
+              height={260}
+              width={530}
+            />
+            <div className=" absolute top-5 mt-0 left-10 ">
               <Image
-                className="rounded-25 shadow-2xl"
-                src="/Mentor.jpg"
-                alt="Mentor Image"
+                className="rounded-lg shadow-2xl shadow-black"
+                src="/bb_landingPage_backdrop.png "
+                alt="landing_img"
                 objectFit="cover"
                 layout="fixed"
-                height={300}
-                width={500}
+                height={260}
+                width={550}
               />
             </div>
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
