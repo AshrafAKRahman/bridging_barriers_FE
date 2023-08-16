@@ -17,31 +17,32 @@ const Navbar = () => {
         duration: 1,
       });
     };
-    // revealAnim();
+    revealAnim();
   }, []);
 
   return (
-    <div className="nav fixed flex items-center justify-between w-full p-6 bg-white">
-      <nav className="">
-        <div className=" text-white text-2xl ">
-          <Image
-            src="/logo.png"
-            alt="Logo"
-            className="mr-2"
-            height={12}
-            width={140}
-            data-testid="logo"
-          />
+    <nav>
+      <div className="nav  flex items-center w-full p-6 ">
+        <div className="flex  w-screen justify-between">
+          <div className=" text-white text-2xl mr-10 ">
+            <Image
+              src="/logo.png"
+              alt="Logo"
+              className="mr-10"
+              height="40"
+              width="160"
+              data-testid="logo"
+            />
+          </div>
+          <div className="flex ">
+            <Link href="/login">
+              {/* <p className=" text-blue-600">LOGIN</p> */}
+              <NormalButton text="LOGIN" />
+            </Link>
+          </div>
         </div>
-
-        <div className=" mr-0 ">
-          <Link href="/login">
-            {/* <p className=" text-blue-600">LOGIN</p> */}
-            <NormalButton text="LOGIN" />
-          </Link>
-        </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 };
 

@@ -4,8 +4,8 @@ import Image from "next/legacy/image";
 import Header from "./components/header/header";
 import SubHeader from "./components/subHeader/subheader";
 import LargeButton from "./components/buttons/largeButton";
-import { Asap_Condensed } from "@next/font/google";
-import { Righteous } from "@next/font/google";
+import { Asap_Condensed } from "next/font/google";
+import { Righteous } from "next/font/google";
 import { gsap } from "gsap";
 
 const asap = Asap_Condensed({
