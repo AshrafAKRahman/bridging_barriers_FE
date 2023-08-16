@@ -5,7 +5,7 @@ import Form from "../components/form/form";
 import { useState } from "react";
 import Link from "next/link";
 import { UserAuth } from "../context/AuthContext";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { Asap_Condensed } from "@next/font/google";
 
 const asap = Asap_Condensed({

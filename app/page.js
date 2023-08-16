@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Header from "./components/header/header";
 import SubHeader from "./components/subHeader/subheader";
 import LargeButton from "./components/buttons/largeButton";
@@ -100,14 +100,10 @@ export default function Home() {
           </div>
         </div>
         <div className="lpImage mt-40 ml-72 w-1/2 relative invisible">
-          <Image
-            className="absolute ml-20 mt-12 z-10"
+          <img
+            className="absolute ml-20 mt-12 z-10 w-screen"
             src="/bb_landingPage.png"
             alt="landing_img"
-            objectFit="cover"
-            layout="fixed"
-            height={280}
-            width={490}
           />
           <div className="relative">
             <Image

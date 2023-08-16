@@ -2,7 +2,7 @@
 
 import { gsap } from "gsap";
 import NormalButton from "../buttons/normalButton";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
 
@@ -21,7 +21,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="nav fixed flex items-center justify-between w-full p-6 bg-white invisible">
+    <div className="nav fixed flex items-center justify-between w-full p-6 bg-white">
       <nav className="">
         <div className=" text-white text-2xl ">
           <Image

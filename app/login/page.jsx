@@ -2,7 +2,7 @@ import React from "react";
 import LargeButton from "../components/buttons/largeButton";
 import Header from "../components/hearder/header";
 import SubHeader from "../components/subHeader/subheader";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 const Login = () => {
   return (
