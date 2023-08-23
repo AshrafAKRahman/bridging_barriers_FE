@@ -68,7 +68,7 @@ export default function Home() {
       <Navbar />
 
       <div className="w-full h-[100%] flex items-center flex-col md:flex md:items-center md:flex-col md:h-[90%%] md:w-[100%]">
-        <div className=" bg-black h-4/6 w-5/6 mt-36  md:w-4/6 md:h-3/5 md:bg-black opacity-40 md:mt-64 rounded-3xl sm:h-3/6 sm:mt-56"></div>
+        <div className=" bg-black h-4/6 w-5/6 mt-36  md:w-4/6 md:h-3/5 md:bg-black opacity-40 md:mt-52    rounded-3xl sm:h-3/6 sm:mt-56"></div>
         <div className="mt-36  absolute rounded-3xl w-5/6 h-2/3 text-center flex flex-col items-center justify-center md:flex-col md:w-4/6 md:h-[75%] md:flex md:columns-1 md:absolute">
           <div className={raleway.className}>
             <div className=" h-full w-full text-white mt-6 md:mt-16 md:z-10   text-3xl ">
