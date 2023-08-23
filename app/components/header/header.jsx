@@ -1,8 +1,8 @@
 const Header = ({ title, titleClassName }) => {
   return (
-    <header className="py-5 overflow-auto">
+    <header className="">
       <h1
-        className={`${titleClassName}  text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold`}
+        className={`${titleClassName} md:text-5xlxl lg:text-4xl xl:text-5xl font-bold`}
       >
         {title}
       </h1>

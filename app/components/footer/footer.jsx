@@ -2,10 +2,12 @@ import { FaLinkedin, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="fixed inset-x-0 bottom-0 p-4 bg-white z-50">
+    <div className="fixed inset-x-0 bottom-0 p-4 bg-white z-50 w-screen">
       <div className="flex justify-between">
-        <p>&copy; 2023 Bridging Barriers. All rights reserved.</p>
-        <div className="flex space-x-4 mr-20">
+        <p className="text-xs ">
+          &copy; 2023 Bridging Barriers. All rights reserved.
+        </p>
+        <div className="flex space-x-4 ">
           <a
             href="https://www.linkedin.com/company/bridging-barriers/"
             target="_blank"

@@ -2,7 +2,7 @@ const Form = ({ children, onSubmit }) => {
   return (
     <form
       onSubmit={onSubmit}
-      className="bg-blue-900 rounded-lg p-8 mt-10 sm:mx-5 md:mx-20 lg:ml-20 lg:mr-20 shadow-2xl"
+      className="bg-blue-200 rounded-lg w-5/6 h-5/6 shadow-2xl shadow-black "
       style={{
         height: "80vh",
         flex: 1,

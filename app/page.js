@@ -4,19 +4,20 @@ import Image from "next/legacy/image";
 import Header from "./components/header/header";
 import SubHeader from "./components/subHeader/subheader";
 import LargeButton from "./components/buttons/largeButton";
-import { Asap_Condensed } from "next/font/google";
-import { Righteous } from "next/font/google";
+import { Raleway } from "next/font/google";
 import { gsap } from "gsap";
+import Navbar from "./components/navBar/navBar";
+import Link from "next/link";
 
-const asap = Asap_Condensed({
+const raleway = Raleway({
   subsets: ["latin"],
-  weight: "400",
+  weight: "900",
   preload: true,
 });
 
-const righteous = Righteous({
+const ralewaySub = Raleway({
   subsets: ["latin"],
-  weight: "400",
+  weight: "300",
   preload: true,
 });
 
@@ -63,70 +64,59 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
-      <div className="bg-blue-700 w-screen h-screen flex">
-        <div className={asap.className}>
-          <Header
-            titleClassName="header tracking-widest absolute mt-36 text-white invisible"
-            title={
-              <div className="ml-20">
-                <span className="block text-8xl">Welcome to</span>
-                <span className="block mt-4">The Bridging Barriers Portal</span>
-              </div>
-            }
-          />
-        </div>
+    <div className="w-screen h-full absolute bg-blue-400 z-20">
+      <Navbar />
 
-        <div className="w-1/2">
-          <div className="largeBtn mt-[420px]  flex justify-center invisible ">
-            <LargeButton
-              className="ml-20 mr-10 shadow-2xl"
-              text="Create Profile"
-              href="/emailLink"
-            />
-            <LargeButton
-              className="shadow-2xl"
-              text="Login"
-              href="@/pages/CreateProfileOne"
-            />
+      <div className="w-full h-[100%] flex items-center flex-col md:flex md:items-center md:flex-col md:h-[90%%] md:w-[100%]">
+        <div className=" bg-black h-4/6 w-5/6 mt-36  md:w-4/6 md:h-3/5 md:bg-black opacity-40 md:mt-64 rounded-3xl sm:h-3/6 sm:mt-56"></div>
+        <div className="mt-36  absolute rounded-3xl w-5/6 h-2/3 text-center flex flex-col items-center justify-center md:flex-col md:w-4/6 md:h-[75%] md:flex md:columns-1 md:absolute">
+          <div className={raleway.className}>
+            <div className=" h-full w-full text-white mt-6 md:mt-16 md:z-10   text-3xl ">
+              <Header
+                titleClassName="header invisible"
+                title={
+                  <div>
+                    <div className="mb-6">
+                      <p>Welcome To</p>
+                    </div>
+                    <div>
+                      <p>The Bridging Barriers Portal</p>
+                    </div>
+                  </div>
+                }
+              />
+            </div>
           </div>
-          <div className={righteous.className}>
-            <div className=" ml-9 mt-24">
+
+          <div className={ralewaySub.className}>
+            <div className="w-full h-full text-xl mt-10  flex-col-reverse md:text-3xl md:mt-16">
               <SubHeader
-                titleClassName="subheader text-4xl text-blue-300 invisible"
+                titleClassName="subheader text-white invisible"
                 title="Moulding Diverse Talent For Tomorrow's Workforce"
               />
             </div>
           </div>
-        </div>
-        <div className="lpImage mt-40 ml-72 w-1/2 relative invisible">
-          <img
-            className="absolute ml-20 mt-12 z-10 w-screen"
-            src="/bb_landingPage.png"
-            alt="landing_img"
-          />
-          <div className="relative">
-            <Image
-              className="rounded-lg shadow-2xl shadow-black right-5"
-              src="/bb_landingPage_backdrop_orange.png"
-              alt="landing_img"
-              objectFit="cover"
-              layout="fixed"
-              height={260}
-              width={530}
-            />
-            <div className=" absolute top-5 mt-0 left-10 ">
-              <Image
-                className="rounded-lg shadow-2xl shadow-black"
-                src="/bb_landingPage_backdrop.png "
-                alt="landing_img"
-                objectFit="cover"
-                layout="fixed"
-                height={260}
-                width={550}
-              />
-            </div>
+
+          <div className="largeBtn mt-10  flex justify-around w-full  invisible    md:flex md:justify-around md:w-full md:mt-10 lg:mt-32">
+            <Link href="/emailLink">
+              <LargeButton className="" text="CREATE PROFILE " />
+            </Link>
+            <Link href="/login">
+              <LargeButton className="" text="LOGIN" />
+            </Link>
           </div>
+        </div>
+        <div
+          className=" lpImage absolute flex items-center -z-10 w-full h-full
+         md:flex md:items-center md:w-full md:h-full md:-z-10 md:overflow-hidden"
+        >
+          <video
+            className="h-full w-full object-cover"
+            src="/bb_landingPage.mp4"
+            autoPlay
+            loop
+            muted
+          />
         </div>
       </div>
     </div>
