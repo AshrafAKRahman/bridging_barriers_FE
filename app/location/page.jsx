@@ -5,9 +5,9 @@ import Form from "../components/form/form";
 import Header from "../components/header/header";
 import NormalButton from "../components/buttons/normalButton";
 import Link from "next/link";
-import SubHeader from "../components/subHeader/subHeader";
+import SubHeader from "../components/subHeader/subHeader"
 
-const CreateProfileFour = () => {
+const Location = () => {
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
   const [isChecked3, setIsChecked3] = useState(false);
@@ -145,4 +145,4 @@ const CreateProfileFour = () => {
   );
 };
 
-export default CreateProfileFour;
+export default Location;

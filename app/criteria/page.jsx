@@ -53,7 +53,7 @@ const Criteria = () => {
         <Link className="mr-10" href="/location">
           <NormalButton text="Previous" />
         </Link>
-        <Link href="/CreateProfileSix">
+        <Link href="/ethnicity">
           <NormalButton text="Next" />
         </Link>
       </div>
