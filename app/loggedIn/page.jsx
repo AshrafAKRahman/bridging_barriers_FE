@@ -1,7 +1,7 @@
 import React from "react";
 import LargeButton from "../components/buttons/largeButton";
 import Header from "../components/header/header";
-import SubHeader from "../components/subHeader/subheader";
+import SubHeader from "../components/subHeader/subHeader";
 import Image from "next/legacy/image";
 
 const LogedIn = () => {
