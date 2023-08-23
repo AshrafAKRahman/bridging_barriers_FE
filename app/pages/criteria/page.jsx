@@ -1,9 +1,9 @@
 "use client"
-import Header from "../components/header/header";
-import Checkbox from "../components/checbox/checbox";
+import Header from "../../components/header/header";
+import Checkbox from "../../components/checbox/checbox";
 import { useState } from "react";
-import Form from "../components/form/form";
-import NormalButton from "../components/buttons/normalButton";
+import Form from "../../components/form/form";
+import NormalButton from "../../components/buttons/normalButton";
 import Link from "next/link";
 
 const Criteria = () => {
@@ -50,10 +50,10 @@ const Criteria = () => {
       </div>
 
       <div className="mt-0">
-        <Link className="mr-10" href="/location">
+        <Link className="mr-10" href="location">
           <NormalButton text="Previous" />
         </Link>
-        <Link href="/ethnicity">
+        <Link href="ethnicity">
           <NormalButton text="Next" />
         </Link>
       </div>

@@ -1,6 +1,6 @@
-import Form from "../components/form/form";
-import Header from "../components/header/header"
-import SubHeader from "../components/subHeader/subHeader";
+import Form from "../../components/form/form";
+import Header from "../../components/header/header"
+import SubHeader from "../../components/subHeader/subHeader";
 
 const ProfileCreatedConfirmation = () => {
   return (

@@ -1,10 +1,10 @@
 "use client"
-import Form from "../components/form/form";
+import Form from "../../components/form/form";
 import { useState } from "react";
-import Header from "../components/header/header";
-import SubHeader from "../components/subHeader/subHeader"
-import Checkbox from "../components/checbox/checbox";
-import NormalButton from "../components/buttons/normalButton";
+import Header from "../../components/header/header";
+import SubHeader from "../../components/subHeader/subHeader"
+import Checkbox from "../../components/checbox/checbox";
+import NormalButton from "../../components/buttons/normalButton";
 import Link from "next/link";
 
 const Ethnicity = () => {
@@ -95,10 +95,10 @@ const Ethnicity = () => {
         </div>
       </div>
       <div className="mt-20">
-        <Link className="mr-10" href="/criteria">
+        <Link className="mr-10" href="criteria">
           <NormalButton text="Previous" />
         </Link>
-        <Link href="/profileCreatedConfirmation">
+        <Link href="profileCreatedConfirmation">
           <NormalButton text="Next" />
         </Link>
       </div>

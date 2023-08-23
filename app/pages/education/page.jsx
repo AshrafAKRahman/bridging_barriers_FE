@@ -1,10 +1,10 @@
 "use client"
 import React from 'react'
-import Form from "../components/form/form";
-import Header from "../components/header/header";
+import Form from "../../components/form/form";
+import Header from "../../components/header/header";
 import Link from "next/link";
 import { useState } from "react";
-import NormalButton from "../components/buttons/normalButton";
+import NormalButton from "../../components/buttons/normalButton";
 
 const Education = () => {
   const [secondarySchool, setSecondarySchool] = useState("");
@@ -135,7 +135,7 @@ const Education = () => {
         <Link className="mr-10" href="/CreateProfileTwo">
           <NormalButton text="Previous" />
         </Link>
-        <Link href="/sector">
+        <Link href="sector">
           <NormalButton text="Next" />
         </Link>
       </div>

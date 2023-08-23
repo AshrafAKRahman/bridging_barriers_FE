@@ -1,11 +1,11 @@
 "use client"
-import Checkbox from "../components/checbox/checbox";
+import Checkbox from "../../components/checbox/checbox";
 import { useState } from "react";
-import Form from "../components/form/form";
-import Header from "../components/header/header";
-import NormalButton from "../components/buttons/normalButton";
+import Form from "../../components/form/form";
+import Header from "../../components/header/header";
+import NormalButton from "../../components/buttons/normalButton";
 import Link from "next/link";
-import SubHeader from "../components/subHeader/subHeader"
+import SubHeader from "../../components/subHeader/subHeader"
 
 const Location = () => {
   const [isChecked1, setIsChecked1] = useState(false);
@@ -134,10 +134,10 @@ const Location = () => {
         </div>
       </div>
       <div className="mt-10">
-        <Link className="mr-10" href="/sector">
+        <Link className="mr-10" href="sector">
           <NormalButton text="Previous" />
         </Link>
-        <Link href="/criteria">
+        <Link href="criteria">
           <NormalButton text="Next" />
         </Link>
       </div>

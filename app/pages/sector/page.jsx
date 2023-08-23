@@ -1,10 +1,10 @@
 "use client"
 
-import Checkbox from "../components/checbox/checbox";
+import Checkbox from "../../components/checbox/checbox";
 import { useState } from "react";
-import Form from "../components/form/form";
-import Header from "../components/header/header";
-import NormalButton from "../components/buttons/normalButton";
+import Form from "../../components/form/form";
+import Header from "../../components/header/header";
+import NormalButton from "../../components/buttons/normalButton";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -202,10 +202,10 @@ const Sector = () => {
         </div>
       </div>
       <div className="mt-10">
-        <Link className="mr-10" href="/education">
+        <Link className="mr-10" href="education">
           <NormalButton text="Previous" />
         </Link>
-        <Link href="/location">
+        <Link href="location">
           <NormalButton text="Next" />
         </Link>
       </div>
