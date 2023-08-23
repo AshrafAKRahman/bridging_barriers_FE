@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import Image from "next/legacy/image";
 import Header from "./components/header/header";
-import SubHeader from "./components/subHeader/subheader";
+import SubHeader from "./components/subHeader/subHeader.jsx";
 import LargeButton from "./components/buttons/largeButton";
 import { Raleway } from "next/font/google";
 import { gsap } from "gsap";
