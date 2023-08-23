@@ -135,7 +135,7 @@ const Education = () => {
         <Link className="mr-10" href="/CreateProfileTwo">
           <NormalButton text="Previous" />
         </Link>
-        <Link href="/CreateProfileThree">
+        <Link href="/sector">
           <NormalButton text="Next" />
         </Link>
       </div>
