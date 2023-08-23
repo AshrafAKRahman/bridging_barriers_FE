@@ -1,15 +1,13 @@
 "use client"
-
 import Checkbox from "../components/checbox/checbox";
 import { useState } from "react";
 import Form from "../components/form/form";
 import Header from "../components/header/header";
 import NormalButton from "../components/buttons/normalButton";
 import Link from "next/link";
-import Image from "next/image";
+import SubHeader from "../components/subHeader/subHeader";
 
-const Sector = () => {
-  // Define states for each checkbox
+const CreateProfileFour = () => {
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
   const [isChecked3, setIsChecked3] = useState(false);
@@ -27,185 +25,119 @@ const Sector = () => {
     <Form>
       <Header
         titleClassName="text-3xl absolute left:40 md:left-20 top-20 transform translate-x-6 translate-y-58 text-white"
-        title="Which job sector interests you"
+        title="Where are you based"
       />
-      <div className="flex flex-wrap mt-20">
+
+      <SubHeader
+        titleClassName="text-2xl mt-40 text-gray-400 text-center md:ml-10 flex"
+        title="London"
+      />
+      <div className="flex flex-wrap">
         <div className="w-1/4 mb-10">
-          <Image
-            src="/Accounting.jpg"
-            alt="Accounting"
-            className="rounded-img mb-5"
-            height={70}
-            width={70}
-          />
           <Checkbox
-            label="Accounting"
+            label="North (N & NW)"
             onChange={(isChecked) => setIsChecked1(isChecked)}
             className="text-white"
           />
         </div>
 
         <div className="w-1/4 mb-10">
-          <Image
-            src="/Banking_Finance.jpg"
-            alt="Banking & Finance"
-            className="rounded-img mb-5"
-            height={70}
-            width={70}
-          />
           <Checkbox
-            label="Banking & Finance"
+            label="East"
             onChange={(isChecked) => setIsChecked2(isChecked)}
             className="text-white"
           />
         </div>
 
         <div className="w-1/4 mb-10">
-          <Image
-            src="/Consulting.jpg"
-            alt="Consulting"
-            className="rounded-img mb-5"
-            height={70}
-            width={70}
-          />
           <Checkbox
-            label="Consulting"
+            label="South (SE & SW)"
             onChange={(isChecked) => setIsChecked3(isChecked)}
             className="text-white"
           />
         </div>
         <div className="w-1/4 mb-10">
-          <Image
-            src="/Marketing.jpg"
-            alt="Marketing"
-            className="rounded-img mb-5"
-            height={70}
-            width={70}
-          />
           <Checkbox
-            label="Marketing"
+            label="West"
             onChange={(isChecked) => setIsChecked4(isChecked)}
             className="text-white"
           />
         </div>
+      </div>
+      <SubHeader
+        titleClassName="text-2xl mt-10 text-gray-400 text-center md:ml-10 flex"
+        title="Midlands"
+      />
+      <div className="flex flex-wrap">
         <div className="w-1/4 mb-10">
-          <Image
-            src="/Education.jpg"
-            alt="Education"
-            className="rounded-img mb-5"
-            height={70}
-            width={70}
-          />
           <Checkbox
-            label="Education"
+            label="Birmingham"
             onChange={(isChecked) => setIsChecked5(isChecked)}
             className="text-white"
           />
         </div>
         <div className="w-1/4 mb-10">
-          <Image
-            src="/Engineering.jpg"
-            alt="Engineering"
-            className="rounded-img mb-5"
-            height={70}
-            width={70}
-          />
           <Checkbox
-            label="Engineering"
+            label="Coventry"
             onChange={(isChecked) => setIsChecked6(isChecked)}
             className="text-white"
           />
         </div>
         <div className="w-1/4 mb-10">
-          <Image
-            src="/Governemnt_Public.jpg"
-            alt="Government"
-            className="rounded-img mb-5"
-            height={70}
-            width={70}
-          />
           <Checkbox
-            label="Government & Public Sector"
+            label="Leicester"
             onChange={(isChecked) => setIsChecked7(isChecked)}
             className="text-white"
           />
         </div>
         <div className="w-1/4 mb-10">
-          <Image
-            src="/Healthcare.jpg"
-            alt="Banking & Finance"
-            className="rounded-img mb-5"
-            height={70}
-            width={70}
-          />
           <Checkbox
-            label="Healthcare"
+            label="Wolverhampton"
             onChange={(isChecked) => setIsChecked8(isChecked)}
             className="text-white"
           />
         </div>
+      </div>
+
+      <SubHeader
+        titleClassName="text-2xl mt-10 text-gray-400 text-center md:ml-10 flex"
+        title="South England"
+      />
+      <div className="flex flex-wrap">
         <div className="w-1/4 mb-10">
-          <Image
-            src="/Real Estate.jpg"
-            alt="Real Estate"
-            className="rounded-img mb-5"
-            height={70}
-            width={70}
-          />
           <Checkbox
-            label="Real Estate"
+            label="Southampton"
             onChange={(isChecked) => setIsChecked9(isChecked)}
             className="text-white"
           />
         </div>
         <div className="w-1/4 mb-10">
-          <Image
-            src="/Law.jpg"
-            alt="Law"
-            className="rounded-img mb-5"
-            height={70}
-            width={70}
-          />
           <Checkbox
-            label="Law"
+            label="Brighton"
             onChange={(isChecked) => setIsChecked10(isChecked)}
             className="text-white"
           />
         </div>
         <div className="w-1/4 mb-10">
-          <Image
-            src="/Technology.jpg"
-            alt="Technology"
-            className="rounded-img mb-5"
-            height={70}
-            width={70}
-          />
           <Checkbox
-            label="Banking & Finance"
+            label="Maidstone"
             onChange={(isChecked) => setIsChecked11(isChecked)}
             className="text-white"
           />
         </div>
         <div className="w-1/4 mb-10">
-          <Image
-            src="/Media-_-Music_1.jpg"
-            alt="Media_Music"
-            className="rounded-img mb-5"
-            height={70}
-            width={70}
-          />
           <Checkbox
-            label="Banking & Finance"
+            label="Portsmouth"
             onChange={(isChecked) => setIsChecked12(isChecked)}
             className="text-white"
           />
         </div>
       </div>
       <div className="mt-10">
-        <Link className="mr-10" href="/education">
+        <Link className="mr-10" href="/sector">
           <NormalButton text="Previous" />
         </Link>
-        <Link href="/location">
+        <Link href="/criteria">
           <NormalButton text="Next" />
         </Link>
       </div>
@@ -213,4 +145,4 @@ const Sector = () => {
   );
 };
 
-export default Sector;
+export default CreateProfileFour;
