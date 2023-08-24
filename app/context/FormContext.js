@@ -13,6 +13,15 @@ export const FormProvider = ({children}) => {
         phone: "",
         email: "",
         password: "",
+        education: [{
+            qualification: "",
+            subject: "",
+            status: "",
+            schoolName: ""
+
+        }]
+
+
 
     })
 

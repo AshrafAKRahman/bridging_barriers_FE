@@ -5,42 +5,44 @@ import Header from "../../components/header/header";
 import Link from "next/link";
 import { useState } from "react";
 import NormalButton from "../../components/buttons/normalButton";
+import { useFormContext } from '@/app/context/FormContext';
 
 const Education = () => {
+  const {formData, handleChange} = useFormContext()
+  const {education} = formData
   const [secondarySchool, setSecondarySchool] = useState("");
   const [sixthForm, setySixthForm] = useState("");
   const [ucas, setUcas] = useState("");
   const [gcse, setGcse] = useState("");
-  const [qualifications, setQualifications] = useState([
-    { qualification: "", subject: "", status: "" },
-  ]);
+  
 
   const handleQualificationChange = (index, field, value) => {
-    const newQualifications = [...qualifications];
-    newQualifications[index][field] = value;
-    setQualifications(newQualifications);
+    const newEducation = [...education];
+    newEducation[index][field] = value;
+    handleChange({target:{name: "education", value: newEducation}})
+    
   };
 
   const addQualification = (e) => {
     e.preventDefault();
-    if (qualifications.length < 5) {
-      setQualifications([
-        ...qualifications,
-        { qualification: "", subject: "", status: "", schoolname: "" },
-      ]);
+    if (education.length < 5) {
+      const newEducation = [
+        ...education,
+        { qualification: "", subject: "", status: "", schoolname: "" }
+      ]
+      handleChange({target: {name: "education", value: newEducation}})
     } else {
       alert("You can add up to 5 qualifications only");
     }
   };
   const removeQualification = (e) => {
     e.preventDefault();
-    let qualificationsCopy = [...qualifications];
-    if (qualificationsCopy.length > 1) {
-      qualificationsCopy.pop();
-      setQualifications(qualificationsCopy);
+    if (education.length > 1) {
+      const newEducation = education.pop();
+      handleChange({target: {name:"education", value: newEducation}})
     }
   };
-
+  console.log(education, formData)
   return (
     <Form>
       <div className="mb-10">
@@ -51,7 +53,7 @@ const Education = () => {
       </div>
       <div className="flex mt-20"></div>
       <div className="md:w-1/2 pl-8 mt-0 ">
-        {qualifications.map((qualification, index) => (
+        {education.map((education, index) => (
           <div key={index} className="flex justify-between mb-4">
             <div className="w-1/3 pr-2 mr-14">
               <label className="text-white" htmlFor={`qualification-${index}`}>
@@ -61,7 +63,7 @@ const Education = () => {
                 className="bg-gray-200 rounded py-4 px-4 text-gray-700 border border-white w-full"
                 type="text"
                 placeholder="Enter the qualification"
-                value={qualification.qualification}
+                value={education.qualification}
                 onChange={(e) =>
                   handleQualificationChange(
                     index,
@@ -79,7 +81,7 @@ const Education = () => {
                 className="bg-gray-200 rounded py-4 px-4 text-gray-700 border border-white w-full"
                 type="text"
                 placeholder="Enter the subject"
-                value={qualification.subject}
+                value={education.subject}
                 onChange={(e) =>
                   handleQualificationChange(index, "subject", e.target.value)
                 }
@@ -93,7 +95,7 @@ const Education = () => {
                 className="bg-gray-200 rounded py-4 px-4 text-gray-700 border border-white w-full"
                 type="text"
                 placeholder="Achieved/predicted"
-                value={qualification.status}
+                value={education.status}
                 onChange={(e) =>
                   handleQualificationChange(index, "status", e.target.value)
                 }
@@ -108,9 +110,9 @@ const Education = () => {
                 className="bg-gray-200 rounded py-4 px-4 text-gray-700 border border-white w-full"
                 type="text"
                 placeholder="School achieved grade at"
-                value={qualification.schoolname}
+                value={education.schoolName}
                 onChange={(e) =>
-                  handleQualificationChange(index, "schoolname", e.target.value)
+                  handleQualificationChange(index, "schoolName", e.target.value)
                 }
               />
             </div>
