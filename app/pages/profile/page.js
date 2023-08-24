@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { UserAuth } from "../context/AuthContext";
-import Form from "../components/form/form";
-import Header from "../components/header/header";
-import NormalButton from "../components/buttons/normalButton";
+import { UserAuth } from "../../context/AuthContext";
+import Form from "../../components/form/form";
+import Header from "../../components/header/header";
+import NormalButton from "../../components/buttons/normalButton";
 import Link from "next/link";
 
 const Profile = () => {
@@ -67,11 +67,14 @@ const Profile = () => {
   };
 
   const handleChange = (e) => {
+    // console.log(e.target.value)
     setFormData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value,
     }));
   };
+
+  console.log(formData)
   useEffect(() => {
     const checkAuthentication = async () => {
       await new Promise((resolve) => setTimeout(resolve, 5));
@@ -223,8 +226,8 @@ const Profile = () => {
                 </div>
               </div>
               <div className="">
-                <Link href="/Education">
-                  <NormalButton text="Login" />
+                <Link href="education">
+                  <NormalButton text="Next" />
                 </Link>
               </div>
             </div>

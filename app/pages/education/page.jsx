@@ -132,7 +132,7 @@ const Education = () => {
         </div>
       </div>
       <div className="mt-72">
-        <Link className="mr-10" href="/CreateProfileTwo">
+        <Link className="mr-10" href="profile">
           <NormalButton text="Previous" />
         </Link>
         <Link href="sector">
