@@ -28,7 +28,7 @@ const Education = () => {
     if (education.length < 5) {
       const newEducation = [
         ...education,
-        { qualification: "", subject: "", status: "", schoolname: "" }
+        { qualification: "", subject: "", status: "", schoolName: "" }
       ]
       handleChange({target: {name: "education", value: newEducation}})
     } else {
@@ -38,7 +38,7 @@ const Education = () => {
   const removeQualification = (e) => {
     e.preventDefault();
     if (education.length > 1) {
-      const newEducation = education.pop();
+      const newEducation = education.slice(0, education.length-1);
       handleChange({target: {name:"education", value: newEducation}})
     }
   };
@@ -103,7 +103,7 @@ const Education = () => {
             </div>
 
             <div className="w-1/3 pl-2">
-              <label className="text-white" htmlFor={`schoolname-${index}`}>
+              <label className="text-white" htmlFor={`schoolName-${index}`}>
                 School name
               </label>
               <input
