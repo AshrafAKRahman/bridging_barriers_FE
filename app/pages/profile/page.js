@@ -9,11 +9,11 @@ import { useFormContext } from "../../context/FormContext";
 
 const Profile = () => {
   const { user, newUser } = UserAuth();
-  const {formData, setFormData, handleChange } = useFormContext()
+  const { formData, setFormData, handleChange } = useFormContext();
 
   const [loading, setLoading] = useState();
   const [genderInput, setGenderInput] = useState(false);
- 
+
   useEffect(() => {
     if (typeof localStorage !== "undefined") {
       const emailForSignIn = localStorage.getItem("emailForSignIn");
@@ -34,7 +34,7 @@ const Profile = () => {
       gender: selectedGender,
     }));
 
-    if (selectedGender === "other") {
+    if (selectedGender === "Other") {
       setGenderInput(true);
     } else {
       setGenderInput(false);
@@ -48,7 +48,7 @@ const Profile = () => {
     }));
   };
 
-  console.log(formData)
+  console.log(formData);
   useEffect(() => {
     const checkAuthentication = async () => {
       await new Promise((resolve) => setTimeout(resolve, 5));
@@ -60,7 +60,7 @@ const Profile = () => {
   return (
     <div className="h-screen w-screen bg-blue-500 flex flex-col items-center justify-center ">
       <div className="h-[80%] w-full flex flex-col items-center  bg-black">
-        <Form >
+        <Form>
           <div className="bg-yellow-300 md:flex justify-center items-center ">
             <div className="flex flex-col items-center">
               <div className="bg-red-800 w-fit">
@@ -125,10 +125,10 @@ const Profile = () => {
                   onChange={handleGenderOther}
                 >
                   <option value="">Select your gender</option>
-                  <option value="">Male</option>
-                  <option value="">Female</option>
-                  <option value="">Non-Binary</option>
-                  <option value="">Other</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Non-Binary">Non-Binary</option>
+                  <option value="Other">Other</option>
                 </select>
                 {genderInput && (
                   <div className="mt-4">
