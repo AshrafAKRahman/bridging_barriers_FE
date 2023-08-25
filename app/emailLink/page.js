@@ -94,9 +94,9 @@ const EmailLink = () => {
   };
   return (
     <div className="h-screen w-screen  bg-blue-500 flex flex-col items-center justify-center">
-      <div className="h-[90%] w-full pb-14 px-1 flex flex-col justify-center items-center ">
+      <div className="h-[95%] w-full pb-14 flex flex-col justify-center items-center md:h-[90%] ">
         <Form onSubmit={handleSignIn}>
-          <div className="md:flex md:justify-between md:w-full ">
+          <div className="md:flex md:w-1/2 md:h-full flex flex-col items-center">
             <div className="emailContainer w-[80%] h-[80%] z-10 absolute flex flex-col items-center md:w-2/5  md:z-10 md:flex md:flex-col md:justify-between    ">
               <div className="header mt-24    h-fit md:text-2xl md:w-full md:absolute">
                 <div className={asap.className}>
@@ -139,16 +139,13 @@ const EmailLink = () => {
                 </div>
               </div>
             </div>
-            <div className="h-[50%] w-full mt-10 flex-col justify-center items-center md:mt-0 md:h-full md:translate-x-full md:w-1/2 flex">
+            <div className="absolute  h-[50%] w-4/5 flex flex-col items-center  md:mt-0 md:h-full md:translate-x-full md:w-1/2">
               <Image
-                className="img rounded-2xl sm:hidden"
+                className="img rounded-2xl border border-black"
                 src="/emailImg.jpg"
                 alt="form igmage"
-                height="600"
-                width="800"
-                style={{
-                  objejectFit: "cover",
-                }}
+                height="500"
+                width="650"
               />
             </div>
           </div>
