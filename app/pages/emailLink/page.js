@@ -1,13 +1,13 @@
 "use client";
-import NormalButton from "../components/buttons/normalButton";
-import Header from "../components/header/header";
-import Form from "../components/form/form";
+import NormalButton from "../../components/buttons/normalButton";
+import Header from "../../components/header/header";
+import Form from "../../components/form/form";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { UserAuth } from "../context/AuthContext";
+import { UserAuth } from "../../context/AuthContext";
 import Image from "next/legacy/image";
 import { Asap_Condensed } from "next/font/google";
-import LargeButton from "../components/buttons/largeButton";
+import LargeButton from "../../components/buttons/largeButton";
 import { gsap } from "gsap";
 
 const asap = Asap_Condensed({
@@ -127,14 +127,14 @@ const EmailLink = () => {
                   <LargeButton
                     type="submit"
                     text="Send email"
-                    onClick={handleSignIn}
+                    // onClick={handleSignIn}
                     className="text-center text-sm font-bold py-3 transform hover:scale-110 transition-transform shadow-xl"
                   />
                 </div>
                 <div className="mt-6">
                   <p className="link text-blue-500 underline font-sans">
                     Already have an account?{" "}
-                    <Link href="/login">Login here</Link>
+                    <Link href="login">Login here</Link>
                   </p>
                 </div>
               </div>
