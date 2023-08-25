@@ -98,10 +98,10 @@ export default function Home() {
           </div>
 
           <div className="largeBtn mt-10  flex justify-around w-full  invisible    md:flex md:justify-around md:w-full md:mt-10 lg:mt-32">
-            <Link href="/emailLink">
+            <Link href="/pages/emailLink">
               <LargeButton className="" text="CREATE PROFILE " />
             </Link>
-            <Link href="/login">
+            <Link href="/pages/login">
               <LargeButton className="" text="LOGIN" />
             </Link>
           </div>

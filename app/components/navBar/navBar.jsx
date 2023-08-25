@@ -36,7 +36,7 @@ const Navbar = () => {
             />
           </div>
           <div className=" mt-0 hidden md:flex">
-            <Link href="/login">
+            <Link href="/pages/login">
               {/* <p className=" text-blue-600">LOGIN</p> */}
               <LargeButton text="LOGIN" />
             </Link>

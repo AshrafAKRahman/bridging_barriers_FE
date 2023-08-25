@@ -1,26 +1,19 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { UserAuth } from "../context/AuthContext";
-import Form from "../components/form/form";
-import Header from "../components/header/header";
-import NormalButton from "../components/buttons/normalButton";
+import { UserAuth } from "../../context/AuthContext";
+import Form from "../../components/form/form";
+import Header from "../../components/header/header";
+import NormalButton from "../../components/buttons/normalButton";
 import Link from "next/link";
+import { useFormContext } from "../../context/FormContext";
 
 const Profile = () => {
   const { user, newUser } = UserAuth();
+  const { formData, setFormData, handleChange } = useFormContext();
 
   const [loading, setLoading] = useState();
   const [genderInput, setGenderInput] = useState(false);
-  const [formData, setFormData] = useState({
-    firstName: "",
-    surName: "",
-    gender: "",
-    otherGender: "",
-    dob: "",
-    phone: "",
-    email: "",
-    password: "",
-  });
+
   useEffect(() => {
     if (typeof localStorage !== "undefined") {
       const emailForSignIn = localStorage.getItem("emailForSignIn");
@@ -41,7 +34,7 @@ const Profile = () => {
       gender: selectedGender,
     }));
 
-    if (selectedGender === "other") {
+    if (selectedGender === "Other") {
       setGenderInput(true);
     } else {
       setGenderInput(false);
@@ -55,23 +48,7 @@ const Profile = () => {
     }));
   };
 
-  const handleSignIn = async () => {
-    try {
-      await newUser(formData.email, formData.password);
-      alert(
-        "Thank you for signing up, please sign in to complete your profile"
-      );
-    } catch (error) {
-      console.log("Error");
-    }
-  };
-
-  const handleChange = (e) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.value,
-    }));
-  };
+  console.log(formData);
   useEffect(() => {
     const checkAuthentication = async () => {
       await new Promise((resolve) => setTimeout(resolve, 5));
@@ -83,7 +60,7 @@ const Profile = () => {
   return (
     <div className="h-screen w-screen bg-blue-500 flex flex-col items-center justify-center ">
       <div className="h-[80%] w-full flex flex-col items-center  bg-black">
-        <Form onSubmit={handleSignIn}>
+        <Form>
           <div className="bg-yellow-300 md:flex justify-center items-center ">
             <div className="flex flex-col items-center">
               <div className="bg-red-800 w-fit">
@@ -148,10 +125,10 @@ const Profile = () => {
                   onChange={handleGenderOther}
                 >
                   <option value="">Select your gender</option>
-                  <option value="">Male</option>
-                  <option value="">Female</option>
-                  <option value="">Non-Binary</option>
-                  <option value="">Other</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Non-Binary">Non-Binary</option>
+                  <option value="Other">Other</option>
                 </select>
                 {genderInput && (
                   <div className="mt-4">
@@ -223,8 +200,8 @@ const Profile = () => {
                 </div>
               </div>
               <div className="">
-                <Link href="/Education">
-                  <NormalButton text="Login" />
+                <Link href="education">
+                  <NormalButton text="Next" />
                 </Link>
               </div>
             </div>
