@@ -1,13 +1,16 @@
-"use client"
+"use client";
 import Checkbox from "../../components/checbox/checbox";
 import { useState } from "react";
 import Form from "../../components/form/form";
 import Header from "../../components/header/header";
 import NormalButton from "../../components/buttons/normalButton";
 import Link from "next/link";
-import SubHeader from "../../components/subHeader/subHeader"
+import SubHeader from "../../components/subHeader/subHeader";
+import { useFormContext } from "../../context/FormContext";
 
 const Location = () => {
+  const { formData, handleChange } = useFormContext();
+
   const [isChecked1, setIsChecked1] = useState(false);
   const [isChecked2, setIsChecked2] = useState(false);
   const [isChecked3, setIsChecked3] = useState(false);
@@ -20,7 +23,7 @@ const Location = () => {
   const [isChecked10, setIsChecked10] = useState(false);
   const [isChecked11, setIsChecked11] = useState(false);
   const [isChecked12, setIsChecked12] = useState(false);
-
+  console.log(formData);
   return (
     <Form>
       <Header
@@ -35,8 +38,10 @@ const Location = () => {
       <div className="flex flex-wrap">
         <div className="w-1/4 mb-10">
           <Checkbox
+            name="location"
             label="North (N & NW)"
-            onChange={(isChecked) => setIsChecked1(isChecked)}
+            value={formData.location}
+            onChange={handleChange}
             className="text-white"
           />
         </div>
@@ -134,7 +139,7 @@ const Location = () => {
         </div>
       </div>
       <div className="mt-10">
-        <Link className="mr-10" href="sector">
+        <Link className="mr-10" href="profile">
           <NormalButton text="Previous" />
         </Link>
         <Link href="criteria">
