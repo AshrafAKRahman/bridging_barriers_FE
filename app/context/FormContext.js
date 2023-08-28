@@ -19,18 +19,23 @@ export const FormProvider = ({children}) => {
             status: "",
             schoolName: ""
 
-        }]
+        }],
+        sector: []
 
 
 
     })
 
     const handleChange = (e) => {
-        // console.log(e.target.value)
-        setFormData((prevData) => ({
-          ...prevData,
-          [e.target.name]: e.target.value,
-        }));
+        console.log(e.target.value)
+        
+          setFormData((prevData) => ({
+            ...prevData,
+            [e.target.name]: e.target.value,
+          }));
+
+        
+        
       };
     
   return (

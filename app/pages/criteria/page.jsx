@@ -5,15 +5,27 @@ import { useState } from "react";
 import Form from "../../components/form/form";
 import NormalButton from "../../components/buttons/normalButton";
 import Link from "next/link";
+import {useFormContext} from "../../context/FormContext.js"
 
 const Criteria = () => {
   const [isChecked, setIsChecked] = useState(new Array(12).fill(false));
+  const {handleChange, formData} = useFormContext()
+  const {sector} = formData
 
-  const handleCheckboxChange = (index, value) => {
+
+  const handleCheckboxChange = (index, value, label) => {
+    console.log(value, label)
     const newIsChecked = [...isChecked];
     newIsChecked[index] = value;
     setIsChecked(newIsChecked);
+    if(value) {
+      handleChange({target: {name: sector, value: label}})
+      console.log('function is running')
+    }
+    
   };
+
+  console.log(formData)
 
   const labels = [
     "Eligible for free school meals during secondary or further education",
@@ -29,7 +41,7 @@ const Criteria = () => {
     "Self-identifying as disabled or experienced significant disruption to your education due to illness or injury",
     "Experienced other significant personal or familial disadvantage that has impacted education or employment (for example, bereavement)",
   ];
-
+  console.log(isChecked)
   return (
     <Form>
       <Header
@@ -42,7 +54,7 @@ const Criteria = () => {
             <Checkbox
               label={label}
               checked={isChecked[index]}
-              onChange={(value) => handleCheckboxChange(index, value)}
+              onChange={(value) => handleCheckboxChange(index, value, label)}
               className="text-white"
             />
           </div>
