@@ -42,7 +42,8 @@ const Education = () => {
       handleChange({target: {name:"education", value: newEducation}})
     }
   };
-  console.log(education, formData)
+  console.log(formData)
+  
   return (
     <Form>
       <div className="mb-10">
