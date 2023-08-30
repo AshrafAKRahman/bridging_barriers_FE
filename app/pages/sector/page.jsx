@@ -23,6 +23,11 @@ const Sector = () => {
   const [isChecked11, setIsChecked11] = useState(false);
   const [isChecked12, setIsChecked12] = useState(false);
 
+  const sectorImages = ["Accounting.jpg", "Banking_Finance.jpg", "Consulting.jpg", "Marketing.jpg", "Education.jpg", "Engineering.jpg", "Governemnt_Public.jpg", "Healthcare.jpg", "Real Estate.jpg", "Law.jpg", "Technology.jpg", "Media-_-Music_1.jpg"]
+
+  const labels = [ "Accounting", "Banking & Finance", "Consulting", "Marketing", "Education", "Engineering", "Government & Public Sector", "Healthcare", "Real Estate", "Law", "Technology", "Media_Music"]
+
+
   return (
     <Form>
       <Header
@@ -31,6 +36,7 @@ const Sector = () => {
       />
       <div className="flex flex-wrap mt-20">
         <div className="w-1/4 mb-10">
+        
           <Image
             src="/Accounting.jpg"
             alt="Accounting"
