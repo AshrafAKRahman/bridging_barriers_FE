@@ -88,7 +88,7 @@ const Profile = () => {
                     </div>
                     <div className="">
                       <InputFeild
-                        name={formData.firstName}
+                        name="firstName"
                         type={"text"}
                         value={formData.firstName}
                         onChange={handleChange}
@@ -104,7 +104,7 @@ const Profile = () => {
                     </div>
                     <div>
                       <InputFeild
-                        name={formData.surName}
+                        name="surName"
                         type={"text"}
                         value={formData.surName}
                         onChange={handleChange}
@@ -120,7 +120,7 @@ const Profile = () => {
                     </div>
                     <div>
                       <InputFeild
-                        name={formData.dob}
+                        name="dob"
                         type={"date"}
                         value={formData.dob}
                         onChange={handleChange}
