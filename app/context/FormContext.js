@@ -1,3 +1,4 @@
+
 import { createContext, useState, useEffect, useContext } from "react"
 import Criteria from "../pages/criteria/page";
 
@@ -37,18 +38,18 @@ export const FormProvider = ({children}) => {
       };
     
   return (
-    <FormContext.Provider 
-    value={{
-        formData, 
+    <FormContext.Provider
+      value={{
+        formData,
         setFormData,
-        handleChange
-    }}>
-    {children}
+        handleChange,
+      }}
+    >
+      {children}
     </FormContext.Provider>
-    
-  )
-}
+  );
+};
 
 export const useFormContext = () => {
-    return useContext(FormContext)
-}
+  return useContext(FormContext);
+};
