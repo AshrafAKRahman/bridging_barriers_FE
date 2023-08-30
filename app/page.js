@@ -71,7 +71,7 @@ export default function Home() {
         <div className="bg bg-black h-4/6 w-5/6 mt-36  md:w-4/6 md:h-3/5 md:bg-black opacity-40 md:mt-52    rounded-3xl sm:h-3/6 sm:mt-56"></div>
         <div className=" mt-36 absolute rounded-3xl w-5/6 h-2/3 text-center flex flex-col items-center justify-center md:flex-col md:w-4/6 md:h-[75%] md:flex md:columns-1 md:absolute">
           <div className={raleway.className}>
-            <div className=" h-full w-full text-white mt-6 md:mt-16 md:z-10   text-3xl ">
+            <div className=" h-full w-full text-white mt-6 md:mt-16 md:z-10 text-3xl ">
               <Header
                 titleClassName="header invisible"
                 title={
@@ -99,10 +99,16 @@ export default function Home() {
 
           <div className="largeBtn mt-10  flex justify-around w-full  invisible    md:flex md:justify-around md:w-full md:mt-10 lg:mt-32">
             <Link href="/pages/emailLink">
-              <LargeButton className="" text="CREATE PROFILE " />
+              <LargeButton
+                className="bg-blue-500 hover:bg-blue-700"
+                text="CREATE PROFILE "
+              />
             </Link>
             <Link href="/pages/login">
-              <LargeButton className="" text="LOGIN" />
+              <LargeButton
+                className="bg-blue-500 hover:bg-blue-700"
+                text="LOGIN"
+              />
             </Link>
           </div>
         </div>
