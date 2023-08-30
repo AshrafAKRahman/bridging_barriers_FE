@@ -28,24 +28,10 @@ export const FormProvider = ({children}) => {
 
     const handleChange = (e) => {
         // console.log(e.target.value, e.target.name)
-          if(e.target.name === "sector") {
-            setFormData((prevData) => ({
-              ...prevData,
-              [e.target.name] : e.target.value
-              
-            }))
-            console.log('this function is running')
-          } else {
             setFormData((prevData) => ({
               ...prevData,
               [e.target.name]: e.target.value,
-            }));
-
-          }
-          
-
-        
-        
+            }));        
       };
     
   return (
