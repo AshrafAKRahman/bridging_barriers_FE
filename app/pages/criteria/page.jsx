@@ -9,16 +9,16 @@ import {useFormContext} from "../../context/FormContext.js"
 
 const Criteria = () => {
   const {handleChange, formData} = useFormContext()
-  const {sector} = formData
+  const {criteria} = formData
 
   const handleCheckboxChange = (isChecked, label) => {
-    const newSector = [...sector, label]
+    const newCriteria = [...criteria, label]
     if(isChecked) {
-      handleChange({target: {name: "sector", value: newSector}})
+      handleChange({target: {name: "criteria", value: newCriteria}})
     } else {
-      const newSector = sector.filter((value) => {return value !== label })
-      console.log(newSector)
-      handleChange({target: {name: "sector", value: newSector}})
+      const newCriteria = criteria.filter((value) => {return value !== label })
+      console.log(newCriteria)
+      handleChange({target: {name: "criteria", value: newCriteria}})
     }
     
   };

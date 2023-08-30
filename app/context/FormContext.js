@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, useContext } from "react"
+import Criteria from "../pages/criteria/page";
 
 
 const FormContext = createContext({})
@@ -20,7 +21,8 @@ export const FormProvider = ({children}) => {
             schoolName: ""
 
         }],
-        sector: []
+        sector: [],
+        criteria: []
 
 
 
