@@ -6,6 +6,7 @@ import Header from "../../components/header/header";
 import NormalButton from "../../components/buttons/normalButton";
 import Link from "next/link";
 import { useFormContext } from "../../context/FormContext";
+import InputFeild from "@/app/components/inputFeild/inputFeild";
 
 const Profile = () => {
   const { user, newUser } = UserAuth();
@@ -65,17 +66,11 @@ const Profile = () => {
   return (
     <div className="md:h-screen md:w-screen bg-blue-500 flex flex-col items-center justify-center">
       <div className="h-screen pt-10 pb-20 w-full flex flex-col items-center md:h-full">
-        <div className="w-fit">
-          <Header
-            titleClassName="text-sm  text-white pb-5 md:pb-10"
-            title="Thanks for confirming your email address, let's get to know you."
-          />
-        </div>
         <Form>
           <div className="h-full w-full md:flex md:justify-between ">
             <div className="w-full h-full flex justify-center items-center">
+              <div className="bg-black opacity-40 absolute h-full w-full rounded-2xl md:h-5/6 md:w-4/5 z-10"></div>
               <div className="w-[80%] h-4/6 absolute md:w-1/2 md:h-4/6">
-                <div className="bg-black opacity-40 absolute h-full w-full rounded-2xl"></div>
                 <img
                   className="img rounded-2xl object-cover h-full w-full "
                   src="/profileImg.jpg"
@@ -83,23 +78,18 @@ const Profile = () => {
                 />
               </div>
 
-              <div className="h-full w-full md:flex md:justify-between z-10">
+              <div className="h-full w-full md:flex md:justify-between z-20">
                 <div className=" h-1/2 w-full flex flex-col items-center justify-evenly md:w-1/2 md:h-full">
                   <div className="w-5/6 flex justify-between">
-                    <div className="">
-                      <label
-                        className="text-blue-950 "
-                        htmlFor="inline-firstName"
-                      >
-                        First name
+                    <div className="text-white ">
+                      <label>
+                        <Header title="First name" />
                       </label>
                     </div>
                     <div className="">
-                      <input
-                        className="bg-gray-200 rounded-3xl   w-36 py-1.5 px-1.5 md:py-4 md:px-4 text-gray-700 border border-white md:w-80"
-                        id="inline-firstName"
-                        type="text"
-                        name="firstName"
+                      <InputFeild
+                        name={formData.firstName}
+                        type={"text"}
                         value={formData.firstName}
                         onChange={handleChange}
                         placeholder="Enter your first name"
@@ -107,36 +97,31 @@ const Profile = () => {
                     </div>
                   </div>
                   <div className="w-5/6 flex justify-between">
-                    <div>
-                      <label className="text-blue-950" htmlFor="inline-surName">
-                        Last name
+                    <div className="text-white">
+                      <label>
+                        <Header title="Surname" />
                       </label>
                     </div>
                     <div>
-                      <input
-                        className="bg-gray-200 rounded py-1.5 px-1.5 w-36 md:py-4 md:px-4 text-gray-700 border border-white md:w-80"
-                        id="inline-surName"
-                        type="text"
-                        name="surName"
+                      <InputFeild
+                        name={formData.surName}
+                        type={"text"}
                         value={formData.surName}
                         onChange={handleChange}
                         placeholder="Enter your last name"
                       />
                     </div>
                   </div>
-
                   <div className="w-5/6 flex justify-between">
-                    <div>
-                      <label className="text-blue-950 " htmlFor="inline-dob">
-                        Date of birth
+                    <div className="text-white ">
+                      <label>
+                        <Header title="Date of birth" />
                       </label>
                     </div>
                     <div>
-                      <input
-                        className="bg-gray-200 rounded py-1.5 px-1.5 w-36 md:py-4 md:px-4 text-gray-700 border border-white md:w-80"
-                        id="inline-dob"
-                        type="date"
-                        name="dob"
+                      <InputFeild
+                        name={formData.dob}
+                        type={"date"}
                         value={formData.dob}
                         onChange={handleChange}
                       />

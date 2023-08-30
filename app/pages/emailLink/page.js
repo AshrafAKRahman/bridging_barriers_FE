@@ -9,6 +9,7 @@ import Image from "next/legacy/image";
 import { Asap_Condensed } from "next/font/google";
 import LargeButton from "../../components/buttons/largeButton";
 import { gsap } from "gsap";
+import { useRouter } from "next/navigation";
 
 const asap = Asap_Condensed({
   subsets: ["latin"],
@@ -17,6 +18,7 @@ const asap = Asap_Condensed({
 });
 
 const EmailLink = () => {
+  const router = useRouter();
   const { user, sendEmailLink } = UserAuth();
   const [email, setEmail] = useState({
     email: "",
@@ -85,10 +87,9 @@ const EmailLink = () => {
     } else {
       try {
         await sendEmailLink(userEmail);
-        console.log("all is working");
-        alert("Email sent, please verify your email address");
+        window.location.href = "/pages/emailSent";
       } catch (error) {
-        console.log("Error");
+        console.log("Error here");
       }
     }
   };
@@ -96,7 +97,7 @@ const EmailLink = () => {
     <div className="h-screen w-screen  bg-blue-500 flex flex-col items-center justify-center">
       <div className="h-[95%] w-full pb-14 flex flex-col justify-center items-center md:h-[90%] ">
         <Form onSubmit={handleSignIn}>
-          <div className="h-full flex flex-col items-center md:h-full md:flex md:flex-col md:items-center md:justify-center">
+          <div className="h-full flex flex-col items-center md:h-full md:flex md:flex-col md:items-center md:justify-center ">
             <div className="emailContainer w-[80%] h-[80%] absolute flex flex-col items-center z-20 md:static md:w-1/2  md:z-20 md:flex md:justify-between ">
               <div className="header mt-24    h-fit md:text-2xl md:w-full md:absolute">
                 <div className={asap.className}>
@@ -107,7 +108,7 @@ const EmailLink = () => {
                 </div>
               </div>
               <div className=" mt-0 w-full h-2/3 flex flex-col items-center md:absolute md:h-full">
-                <div className="emailLabel mt-8 md:mt-72 ">
+                <div className="emailLabel mt-8 md:mt-72">
                   <label className="text-white " htmlFor="inline-emai">
                     Please enter your email address
                   </label>
@@ -139,10 +140,10 @@ const EmailLink = () => {
                 </div>
               </div>
             </div>
-            <div className="h-full w-5/6 flex flex-col items-center justify-center md:w-2/3 md:mb-10  ">
+            <div className="h-full w-5/6 flex flex-col items-center justify-center md:w-2/3 md:mb-10 ">
               <div className="bg-black opacity-40 absolute z-10 h-[70%] w-3/5 rounded-2xl md:w-1/3 "></div>
               <img
-                className="img h-full w-full rounded-2xl object-cover shadow-lg"
+                className="img w-full rounded-2xl object-cover shadow-lg md:object-cover"
                 src="/emailImg.jpg"
                 alt="form igmage"
               />
@@ -155,24 +156,3 @@ const EmailLink = () => {
 };
 
 export default EmailLink;
-
-//   const [dateOfBirth, setDateOfBirth] = useState("");
-
-{
-  /* <div className="md:flex md:items-center mt-10">
-  <div className="md:w-1/6">
-    <label className="text-white" htmlFor="inline-dob">
-      Date of birth
-    </label>
-  </div>
-  <div className="">
-    <input
-      className="bg-gray-200 rounded w-full py-4 px-4 text-gray-400 border border-black"
-      id="inline-dob"
-      type="date"
-      value={dateOfBirth}
-      onChange={(e) => setDateOfBirth(e.target.value)}
-    />
-  </div>
-</div> */
-}
