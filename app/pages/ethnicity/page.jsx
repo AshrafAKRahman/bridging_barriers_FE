@@ -6,20 +6,25 @@ import SubHeader from "../../components/subHeader/subHeader"
 import Checkbox from "../../components/checbox/checbox";
 import NormalButton from "../../components/buttons/normalButton";
 import Link from "next/link";
+import { useFormContext } from "@/app/context/FormContext";
 
 const Ethnicity = () => {
-  // const [isChecked1, setIsChecked1] = useState("false");
-  // const [isChecked2, setIsChecked2] = useState("false");
-  // const [isChecked3, setIsChecked3] = useState("false");
-  // const [isChecked4, setIsChecked4] = useState("false");
-  // const [isChecked5, setIsChecked5] = useState("false");
-  // const [isChecked6, setIsChecked6] = useState("false");
-  // const [isChecked7, setIsChecked7] = useState("false");
-  // const [isChecked8, setIsChecked8] = useState("false");
-  // const [isChecked9, setIsChecked9] = useState("false");
+  const {formData, handleChange} = useFormContext();
+  const {ethnicity} = formData
 
   const labels = ["Mixed or multiple ethnic groups", "Asian or Asian British", "Black, African, Caribbean or Black British", "White, White British, White European or White other", "Self Describe"  ]
   
+  const handleCheckBoxChange = (isChecked, label) => {
+    console.log(isChecked, label)
+    if(isChecked) {
+      const newEhtnicity = [...ethnicity, label]
+      handleChange({target:{name:"ethnicity", value: newEhtnicity}})
+    } else {
+      const newEhtnicity = ethnicity.filter((value) => {return value !==label})
+      handleChange({target: {name:"ethnicity", value: newEhtnicity}})
+    }
+  }
+  console.log(formData)
 
   return (
     <Form>
@@ -47,6 +52,7 @@ const Ethnicity = () => {
             <Checkbox
               label={labels}
               className="mb-3 text-white"
+              onChange={(isChecked, label)=>{handleCheckBoxChange(isChecked, label)}} 
             />
           ))}
         </div>

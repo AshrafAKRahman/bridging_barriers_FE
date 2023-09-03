@@ -22,7 +22,8 @@ export const FormProvider = ({children}) => {
 
         }],
         sector: [],
-        criteria: []
+        criteria: [],
+        ethnicity: [],
 
 
 
