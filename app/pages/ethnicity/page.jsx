@@ -66,33 +66,6 @@ const Ethnicity = () => {
             className="mb-3 text-white"
           />
         </div>
-        <div className="w-1/2">
-          <SubHeader
-            titleClassName="text-2xl mt-10 text-gray-400 flex"
-            title="Gender"
-            className="mb-3 text-white"
-          />
-          <Checkbox
-            label="Male"
-            onChange={(isChecked6) => setIsChecked6(isChecked6)}
-            className="mb-3 text-white"
-          />
-          <Checkbox
-            label="Female"
-            onChange={(isChecked7) => setIsChecked7(isChecked7)}
-            className="mb-3 text-white"
-          />
-          <Checkbox
-            label="Non-Binary"
-            onChange={(isChecked8) => setIsChecked8(isChecked8)}
-            className="mb-3 text-white"
-          />
-          <Checkbox
-            label="Self describe (please specify)"
-            onChange={(isChecked9) => setIsChecked9(isChecked9)}
-            className="mb-3 text-white"
-          />
-        </div>
       </div>
       <div className="mt-20">
         <Link className="mr-10" href="criteria">
