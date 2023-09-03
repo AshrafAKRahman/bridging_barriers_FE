@@ -18,6 +18,9 @@ const Ethnicity = () => {
   const [isChecked8, setIsChecked8] = useState("false");
   const [isChecked9, setIsChecked9] = useState("false");
 
+  const labels = ["Mixed or multiple ethnic groups", "Asian or Asian British", "Black, African, Caribbean or Black British", "White, White British, White European or White other", "Self Describe"  ]
+  
+
   return (
     <Form>
       <Header
