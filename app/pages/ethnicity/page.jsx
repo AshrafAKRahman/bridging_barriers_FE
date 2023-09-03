@@ -43,31 +43,12 @@ const Ethnicity = () => {
             titleClassName="text-2xl mt-10 text-gray-400 flex mb-2"
             title="Ethnic Heritage"
           />
-          <Checkbox
-            label="Mixed or multiple ethnic groups"
-            onChange={(isChecked1) => setIsChecked1(isChecked1)}
-            className="mb-3 text-white"
-          />
-          <Checkbox
-            label="Asian or Asian British"
-            onChange={(isChecked2) => setIsChecked2(isChecked2)}
-            className="mb-3 text-white"
-          />
-          <Checkbox
-            label="Black, African, Caribbean or Black British"
-            onChange={(isChecked3) => setIsChecked3(isChecked3)}
-            className="mb-3 text-white"
-          />
-          <Checkbox
-            label="White, White British, White European or White other"
-            onChange={(isChecked4) => setIsChecked4(isChecked4)}
-            className="mb-3 text-white"
-          />
-          <Checkbox
-            label="Self Describe"
-            onChange={(isChecked5) => setIsChecked5(isChecked5)}
-            className="mb-3 text-white"
-          />
+          {labels.map((labels) => (
+            <Checkbox
+              label={labels}
+              className="mb-3 text-white"
+            />
+          ))}
         </div>
       </div>
       <div className="mt-20">
