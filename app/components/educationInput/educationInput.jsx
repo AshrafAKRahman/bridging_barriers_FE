@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "../../header/header";
-import InputFeild from "../../inputFeild/inputFeild";
+import Header from "../header/header";
+import InputFeild from "../inputFeild/inputFeild";
 import { useFormContext } from "@/app/context/FormContext";
 import Link from "next/link";
-import NormalButton from "../normalButton";
+import NormalButton from "../buttons/normalButton";
 
 const EducationInput = ({ index }) => {
   const { formData, handleChange } = useFormContext();
