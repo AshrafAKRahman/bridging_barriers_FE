@@ -7,7 +7,7 @@ import { useState } from "react";
 import NormalButton from "../../components/buttons/normalButton";
 import { useFormContext } from "@/app/context/FormContext";
 import InputFeild from "@/app/components/inputFeild/inputFeild";
-import EducationInput from "@/app/components/buttons/educationInput/educationInput";
+import EducationInput from "@/app/components/educationInput/educationInput";
 
 const Education = () => {
   const { formData, handleChange } = useFormContext();
