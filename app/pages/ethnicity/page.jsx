@@ -6,17 +6,25 @@ import SubHeader from "../../components/subHeader/subHeader"
 import Checkbox from "../../components/checbox/checbox";
 import NormalButton from "../../components/buttons/normalButton";
 import Link from "next/link";
+import { useFormContext } from "@/app/context/FormContext";
 
 const Ethnicity = () => {
-  const [isChecked1, setIsChecked1] = useState("false");
-  const [isChecked2, setIsChecked2] = useState("false");
-  const [isChecked3, setIsChecked3] = useState("false");
-  const [isChecked4, setIsChecked4] = useState("false");
-  const [isChecked5, setIsChecked5] = useState("false");
-  const [isChecked6, setIsChecked6] = useState("false");
-  const [isChecked7, setIsChecked7] = useState("false");
-  const [isChecked8, setIsChecked8] = useState("false");
-  const [isChecked9, setIsChecked9] = useState("false");
+  const {formData, handleChange} = useFormContext();
+  const {ethnicity} = formData
+
+  const labels = ["Mixed or multiple ethnic groups", "Asian or Asian British", "Black, African, Caribbean or Black British", "White, White British, White European or White other", "Self Describe"  ]
+  
+  const handleCheckBoxChange = (isChecked, label) => {
+    console.log(isChecked, label)
+    if(isChecked) {
+      const newEhtnicity = [...ethnicity, label]
+      handleChange({target:{name:"ethnicity", value: newEhtnicity}})
+    } else {
+      const newEhtnicity = ethnicity.filter((value) => {return value !==label})
+      handleChange({target: {name:"ethnicity", value: newEhtnicity}})
+    }
+  }
+  console.log(formData)
 
   return (
     <Form>
@@ -40,58 +48,13 @@ const Ethnicity = () => {
             titleClassName="text-2xl mt-10 text-gray-400 flex mb-2"
             title="Ethnic Heritage"
           />
-          <Checkbox
-            label="Mixed or multiple ethnic groups"
-            onChange={(isChecked1) => setIsChecked1(isChecked1)}
-            className="mb-3 text-white"
-          />
-          <Checkbox
-            label="Asian or Asian British"
-            onChange={(isChecked2) => setIsChecked2(isChecked2)}
-            className="mb-3 text-white"
-          />
-          <Checkbox
-            label="Black, African, Caribbean or Black British"
-            onChange={(isChecked3) => setIsChecked3(isChecked3)}
-            className="mb-3 text-white"
-          />
-          <Checkbox
-            label="White, White British, White European or White other"
-            onChange={(isChecked4) => setIsChecked4(isChecked4)}
-            className="mb-3 text-white"
-          />
-          <Checkbox
-            label="Self Describe"
-            onChange={(isChecked5) => setIsChecked5(isChecked5)}
-            className="mb-3 text-white"
-          />
-        </div>
-        <div className="w-1/2">
-          <SubHeader
-            titleClassName="text-2xl mt-10 text-gray-400 flex"
-            title="Gender"
-            className="mb-3 text-white"
-          />
-          <Checkbox
-            label="Male"
-            onChange={(isChecked6) => setIsChecked6(isChecked6)}
-            className="mb-3 text-white"
-          />
-          <Checkbox
-            label="Female"
-            onChange={(isChecked7) => setIsChecked7(isChecked7)}
-            className="mb-3 text-white"
-          />
-          <Checkbox
-            label="Non-Binary"
-            onChange={(isChecked8) => setIsChecked8(isChecked8)}
-            className="mb-3 text-white"
-          />
-          <Checkbox
-            label="Self describe (please specify)"
-            onChange={(isChecked9) => setIsChecked9(isChecked9)}
-            className="mb-3 text-white"
-          />
+          {labels.map((labels) => (
+            <Checkbox
+              label={labels}
+              className="mb-3 text-white"
+              onChange={(isChecked, label)=>{handleCheckBoxChange(isChecked, label)}} 
+            />
+          ))}
         </div>
       </div>
       <div className="mt-20">
