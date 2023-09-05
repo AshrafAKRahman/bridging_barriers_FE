@@ -13,6 +13,27 @@ const Sector = () => {
   const { formData, setFormData, handleChange } = useFormContext();
   const [sectorInput, setSectorInput] = useState(false);
 
+  const handleSectorOther = (e) => {
+    const selectedSector = e.target.value;
+    setFormData((prevData) => ({
+      ...prevData,
+      sector: selectedSector,
+    }));
+
+    if (selectedSector === "Other") {
+      setSectorInput(true);
+    } else {
+      setSectorInput(false);
+    }
+  };
+
+  const handleSectorOtherChange = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      otherSector: e.target.value,
+    }));
+  };
+
   return (
     <div className="w-screen h-screen bg-blue-500 flex items-center justify-center p-5 md:px-36">
       <Form>
@@ -45,7 +66,7 @@ const Sector = () => {
                 className="w-36 border-black text-gray-700 bg-gray-200 rounded-3xl py-2 px-2 md:mf-10 md:p-4 md:w-60"
                 name="sector"
                 value={formData.sector}
-                onChange={handleChange}
+                onChange={handleSectorOther}
               >
                 <option>Select Sector</option>
                 <option>Commercial Law</option>
@@ -59,15 +80,29 @@ const Sector = () => {
                 <option>Real Estate</option>
                 <option>Other</option>
               </select>
+              {sectorInput && (
+                <div className="text-white mt-4">
+                  <label>
+                    <Header title="please specify" />
+                  </label>
+                  <InputFeild
+                    type="text"
+                    name="otherSector"
+                    value={formData.otherSector}
+                    onChange={handleSectorOtherChange}
+                    placeholder="please specify a sector"
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
 
         <div className="h-fit w-4/6 flex items-center justify-between bg-pink-600 ">
-          <Link className="" href="criteria">
+          <Link className="" href="education">
             <NormalButton text="Previous" />
           </Link>
-          <Link href="education">
+          <Link href="criteria">
             <NormalButton text="Next" />
           </Link>
         </div>
