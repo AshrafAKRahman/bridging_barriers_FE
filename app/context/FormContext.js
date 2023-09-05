@@ -22,7 +22,7 @@ export const FormProvider = ({ children }) => {
         schoolName: "",
       },
     ],
-    sector: [],
+    sector: "",
     criteria: [],
   });
 

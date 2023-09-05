@@ -1,120 +1,77 @@
-"use client"
-
-import Checkbox from "../../components/checbox/checbox";
-import { useState } from "react";
+"use client";
 import Form from "../../components/form/form";
 import Header from "../../components/header/header";
 import NormalButton from "../../components/buttons/normalButton";
 import Link from "next/link";
-import Image from "next/image";
+import { useFormContext } from "@/app/context/FormContext";
+import InputFeild from "@/app/components/inputFeild/inputFeild";
+import { useState } from "react";
 
 const Sector = () => {
-  // Define states for each checkbox
-  const [isChecked1, setIsChecked1] = useState(false);
-  const [isChecked2, setIsChecked2] = useState(false);
-  const [isChecked3, setIsChecked3] = useState(false);
-  const [isChecked4, setIsChecked4] = useState(false);
-  const [isChecked5, setIsChecked5] = useState(false);
-  const [isChecked6, setIsChecked6] = useState(false);
-  const [isChecked7, setIsChecked7] = useState(false);
-  const [isChecked8, setIsChecked8] = useState(false);
-  const [isChecked9, setIsChecked9] = useState(false);
-  const [isChecked10, setIsChecked10] = useState(false);
-  const [isChecked11, setIsChecked11] = useState(false);
-  const [isChecked12, setIsChecked12] = useState(false);
-
-  const sectorImageAndTitle = [{
-    image: "Accounting.jpg",
-    title: "Accounting"
-  },
-  {
-    image: "Banking_Finance.jpg",
-    title: "Banking & Finance"
-
-  },
-  {
-    image: "Consulting.jpg",
-    title: "Consulting"
-
-  },
-  {
-    image: "Marketing.jpg",
-    title: "Marketing"
-
-  },
-  {
-    image: "Education.jpg",
-    title: "Education"
-
-  },
-  {
-    image: "Engineering.jpg",
-    title: "Engineering"
-
-  },
-  {
-    image: "Governemnt_Public.jpg",
-    title: "Government & Public Sector"
-
-  },
-  {
-    image: "Healthcare.jpg",
-    title: "Healthcare"
-  },
-  {
-    image: "Real Estate.jpg",
-    title: "Real Estate",
-  },
-  {
-    image: "Law.jpg",
-    title: "Law"
-  },
-  {
-    image: "Technology.jpg",
-    title: "Technology"
-  },
-  {
-    image: "Media-_-Music_1.jpg",
-    title: "Media_Music"
-  },
-]
-
+  const { formData, setFormData, handleChange } = useFormContext();
+  const [sectorInput, setSectorInput] = useState(false);
 
   return (
-    <Form>
-      <Header
-        titleClassName="text-3xl absolute left:40 md:left-20 top-20 transform translate-x-6 translate-y-58 text-white"
-        title="Which job sector interests you"
-      />
-      <div className="flex flex-wrap mt-20">
-        
-        {sectorImageAndTitle.map((content) => (
-          <div className="w-1/4 mb-10">
-          <Image
-            src={`/${content.image}`}
-            alt={content.image}
-            className="rounded-img mb-5"
-            height={70}
-            width={70}
-          />
-          <Checkbox
-            label={content.title}
-            onChange={(isChecked) => setIsChecked1(isChecked)}
-            className="text-white"
-          />
-         </div>
-        ))}
+    <div className="w-screen h-screen bg-blue-500 flex items-center justify-center p-5 md:px-36">
+      <Form>
+        <div className="h-full w-full flex flex-col items-center justify-center py-10 bg-green-500 ">
+          <div className="bg-black opacity-40 absolute h-[60%] w-4/5 rounded-2xl md:h-[72%] md:w-[40%] invisible"></div>
+          <div className="w-full h-fit flex flex-col justify-center items-center z-10 bg-yellow-400">
+            <Header
+              titleClassName="text-3xl md:text-6xl text-white "
+              title="Sectors of interest"
+            />
+          </div>
+          <div className="h-2/3 md:h-full md:mb-16 flex items-center justify-center bg-red-400">
+            <img
+              src="/sectors.jpg"
+              alt="sectors image"
+              className="w-full h-5/6 px-2 rounded-2xl md:w-[840px] md:h-[480px]"
+            />
+          </div>
+          <div className="w-2/3 h-2/3 absolute flex flex-col justify-between">
+            <div className="text-white">
+              <label>
+                <Header
+                  title="Select a sector of interest"
+                  titleClassName="text-lg md:text-3xl"
+                />
+              </label>
+              <div>
+                <select
+                  className="w-36 border-black text-gray-700 bg-gray-200 rounded-3xl py-2 px-2 md:mf-10 md:p-4 md:w-60"
+                  name="sector"
+                  value={formData.sector}
+                  onChange={handleChange}
+                >
+                  <option>Select Sector</option>
+                  <option>Commercial Law</option>
+                  <option>Creative Industries</option>
+                  <option>Engineering & Technology</option>
+                  <option>Financial Services & Consulting</option>
+                  <option>Government & Public Sector</option>
+                  <option>Human Resources</option>
+                  <option>Investment Banking & Asset Management</option>
+                  <option>Marketing, Media and PR</option>
+                  <option>Real Estate</option>
+                  <option>Other</option>
+                </select>
+                {}
+              </div>
+            </div>
+          </div>
 
-      </div>
-      <div className="mt-10">
-        <Link className="mr-10" href="education">
-          <NormalButton text="Previous" />
-        </Link>
-        <Link href="location">
-          <NormalButton text="Next" />
-        </Link>
-      </div>
-    </Form>
+          <div className="h-fit w-4/6 flex items-center justify-between bg-pink-600 ">
+            <Link className="" href="criteria">
+              <NormalButton text="Previous" />
+            </Link>
+            <Link href="education">
+              <NormalButton text="Next" />
+            </Link>
+          </div>
+        </div>
+      </Form>
+    </div>
   );
 };
 
