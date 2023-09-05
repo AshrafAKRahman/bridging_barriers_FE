@@ -38,7 +38,7 @@ const Profile = () => {
         autoAlpha: 0,
         x: -50,
         stagger: 0.25,
-        delay: 0.75,
+        delay: 1,
       });
     };
     reveal();
@@ -52,7 +52,7 @@ const Profile = () => {
         autoAlpha: 0,
         x: 50,
         stagger: 0.25,
-        delay: 1.5,
+        delay: 1.85,
       });
     };
     reveal();
@@ -120,14 +120,14 @@ const Profile = () => {
                 />
               </div>
 
-              <div className="h-full w-full md:flex md:justify-between md:items-center md:mb-10 z-20 ">
+              <div className="h-full w-full md:flex md:justify-between md:items-center md:mb-10 z-20 px-8">
                 <div className=" h-1/2 w-full flex flex-col items-center justify-evenly md:w-1/2 md:h-5/6">
                   <div className="fname w-5/6 flex justify-between invisible">
                     <div className=" text-white md:ml-16">
                       <label>
                         <Header
                           title="First name"
-                          titleClassName="text-lg md:text-3xl "
+                          titleClassName="text-lg md:text-3xl sm:text-sm "
                         />
                       </label>
                     </div>
