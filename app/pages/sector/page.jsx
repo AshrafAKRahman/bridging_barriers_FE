@@ -1,28 +1,18 @@
 "use client"
 
 import Checkbox from "../../components/checbox/checbox";
-import { useState } from "react";
 import Form from "../../components/form/form";
 import Header from "../../components/header/header";
 import NormalButton from "../../components/buttons/normalButton";
 import Link from "next/link";
 import Image from "next/image";
+import { useFormContext } from "@/app/context/FormContext";
 
 const Sector = () => {
-  // Define states for each checkbox
-  const [isChecked1, setIsChecked1] = useState(false);
-  const [isChecked2, setIsChecked2] = useState(false);
-  const [isChecked3, setIsChecked3] = useState(false);
-  const [isChecked4, setIsChecked4] = useState(false);
-  const [isChecked5, setIsChecked5] = useState(false);
-  const [isChecked6, setIsChecked6] = useState(false);
-  const [isChecked7, setIsChecked7] = useState(false);
-  const [isChecked8, setIsChecked8] = useState(false);
-  const [isChecked9, setIsChecked9] = useState(false);
-  const [isChecked10, setIsChecked10] = useState(false);
-  const [isChecked11, setIsChecked11] = useState(false);
-  const [isChecked12, setIsChecked12] = useState(false);
-
+  const {formData, handleChange} = useFormContext()
+  console.log(formData)
+  const {sector} = formData
+  
   const sectorImageAndTitle = [{
     image: "Accounting.jpg",
     title: "Accounting"
@@ -78,8 +68,17 @@ const Sector = () => {
     title: "Media_Music"
   },
 ]
-
-
+  const handleCheckBox = (isChecked, label) => {
+    console.log(isChecked, label)
+    if(isChecked) {
+      const newSector = [...sector, label]
+      handleChange ({target : {name: "sector", value: newSector}})
+    } else {
+      const newSector = sector.filter((value) => {return value !==label})
+      handleChange({target : {name : "sector", value :newSector}})
+    }
+  }
+ 
   return (
     <Form>
       <Header
@@ -99,7 +98,7 @@ const Sector = () => {
           />
           <Checkbox
             label={content.title}
-            onChange={(isChecked) => setIsChecked1(isChecked)}
+            onChange={(isChecked, label) => handleCheckBox(isChecked, label)}
             className="text-white"
           />
          </div>
