@@ -1,4 +1,7 @@
-"use client";
+
+"use client"
+
+import Checkbox from "../../components/checbox/checbox";
 import Form from "../../components/form/form";
 import Header from "../../components/header/header";
 import NormalButton from "../../components/buttons/normalButton";
@@ -60,6 +63,8 @@ const Sector = () => {
               </div>
             </div>
           </div>
+
+
 
           <div className="h-fit w-4/6 flex items-center justify-between bg-pink-600 ">
             <Link className="" href="criteria">
