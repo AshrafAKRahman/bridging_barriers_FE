@@ -23,6 +23,7 @@ export const FormProvider = ({ children }) => {
       },
     ],
     sector: "",
+    otherSector: "",
     criteria: [],
   });
 
@@ -33,7 +34,6 @@ export const FormProvider = ({ children }) => {
       [e.target.name]: e.target.value,
     }));
   };
-
 
   return (
     <FormContext.Provider
