@@ -16,7 +16,7 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const actionCodeSettings = {
-    url: "http://localhost:3000/profile",
+    url: "http://localhost:3000/pages/profile",
     handleCodeInApp: true,
     iOSBundleId: "com.example.ios",
     androidPackageName: "com.example.android",

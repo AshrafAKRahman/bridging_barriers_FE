@@ -46,6 +46,11 @@ const Criteria = () => {
     });
   };
 
+  useEffect(() => {
+    revealContainer();
+    revealAnim();
+  }, []);
+
   const revealLabels = () => {
     const TLLABEL = gsap.timeline();
     TLLABEL.from(".label", {
@@ -88,8 +93,8 @@ const Criteria = () => {
   };
 
   const revealsecondLabel = () => {
-    const TLSECONDLABEL = gsap.timeline();
-    TLSECONDLABEL.from(" .secondLabel", {
+    const TLSECONDINPUT = gsap.timeline();
+    TLSECONDINPUT.from(" .secondInput", {
       autoAlpha: 0,
       x: 50,
       duration: 1,
@@ -119,17 +124,12 @@ const Criteria = () => {
   };
 
   useEffect(() => {
-    revealContainer();
-    revealAnim();
-  }, []);
-
-  useEffect(() => {
-    more();
-    leftArrow();
-    rightArrow();
     revealLabels();
+    more();
+    rightArrow();
     revealsecondLabel();
     previous();
+    leftArrow();
   }, [showSecondInput]);
 
   const toggleInput = (e) => {
@@ -257,6 +257,7 @@ const Criteria = () => {
               </button>
             </div>
           </div>
+
           <div className="img h-2/3 absolute md:h-full  flex items-center justify-center  ">
             <img
               src="/criteria.jpg"

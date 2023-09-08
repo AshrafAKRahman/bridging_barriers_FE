@@ -36,17 +36,6 @@ const Sector = () => {
     revealAnim();
   }, []);
 
-  /*
-backdrop
-bg
-header
-subheader
-container
-sectors
-btn
-img
- */
-
   const { formData, setFormData } = useFormContext();
   const [sectorInput, setSectorInput] = useState(false);
 
