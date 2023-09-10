@@ -8,6 +8,7 @@ import NormalButton from "../../components/buttons/normalButton";
 import { useFormContext } from "@/app/context/FormContext";
 import InputFeild from "@/app/components/inputFeild/inputFeild";
 import EducationInput from "@/app/components/educationInput/educationInput";
+import ParticlesBg from "@/app/components/particles/Particles";
 
 const Education = () => {
   const { formData, handleChange } = useFormContext();
@@ -34,6 +35,9 @@ const Education = () => {
   console.log(formData);
   return (
     <div className="h-screen w-screen bg-blue-500 flex items-center justify-center p-5 md:px-36 ">
+      <div className="absolute -z-10">
+        <ParticlesBg />
+      </div>
       <Form>
         <div className="h-full w-full flex flex-col items-center justify-center py-10">
           <div className="w-full h-fit flex flex-col justify-center items-center z-10  md:h-5/6">

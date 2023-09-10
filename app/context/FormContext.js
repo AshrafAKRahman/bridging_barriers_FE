@@ -1,9 +1,11 @@
+"use client";
 import { createContext, useState, useEffect, useContext } from "react";
 import Criteria from "../pages/criteria/page";
 
 const FormContext = createContext({});
 
 export const FormProvider = ({ children }) => {
+  const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
     firstName: "",
     surName: "",
@@ -25,7 +27,19 @@ export const FormProvider = ({ children }) => {
     sector: "",
     otherSector: "",
     criteria: [],
+    ethnicity: [],
+    selfDescribeText: "",
   });
+
+  useEffect(() => {
+    if (typeof localStorage !== "undefined") {
+      const emailForSignIn = localStorage.getItem("emailForSignIn");
+      if (emailForSignIn) {
+        setFormData((prevData) => ({ ...prevData, email: emailForSignIn }));
+      }
+    }
+    setLoading(false);
+  }, []);
 
   const handleChange = (e) => {
     // console.log(e.target.value, e.target.name)

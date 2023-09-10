@@ -8,6 +8,7 @@ import { Raleway } from "next/font/google";
 import { gsap } from "gsap";
 import Navbar from "./components/navBar/navBar";
 import Link from "next/link";
+import ParticlesBackground from "./components/particles/Particles.js";
 
 const raleway = Raleway({
   subsets: ["latin"],

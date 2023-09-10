@@ -1,11 +1,17 @@
 import { useState } from "react";
 
-const Checkbox = ({ label, onChange = () => {}, className = "" }) => {
+const Checkbox = ({
+  label,
+  onChange = () => {},
+  className = "",
+  showInput = false,
+}) => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleCheckboxChange = (event) => {
-    setIsChecked(event.target.checked);
-    onChange(event.target.checked, event.target.value);
+    const checked = event.target.checked;
+    setIsChecked(checked);
+    onChange(checked, label);
   };
 
   return (
@@ -22,6 +28,13 @@ const Checkbox = ({ label, onChange = () => {}, className = "" }) => {
       >
         {label}
       </span>
+      {showInput && isChecked && label === "Self Describe" && (
+        <input
+          type="text"
+          placeholder="Please specify"
+          className="input-field"
+        />
+      )}
     </label>
   );
 };

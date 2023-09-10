@@ -10,11 +10,11 @@ import LargeButton from "@/app/components/buttons/largeButton";
 import { gsap } from "gsap";
 import SubHeader from "@/app/components/subHeader/subHeader";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import ParticlesBg from "@/app/components/particles/Particles";
 
 const Profile = () => {
-  const { user, newUser } = UserAuth();
   const { formData, setFormData, handleChange } = useFormContext();
-
+  const { user, newUser } = UserAuth();
   const [loading, setLoading] = useState();
   const [genderInput, setGenderInput] = useState(false);
   const [showInput, setShowInput] = useState(true);
@@ -188,6 +188,9 @@ const Profile = () => {
 
   return (
     <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 md:px-44 invisible ">
+      <div className="absolute -z-10">
+        <ParticlesBg />
+      </div>
       <Form>
         <div className="form w-full h-full flex flex-col items-center justify-center">
           <div className="bg bg-black opacity-60 absolute h-4/6 w-3/4 mt-10 rounded-2xl mb-14 md:mb-6   md:h-3/5 md:w-1/3 z-10 invisible"></div>

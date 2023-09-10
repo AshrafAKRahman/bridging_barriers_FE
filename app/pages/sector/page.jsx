@@ -11,18 +11,22 @@ import { useEffect, useState } from "react";
 import SubHeader from "@/app/components/subHeader/subHeader";
 import LargeButton from "@/app/components/buttons/largeButton";
 import { gsap } from "gsap";
+import ParticlesBg from "@/app/components/particles/Particles";
 
 const Sector = () => {
   useEffect(() => {
     const revealAnim = () => {
       const TLFADE = gsap.timeline();
 
-      TLFADE.from(".bg, .container, .header, .subheader, .sectors, .btn", {
-        autoAlpha: 0,
-        y: -100,
-        duration: 1.5,
-        stagger: 0.5,
-      });
+      TLFADE.from(
+        " .backdrop, .bg, .container, .header, .subheader, .sectors, .btn",
+        {
+          autoAlpha: 0,
+          y: -100,
+          duration: 1.5,
+          stagger: 0.5,
+        }
+      );
 
       const TLCONTAINER = gsap.timeline();
 
@@ -61,10 +65,13 @@ const Sector = () => {
   };
   console.log(formData);
   return (
-    <div className="backdrop w-screen h-screen bg-blue-500 flex flex-col items-center justify-center py-5 md:py-20">
+    <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 invisible ">
+      <div className="absolute -z-10">
+        <ParticlesBg />
+      </div>
       <Form>
         <div className="h-full w-full flex flex-col items-center justify-center py-10">
-          <div className="bg bg-black opacity-60 absolute h-4/6 w-3/4 rounded-2xl mb-5 md:mb-0 md:h-[72%] md:w-1/3 z-10 invisible"></div>
+          <div className="bg bg-black opacity-60 absolute h-4/6 w-3/4 rounded-2xl mb-5 md:mb-0 md:h-[72%] md:w-2/5 z-10 invisible"></div>
           <div className="container w-full h-full flex flex-col items-center justify-center  z-20 invisible">
             <div className="header w-full h-1/6 flex flex-col justify-center items-center mt-10 z-20">
               <Header

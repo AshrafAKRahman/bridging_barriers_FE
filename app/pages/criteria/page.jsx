@@ -10,6 +10,7 @@ import LargeButton from "@/app/components/buttons/largeButton";
 import SubHeader from "@/app/components/subHeader/subHeader";
 import { gsap } from "gsap";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import ParticlesBg from "@/app/components/particles/Particles";
 
 const Criteria = () => {
   const [showInput, setShowInput] = useState(true);
@@ -21,7 +22,7 @@ const Criteria = () => {
 
   const revealAnim = () => {
     const TLFADE = gsap.timeline();
-    TLFADE.from(".bg, .headerContainer, .btn, .header, .subheader", {
+    TLFADE.from(".backdrop, .bg, .headerContainer, .btn, .header, .subheader", {
       autoAlpha: 0,
       y: -100,
       duration: 1.5,
@@ -94,7 +95,7 @@ const Criteria = () => {
 
   const revealsecondLabel = () => {
     const TLSECONDINPUT = gsap.timeline();
-    TLSECONDINPUT.from(" .secondInput", {
+    TLSECONDINPUT.from(" .secondLabel", {
       autoAlpha: 0,
       x: 50,
       duration: 1,
@@ -170,9 +171,12 @@ const Criteria = () => {
   ];
 
   return (
-    <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col justify-center items-center py-5 md:py-20 ">
+    <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 md:px-44 invisible ">
+      <div className="absolute -z-10">
+        <ParticlesBg />
+      </div>
       <Form>
-        <div className="form w-full h-full flex flex-col items-center justify-center ">
+        <div className="form w-full h-full flex flex-col items-center justify-center  0">
           <div className="bg bg-black opacity-60 absolute h-3/4 w-3/4 rounded-2xl mb-14 md:mb-6   md:h-3/5 md:w-1/3 z-10 invisible"></div>
           <div className="headerContainer md:w-2/3 w-full h-2/6 mt-10 flex-col flex items-center justify-center z-20 invisible  ">
             <div className="header w-5/6 h-fit  text-center   flex flex-col justify-center  items-center z-20 ">
@@ -189,7 +193,7 @@ const Criteria = () => {
             </div>
           </div>
 
-          <div className="labelsContainer w-5/6 h-1/3 flex flex-col justify-center mt-10 z-30 md:w-2/6 invisible">
+          <div className="labelsContainer w-5/6 h-1/3 flex flex-col justify-center mt-10 z-30 md:w-3/6 md:p-8 invisible  ">
             <div
               className={`label w-full h-full flex flex-col justify-center md:w-full   ${
                 showInput ? "block" : "hidden"
