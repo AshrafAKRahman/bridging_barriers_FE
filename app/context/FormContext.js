@@ -28,10 +28,21 @@ export const FormProvider = ({ children }) => {
 
   const handleChange = (e) => {
     // console.log(e.target.value, e.target.name)
-    setFormData((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.value,
-    }));
+    if(e.target.name ==="education") {
+      setFormData((prevData) => ({
+        ...prevData,
+        [e.target.name]: [...formData.education, e.target.value],
+      }));
+
+    } else{
+      setFormData((prevData) => ({
+        ...prevData,
+        [e.target.name]: [e.target.value],
+      }));
+
+
+    }
+   
   };
 
 

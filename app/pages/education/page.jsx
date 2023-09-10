@@ -12,17 +12,36 @@ import EducationInput from "@/app/components/educationInput/educationInput";
 const Education = () => {
   const { formData, handleChange } = useFormContext();
   const { education } = formData;
+  const [educationData, setEducationData] = useState({
+    qualification: "",
+    subject:"",
+    status: "",
+    schoolName: "",
+  })
+  const handleQualificationChange = (e) => {
+    const newEducationData = {...educationData}
+    newEducationData[e.target.name] = e.target.value
+    setEducationData({...educationData, [e.target.name] : e.target.value})
+    
+  };
+
+  console.log(educationData)
+
+
+  // const handleQualificationChange = (e) => {
+  //   setEducationData({...setEducationData, [e.target.name] : e.target.value})
+  //   console.log(educationData)
+  // };
   const addQualification = (e) => {
-    e.preventDefault();
-    if (education.length < 5) {
-      const newEducation = [
-        ...education,
-        { qualification: "", subject: "", status: "", schoolName: "" },
-      ];
-      handleChange({ target: { name: "education", value: newEducation } });
-    } else {
-      alert("You can add up to 5 qualifications only");
-    }
+      e.preventDefault()
+    
+      handleChange({ target: { name: "education", value: educationData } });
+      setEducationData({ 
+      qualification: "",
+      subject:"",
+      status: "",
+      schoolName: "",})
+    
   };
   const removeQualification = (e) => {
     e.preventDefault();
@@ -31,9 +50,11 @@ const Education = () => {
       handleChange({ target: { name: "education", value: newEducation } });
     }
   };
-  console.log(formData);
+  console.log(education);
   return (
+   
     <div className="h-screen w-screen bg-blue-500 flex items-center justify-center p-5 md:px-36 ">
+       
       <Form>
         <div className="h-full w-full flex flex-col items-center justify-center py-10">
           <div className="w-full h-fit flex flex-col justify-center items-center z-10  md:h-5/6">
@@ -42,7 +63,85 @@ const Education = () => {
               titleClassName="text-3xl md:text-6xl text-white"
             />
             <div className="bg-cyan-600 w-full h-full">
-              <EducationInput />
+            <div
+          
+          className=" h-2/3 w-5/6 md:w-1/3 flex flex-col justify-evenly"
+        >
+          <div className="w-full flex justify-between ">
+            <div>
+              <label>
+                <Header
+                  title="Qualifaction"
+                  titleClassName="text-white text-lg md:text-3xl"
+                  // htmlFor={`qualification-${index}`}
+                />
+              </label>
+            </div>
+            <InputFeild
+              name="qualification"
+              type={"text"}
+              value={educationData.qualification}
+              onChange={(e) =>
+                handleQualificationChange(e)
+              }
+              placeholder="Enter the qualification"
+            />
+          </div>
+          <div className="w-full flex justify-between ">
+            <label>
+              <Header
+                title="Subject"
+                titleClassName="text-white text-lg md:text-3xl"
+                // htmlFor={`subject-${index}`}
+              />
+            </label>
+            <InputFeild
+              name="subject"
+              type={"text"}
+              value={educationData.subject}
+              onChange={(e) =>
+                handleQualificationChange(e)
+              }
+              placeholder="Enter the subject"
+            />
+          </div>
+          <div className="w-full flex justify-between">
+            <label>
+              <Header
+                title="Status"
+                titleClassName="text-white text-lg md:text-3xl"
+                // htmlFor={`status-${index}`}
+              />
+            </label>
+            <InputFeild
+              name="status"
+              type={"text"}
+              value={educationData.status}
+              onChange={(e) =>
+                handleQualificationChange(e)
+              }
+              placeholder="Achieved/predicted"
+            />
+          </div>
+          <div className="w-full flex justify-between">
+            <label>
+              <Header
+                title="School"
+                titleClassName="text-white text-lg md:text-3xl"
+                // htmlFor={`schoolName-${index}`}
+              />
+            </label>
+            <InputFeild
+              name="schoolName"
+              type="text"
+              value={educationData.schoolName}
+              onChange={(e) =>
+                handleQualificationChange(e)
+              }
+              placeholder="School achieved grade at"
+            />
+          </div>
+        </div>
             </div>
           </div>
           <div className="flex items-center  justify-center h-2/3 md:h-full md:mb-16 ">
@@ -78,8 +177,11 @@ const Education = () => {
           </div>
           <div className="bg-black opacity-40 absolute h-[60%] w-4/5 rounded-2xl md:h-[72%] md:w-[40%] md:mb-10"></div>
         </div>
+        {education.map((value)=>(<div>{value.qualification}</div>))}
       </Form>
+      
     </div>
+   
   );
 };
 
