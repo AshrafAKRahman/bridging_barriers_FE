@@ -1,19 +1,28 @@
+"use client"
 import React from "react";
 import Header from "../header/header";
 import InputFeild from "../inputFeild/inputFeild";
 import { useFormContext } from "@/app/context/FormContext";
 import Link from "next/link";
 import NormalButton from "../buttons/normalButton";
+import { useState } from "react";
 
-const EducationInput = ({ index }) => {
-  const { formData, handleChange } = useFormContext();
+const EducationInput = ({ index, handleChange }) => {
+  const { formData} = useFormContext();
   const { education } = formData;
+  const [educationData, setEducationData] = useState({
+    qualification: "",
+    subject:"",
+    status: "",
+    schoolName: "",
+  })
 
-  const handleQualificationChange = (index, field, value) => {
-    const newEducation = [...education];
-    newEducation[index][field] = value;
-    handleChange({ target: { name: "education", value: newEducation } });
+  const handleQualificationChange = (e) => {
+    setEducationData({...setEducationData, [e.target.name] : e.target.value})
+    
   };
+
+  console.log(educationData)
 
   return (
     <div className="w-5/6 h-2/3 absolute flex flex-col items-center justify-around">
@@ -35,13 +44,9 @@ const EducationInput = ({ index }) => {
             <InputFeild
               name="qualifactaion"
               type={"text"}
-              value={education.qualification}
+              value={educationData.qualification}
               onChange={(e) =>
-                handleQualificationChange(
-                  index,
-                  "qualification",
-                  e.target.value
-                )
+                handleQualificationChange(e)
               }
               placeholder="Enter the qualification"
             />
@@ -57,9 +62,9 @@ const EducationInput = ({ index }) => {
             <InputFeild
               name="subject"
               type={"text"}
-              value={education.subject}
+              value={educationData.subject}
               onChange={(e) =>
-                handleQualificationChange(index, "subject", e.target.value)
+                handleQualificationChange(e)
               }
               placeholder="Enter the subject"
             />
@@ -75,9 +80,9 @@ const EducationInput = ({ index }) => {
             <InputFeild
               name="status"
               type={"text"}
-              value={education.status}
+              value={educationData.status}
               onChange={(e) =>
-                handleQualificationChange(index, "status", e.target.value)
+                handleQualificationChange(e)
               }
               placeholder="Achieved/predicted"
             />
@@ -93,15 +98,16 @@ const EducationInput = ({ index }) => {
             <InputFeild
               name="schoolname"
               type="text"
-              value={education.schoolName}
+              value={educationData.schoolName}
               onChange={(e) =>
-                handleQualificationChange(index, "schoolName", e.target.value)
+                handleQualificationChange(e)
               }
               placeholder="School achieved grade at"
             />
           </div>
         </div>
       ))}
+      
     </div>
   );
 };
