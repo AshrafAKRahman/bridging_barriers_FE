@@ -1,23 +1,14 @@
 "use client";
-import NormalButton from "../../components/buttons/normalButton";
 import Header from "../../components/header/header";
 import Form from "../../components/form/form";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { UserAuth } from "../../context/AuthContext";
-import Image from "next/legacy/image";
-import { Asap_Condensed } from "next/font/google";
 import LargeButton from "../../components/buttons/largeButton";
 import { gsap } from "gsap";
 import { useRouter } from "next/navigation";
-import ParticlesBackground from "@/app/components/particles/Particles.js";
 import ParticlesBg from "@/app/components/particles/Particles.js";
 
-const asap = Asap_Condensed({
-  subsets: ["latin"],
-  weight: "400",
-  preload: true,
-});
 const EmailLink = () => {
   const router = useRouter();
   const { user, sendEmailLink } = UserAuth();
@@ -25,28 +16,45 @@ const EmailLink = () => {
     email: "",
   });
 
+  const revealBasckdrop = () => {
+    const TLBACKDROP = gsap.timeline();
+    TLBACKDROP.from(".backdrop, .bg", {
+      autoAlpha: 0,
+      x: 50,
+      duration: 1.5,
+      opacity: 0,
+    });
+  };
+
   const revealAnim = () => {
     const TLFADE = gsap.timeline();
     TLFADE.from(
-      ".backdrop, .bg, emailContainer, .header, .emailLabel, .emailInput, .btn, .link",
+      " .form .container, .emailContainer, .header, .emailLabel, .emailInput, .btn, .link",
       {
         autoAlpha: 0,
         y: -100,
         duration: 1.5,
+        delay: 1.5,
         stagger: 0.5,
+        opacity: 0,
       }
     );
+  };
 
+  const revealImg = () => {
     const TLIMG = gsap.timeline();
     TLIMG.from(".img", {
       autoAlpha: 0,
       x: 50,
       duration: 1,
+      delay: 0.75,
     });
   };
 
   useEffect(() => {
+    revealBasckdrop();
     revealAnim();
+    revealImg();
   }, []);
 
   const handleChange = (e) => {
@@ -85,24 +93,23 @@ const EmailLink = () => {
         <ParticlesBg />
       </div>
       <Form onSubmit={handleSignIn}>
-        <div className="h-full flex flex-col items-center md:h-full md:flex">
-          <div className=" bg-black opacity-40 mt-20 absolute z-10 h-[70%] w-3/5 rounded-2xl md:w-1/3 md:mt-10 "></div>
-          <div className="emailContainer w-[80%] h-[80%] absolute flex flex-col items-center z-20 md:static md:w-1/2  md:z-20 md:flex md:justify-between ">
-            <div className="header mt-24  h-fit md:w-full md:absolute">
-              <div className={asap.className}>
-                <Header
-                  titleClassName="text-[50px] text-white  text-center md:text-5xl"
-                  title="Create Your Profile"
-                />
-              </div>
+        <div className="form h-full w-full flex flex-col justify-center items-center">
+          <div className="bg bg-black opacity-40 absolute z-10 h-[70%] w-4/6 rounded-2xl md:w-1/3 invisible"></div>
+          <div className="container w-4/5 h-4/5  flex flex-col justify-center items-center z-20 invisible">
+            <div className="header h-1/3 pt-20 invisible ">
+              <Header
+                titleClassName="text-3xl text-white  text-center md:text-5xl"
+                title="Create Your Profile"
+              />
             </div>
-            <div className="mt-0 w-full h-2/3 flex flex-col items-center md:absolute md:h-full">
-              <div className="emailLabel mt-8 md:mt-72">
-                <label className="text-white " htmlFor="inline-emai">
+
+            <div className="emailContainer w-full h-2/3 flex flex-col items-center pt-10 invisible ">
+              <div className="emailLabel mt-8 invisible">
+                <label className="text-white" htmlFor="inline-emai">
                   Please enter your email address
                 </label>
               </div>
-              <div className="emailInput mt-5">
+              <div className="emailInput mt-5 invisible">
                 <input
                   className="bg-gray-200 w-full px-2 py-2 md:py-4 md:px-4 text-center text-gray-700 border border-black"
                   id="inline-email"
@@ -113,24 +120,27 @@ const EmailLink = () => {
                   placeholder="you@example.com"
                 />
               </div>
-              <div className="btn mt-6">
+
+              <div className="btn mt-6 invisible">
                 <LargeButton
                   type="submit"
-                  text="Send email"
+                  text="SEND EMAIL"
                   // onClick={handleSignIn}
                   className="text-center text-sm font-bold py-3 transform hover:scale-110 transition-transform shadow-xl bg-blue-500"
                 />
               </div>
-              <div className="mt-6">
+
+              <div className="link mt-6 invisible">
                 <p className="link text-white text-sm  underline font-sans">
                   Already have an account? <Link href="login">Login here</Link>
                 </p>
               </div>
             </div>
           </div>
-          <div className="h-full w-5/6 flex flex-col items-center justify-center md:w-2/3 md:mb-24">
+
+          <div className="img h-2/3 absolute md:h-full  flex items-center justify-center invisible">
             <img
-              className="img w-full rounded-2xl object-cover shadow-lg md:object-cover invisible"
+              className="w-5/6 h-4/6 px-2 rounded-2xl md:w-full md:h-2/3"
               src="/emailImg.jpg"
               alt="form igmage"
             />

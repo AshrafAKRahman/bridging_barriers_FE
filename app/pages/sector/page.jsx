@@ -65,12 +65,12 @@ const Sector = () => {
   };
   console.log(formData);
   return (
-    <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 invisible ">
+    <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col items-center justify-center py-5 md:w-screen md:py-20 md:px-44 invisible ">
       <div className="absolute -z-10">
         <ParticlesBg />
       </div>
       <Form>
-        <div className="h-full w-full flex flex-col items-center justify-center py-10">
+        <div className="h-full w-full flex flex-col items-center justify-center">
           <div className="bg bg-black opacity-60 absolute h-4/6 w-3/4 rounded-2xl mb-5 md:mb-0 md:h-[72%] md:w-2/5 z-10 invisible"></div>
           <div className="container w-full h-full flex flex-col items-center justify-center  z-20 invisible">
             <div className="header w-full h-1/6 flex flex-col justify-center items-center mt-10 z-20">

@@ -193,7 +193,7 @@ const Profile = () => {
       </div>
       <Form>
         <div className="form w-full h-full flex flex-col items-center justify-center">
-          <div className="bg bg-black opacity-60 absolute h-4/6 w-3/4 mt-10 rounded-2xl mb-14 md:mb-6   md:h-3/5 md:w-1/3 z-10 invisible"></div>
+          <div className="bg bg-black opacity-60 absolute h-4/5  w-3/4 mt-10 rounded-2xl mb-14 md:mb-8 md:h-4/6 md:w-1/3 z-10 invisible"></div>
           <div className="headerContainer md:w-2/3 w-full h-1/3 mt-16  flex-col flex  justify-center place-items-end items-center  z-20  invisible ">
             <div
               className="header w-5/6 h-fit  text-center   flex flex-col justify-center items-center z-20
@@ -223,7 +223,7 @@ const Profile = () => {
                   <label>
                     <Header
                       title="First name"
-                      titleClassName="text-lg md:text-3xl sm:text-sm "
+                      titleClassName="text-lg md:text-2xl"
                     />
                   </label>
                 </div>
@@ -242,7 +242,7 @@ const Profile = () => {
                   <label>
                     <Header
                       title="Surname"
-                      titleClassName="text-lg md:text-3xl"
+                      titleClassName="text-lg md:text-2xl"
                     />
                   </label>
                 </div>
@@ -261,7 +261,7 @@ const Profile = () => {
                   <label>
                     <Header
                       title="Date of birth"
-                      titleClassName="text-lg md:text-3xl"
+                      titleClassName="text-lg md:text-2xl"
                     />
                   </label>
                 </div>
@@ -279,13 +279,13 @@ const Profile = () => {
                   <label>
                     <Header
                       title="Gender"
-                      titleClassName="text-lg md:text-3xl"
+                      titleClassName="text-lg md:text-2xl"
                     />
                   </label>
                 </div>
                 <div>
                   <select
-                    className="bg-gray-200 rounded-lg  py-2 px-2 w-36 md:mr-10  md:py-4 md:px-4 md:w-60   text-gray-700 border border-black"
+                    className="bg-gray-200 rounded-lg w-36 py-1 px-1 md:py-2 md:px-2 md:mr-10 md:w-60   text-gray-700 border border-black"
                     name="gender"
                     value={formData.gender}
                     onChange={handleGenderOther}
@@ -387,7 +387,7 @@ const Profile = () => {
                 </div>
                 <div>
                   <select
-                    className="bg-gray-200 rounded-xl  py-2 px-2 w-36 md:mr-10  md:py-4 md:px-4 md:w-60   text-gray-700 border border-black"
+                    className="bg-gray-200 rounded-lg w-36 py-1 px-1 md:py-2 md:px-2 md:mr-10 md:w-60   text-gray-700 border border-black"
                     name="location"
                     value={formData.location}
                     onChange={handleChange}
@@ -438,9 +438,9 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="img h-2/3 absolute md:h-full  flex items-center justify-center ">
+          <div className="img h-2/3 absolute md:h-full  flex items-center justify-center invisible ">
             <img
-              className="w-5/6 h-4/6 px-2 rounded-2xl md:w-full md:h-2/3"
+              className="w-5/6 h-4/6 px-2 rounded-2xl md:w-full md:h-4/6"
               src="/profileImg.jpg"
               alt="form igmage"
             />
