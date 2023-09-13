@@ -1,12 +1,9 @@
 "use client";
-
-import Checkbox from "../../components/checbox/checbox";
 import Form from "../../components/form/form";
 import Header from "../../components/header/header";
-import NormalButton from "../../components/buttons/normalButton";
 import Link from "next/link";
 import { useFormContext } from "@/app/context/FormContext";
-import InputFeild from "@/app/components/inputFeild/inputFeild";
+import InputField from "@/app/components/InputField/InputField";
 import { useEffect, useState } from "react";
 import SubHeader from "@/app/components/subHeader/subHeader";
 import LargeButton from "@/app/components/buttons/largeButton";
@@ -175,7 +172,7 @@ const Sector = () => {
                     <label>
                       <Header title="please specify" />
                     </label>
-                    <InputFeild
+                    <InputField
                       type="text"
                       name="otherSector"
                       value={formData.otherSector}

@@ -1,6 +1,6 @@
 import React from "react";
 
-const InputFeild = (props) => {
+const InputField = (props) => {
   const { value, type, onChange, placeholder, name } = props;
   return (
     <div>
@@ -17,4 +17,4 @@ const InputFeild = (props) => {
   );
 };
 
-export default InputFeild;
+export default InputField;
