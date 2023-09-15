@@ -3,7 +3,7 @@ import Form from "../../components/form/form";
 import Header from "../../components/header/header";
 import Link from "next/link";
 import { useFormContext } from "../../context/FormContext";
-import InputField from "../../components/InputField/InputField";
+import InputField from "../../components/inputField/inputField";
 import { useEffect, useState } from "react";
 import SubHeader from "../../components/subHeader/subHeader";
 import LargeButton from "../../components/buttons/largeButton";
