@@ -2,13 +2,13 @@
 import Form from "../../components/form/form";
 import Header from "../../components/header/header";
 import Link from "next/link";
-import { useFormContext } from "@/app/context/FormContext";
-import InputField from "@/app/components/InputField/InputField";
+import { useFormContext } from "../../context/FormContext";
+import InputField from "../../components/InputField/InputField";
 import { useEffect, useState } from "react";
-import SubHeader from "@/app/components/subHeader/subHeader";
-import LargeButton from "@/app/components/buttons/largeButton";
+import SubHeader from "../../components/subHeader/subHeader";
+import LargeButton from "../../components/buttons/largeButton";
 import { gsap } from "gsap";
-import ParticlesBg from "@/app/components/particles/Particles";
+import ParticlesBg from "../../components/particles/Particles";
 
 const Sector = () => {
   useEffect(() => {

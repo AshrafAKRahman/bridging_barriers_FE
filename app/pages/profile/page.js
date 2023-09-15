@@ -5,12 +5,12 @@ import Form from "../../components/form/form";
 import Header from "../../components/header/header";
 import Link from "next/link";
 import { useFormContext } from "../../context/FormContext";
-import LargeButton from "@/app/components/buttons/largeButton";
+import LargeButton from "../../components/buttons/largeButton";
 import { gsap } from "gsap";
-import SubHeader from "@/app/components/subHeader/subHeader";
+import SubHeader from "../../components/subHeader/subHeader";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import ParticlesBg from "@/app/components/particles/Particles";
-import InputField from "@/app/components/InputField/InputField";
+import ParticlesBg from "../../components/particles/Particles";
+import InputField from "../../components/InputField/InputField";
 
 const Profile = () => {
   const { formData, setFormData, handleChange } = useFormContext();
