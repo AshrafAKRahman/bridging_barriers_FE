@@ -48,7 +48,7 @@ export const FormProvider = ({ children }) => {
         ...prevData,
         [e.target.name]: [...formData.education, e.target.value],
       }));
-    } else if (e.target.name === "password") {
+    } else if (e.target.name === "email" || "password") {
       setFormData((prevData) => ({
         ...prevData,
         [e.target.name]: e.target.value,
