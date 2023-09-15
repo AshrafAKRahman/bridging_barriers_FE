@@ -38,7 +38,7 @@ const EmailSent = () => {
               alt="Logo"
             />
           </div>
-          <div className="title flex h-1/2 text-center leading-6 text-white  w-5/6 invisible z-20 md:w-4/6 ">
+          <div className="title flex h-1/2 text-center leading-6 text-white  w-5/6 invisible z-20 md:w-3/6">
             <Header
               title="Please check your email and spam for the confirmation link to complete your profile"
               titleClassName="text-2xl md:text-4xl  "

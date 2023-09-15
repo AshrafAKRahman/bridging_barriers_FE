@@ -10,6 +10,7 @@ import LargeButton from "@/app/components/buttons/largeButton";
 import ParticlesBg from "@/app/components/particles/Particles";
 import gsap from "gsap";
 import { MdDelete } from "react-icons/md";
+import { AiFillEdit } from "react-icons/ai";
 import { v4 as uuidv4 } from "uuid";
 
 const Education = () => {
@@ -22,9 +23,21 @@ const Education = () => {
     schoolName: "",
   });
 
-  const [addedEducation, setAddedEducation] = useState(() => {
-    const localData = window.localStorage.getItem("educationData");
-    return localData ? JSON.parse(localData) : [];
+  const [addedEducation, setAddedEducation] = useState([]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const localData = window.localStorage.getItem("educationData");
+      setAddedEducation(localData ? JSON.parse(localData) : []);
+    }
+  }, []);
+
+  const [editEducation, setEditEducation] = useState(null);
+  const [editedEducationData, setEditedEducationData] = useState({
+    qualification: "",
+    subject: "",
+    status: "",
+    schoolName: "",
   });
 
   useEffect(() => {
@@ -58,6 +71,32 @@ const Education = () => {
     const newEducationData = addedEducation.filter((item) => item.id !== id);
     setAddedEducation(newEducationData);
     handleChange({ target: { name: "education", value: newEducationData } });
+  };
+
+  const educationEdit = (id) => {
+    setEditEducation(id);
+    const editedEducation = addedEducation.find((item) => item.id === id);
+    setEditedEducationData(editedEducation);
+  };
+
+  const updateEducation = (e) => {
+    e.preventDefault();
+    const index = addedEducation.findIndex((item) => item.id === editEducation);
+    if (index !== -1) {
+      addedEducation[index] = educationData;
+      setAddedEducation([...addedEducation]);
+      setEditEducation(null);
+      setEditedEducationData({
+        qualification: "",
+        subject: "",
+        status: "",
+        schoolName: "",
+      });
+      window.localStorage.setItem(
+        "educationData",
+        JSON.stringify(addedEducation)
+      );
+    }
   };
 
   const reveal = () => {
@@ -182,6 +221,7 @@ const Education = () => {
               </div>
             </div>
           </div>
+
           <div className="flex flex-col justify-between z-10 ">
             <div className="flex items-center justify-center h-fit w-full">
               <button
@@ -196,19 +236,63 @@ const Education = () => {
           <div className="moreEducation w-5/6 h-fit flex justify-around items-center z-30 bg-yellow-400">
             {addedEducation.map((value) => (
               <div
-                className="text-white z-30 w-5/6 flex justify-around bg-red-500 "
+                className="text-white z-30 w-5/6 flex justify-around bg-red-500"
                 key={value.id}
               >
                 {value.qualification}
                 <div
                   className="text-white text-lg"
                   onClick={(e) => removeQualification(value.id)}
+                  key={value.id}
                 >
                   <MdDelete />
+                </div>
+                <div onClick={(e) => educationEdit(value.id)}>
+                  <AiFillEdit />
                 </div>
               </div>
             ))}
           </div>
+
+          {editEducation !== null && (
+            <div className="bg-white p-4 rounded shadow z-30">
+              <h2 className="text-xl font-semibold mb-2">Edit Education</h2>
+              <form onSubmit={updateEducation}>
+                <div className="mb-2">
+                  <label htmlFor="qualification">Qualification:</label>
+                  <input
+                    type="text"
+                    id="qualification"
+                    name="qualification"
+                    value={editedEducationData.qualification}
+                    onChange={(e) =>
+                      setEditedEducationData({
+                        ...editedEducationData,
+                        qualification: e.target.value,
+                      })
+                    }
+                  />
+                </div>
+
+                <div className="flex justify-between">
+                  <button
+                    type="submit"
+                    className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
+                    onClick={updateEducation}
+                  >
+                    Update
+                  </button>
+                  <button
+                    type="button"
+                    className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                    onClick={() => setEditedEducationData(null)}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
 
           <div className="img h-2/3 absolute  flex items-center justify-center md:h-full">
             <img
