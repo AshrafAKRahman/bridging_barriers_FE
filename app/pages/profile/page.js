@@ -5,12 +5,12 @@ import Form from "../../components/form/form";
 import Header from "../../components/header/header";
 import Link from "next/link";
 import { useFormContext } from "../../context/FormContext";
-import InputFeild from "@/app/components/inputFeild/inputFeild";
-import LargeButton from "@/app/components/buttons/largeButton";
+import LargeButton from "../../components/buttons/largeButton";
 import { gsap } from "gsap";
-import SubHeader from "@/app/components/subHeader/subHeader";
+import SubHeader from "../../components/subHeader/subHeader";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import ParticlesBg from "@/app/components/particles/Particles";
+import ParticlesBg from "../../components/particles/Particles";
+import InputField from "../../components/inputField/inputField";
 
 const Profile = () => {
   const { formData, setFormData, handleChange } = useFormContext();
@@ -187,14 +187,14 @@ const Profile = () => {
   }, [user]);
 
   return (
-    <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 md:px-44 invisible ">
+    <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col items-center justify-center py-5  md:py-20 md:px-44 invisible ">
       <div className="absolute -z-10">
         <ParticlesBg />
       </div>
       <Form>
         <div className="form w-full h-full flex flex-col items-center justify-center">
-          <div className="bg bg-black opacity-60 absolute h-4/6 w-3/4 mt-10 rounded-2xl mb-14 md:mb-6   md:h-3/5 md:w-1/3 z-10 invisible"></div>
-          <div className="headerContainer md:w-2/3 w-full h-1/3 mt-16  flex-col flex  justify-center place-items-end items-center  z-20  invisible ">
+          <div className="bg bg-black opacity-60 absolute h-4/5  w-3/4 mt-10 rounded-2xl mb-14 md:mb-8 md:h-4/6 md:w-1/3 z-10 invisible"></div>
+          <div className="headerContainer w-full h-1/3 mt-16  flex-col flex  justify-center place-items-end items-center  z-20  md:w-2/3  invisible ">
             <div
               className="header w-5/6 h-fit  text-center   flex flex-col justify-center items-center z-20
             "
@@ -223,12 +223,12 @@ const Profile = () => {
                   <label>
                     <Header
                       title="First name"
-                      titleClassName="text-lg md:text-3xl sm:text-sm "
+                      titleClassName="text-lg md:text-2xl"
                     />
                   </label>
                 </div>
                 <div className="md:mr-10">
-                  <InputFeild
+                  <InputField
                     name="firstName"
                     type={"text"}
                     value={formData.firstName}
@@ -242,12 +242,12 @@ const Profile = () => {
                   <label>
                     <Header
                       title="Surname"
-                      titleClassName="text-lg md:text-3xl"
+                      titleClassName="text-lg md:text-2xl"
                     />
                   </label>
                 </div>
                 <div className="md:mr-10">
-                  <InputFeild
+                  <InputField
                     name="surName"
                     type={"text"}
                     value={formData.surName}
@@ -261,12 +261,12 @@ const Profile = () => {
                   <label>
                     <Header
                       title="Date of birth"
-                      titleClassName="text-lg md:text-3xl"
+                      titleClassName="text-lg md:text-2xl"
                     />
                   </label>
                 </div>
                 <div className="md:mr-10">
-                  <InputFeild
+                  <InputField
                     name="dob"
                     type={"date"}
                     value={formData.dob}
@@ -279,13 +279,13 @@ const Profile = () => {
                   <label>
                     <Header
                       title="Gender"
-                      titleClassName="text-lg md:text-3xl"
+                      titleClassName="text-lg md:text-2xl"
                     />
                   </label>
                 </div>
                 <div>
                   <select
-                    className="bg-gray-200 rounded-lg  py-2 px-2 w-36 md:mr-10  md:py-4 md:px-4 md:w-60   text-gray-700 border border-black"
+                    className="bg-gray-200 rounded-lg w-36 py-1 px-1 md:py-2 md:px-2 md:mr-10 md:w-60   text-gray-700 border border-black"
                     name="gender"
                     value={formData.gender}
                     onChange={handleGenderOther}
@@ -301,7 +301,7 @@ const Profile = () => {
                       <label>
                         <Header title="Please specify" />
                       </label>
-                      <InputFeild
+                      <InputField
                         type="text"
                         name="otherGender"
                         value={formData.otherGender}
@@ -329,7 +329,7 @@ const Profile = () => {
                   </label>
                 </div>
                 <div className="md:mr-10">
-                  <InputFeild
+                  <InputField
                     type="text"
                     name="phone"
                     value={formData.phone}
@@ -348,7 +348,7 @@ const Profile = () => {
                   </label>
                 </div>
                 <div className="md:mr-10">
-                  <InputFeild
+                  <InputField
                     type="email"
                     name="email"
                     value={formData.email}
@@ -367,7 +367,7 @@ const Profile = () => {
                   </label>
                 </div>
                 <div className="md:mr-10">
-                  <InputFeild
+                  <InputField
                     type="text"
                     name="password"
                     value={formData.password}
@@ -387,7 +387,7 @@ const Profile = () => {
                 </div>
                 <div>
                   <select
-                    className="bg-gray-200 rounded-xl  py-2 px-2 w-36 md:mr-10  md:py-4 md:px-4 md:w-60   text-gray-700 border border-black"
+                    className="bg-gray-200 rounded-lg w-36 py-1 px-1 md:py-2 md:px-2 md:mr-10 md:w-60   text-gray-700 border border-black"
                     name="location"
                     value={formData.location}
                     onChange={handleChange}
@@ -438,9 +438,9 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="img h-2/3 absolute md:h-full  flex items-center justify-center ">
+          <div className="img h-2/3 absolute md:h-full  flex items-center justify-center invisible ">
             <img
-              className="w-5/6 h-4/6 px-2 rounded-2xl md:w-full md:h-2/3"
+              className="w-5/6 h-4/6 px-2 rounded-2xl md:w-full md:h-4/6"
               src="/profileImg.jpg"
               alt="form igmage"
             />

@@ -176,7 +176,7 @@ const Criteria = () => {
         <ParticlesBg />
       </div>
       <Form>
-        <div className="form w-full h-full flex flex-col items-center justify-center  0">
+        <div className="form w-full h-full flex flex-col items-center justify-center">
           <div className="bg bg-black opacity-60 absolute h-3/4 w-3/4 rounded-2xl mb-14 md:mb-6   md:h-3/5 md:w-1/3 z-10 invisible"></div>
           <div className="headerContainer md:w-2/3 w-full h-2/6 mt-10 flex-col flex items-center justify-center z-20 invisible  ">
             <div className="header w-5/6 h-fit  text-center   flex flex-col justify-center  items-center z-20 ">
