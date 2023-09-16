@@ -23,17 +23,10 @@ const Navbar = () => {
 
   return (
     <nav className="w-screen">
-      <div className="nav fixed flex items-center w-full h-28 bg-white p-8 border-solid border-b-4 border-blue-500 invisible ">
+      <div className="nav fixed flex items-center w-full h-20  bg-white p-8 border-solid border-b-4 border-blue-500 invisible ">
         <div className="w-screen flex items-center justify-center md:flex md:justify-between md:items-cente">
-          <div className="">
-            <Image
-              src="/logo.png"
-              alt="Logo"
-              className=""
-              height="60"
-              width="220"
-              data-testid="logo"
-            />
+          <div className="w-48  h-fit">
+            <img src="/logo.png" alt="Logo" className="" />
           </div>
           <div className=" mt-0 hidden md:flex">
             <Link href="/pages/login">

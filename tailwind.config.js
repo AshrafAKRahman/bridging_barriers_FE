@@ -41,5 +41,13 @@ module.exports = {
       },
     },
   },
+  theme: {
+    extend: {
+      screens: {
+        ipad: { min: "660px", max: "912px" },
+        horizontal: { raw: "(max-height: 480px) and (max-width: 960px)" },
+      },
+    },
+  },
   plugins: [],
 };

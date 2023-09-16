@@ -88,13 +88,13 @@ const EmailLink = () => {
     }
   };
   return (
-    <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 invisible ">
+    <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 ipad:py-36 ipad:px-0 horizontal:h-[200%] invisible">
       <div className="absolute -z-10">
         <ParticlesBg />
       </div>
       <Form onSubmit={handleSignIn}>
         <div className="form h-full w-full flex flex-col justify-center items-center">
-          <div className="bg bg-black opacity-40 absolute z-10 h-[70%] w-4/6 rounded-2xl md:w-1/3 invisible"></div>
+          <div className="bg bg-black opacity-40 absolute z-10 h-[70%] w-4/6 rounded-2xl md:w-1/3 ipad:w-4/6  invisible"></div>
           <div className="container w-4/5 h-4/5  flex flex-col justify-center items-center z-20 invisible">
             <div className="header h-1/3 pt-20 invisible ">
               <Header
@@ -138,9 +138,9 @@ const EmailLink = () => {
             </div>
           </div>
 
-          <div className="img h-2/3 absolute md:h-full  flex items-center justify-center invisible">
+          <div className="img h-2/3 absolute md:h-full  flex items-center justify-center ipad:w-4/5 ipad:h-2/3   invisible ">
             <img
-              className="w-5/6 h-4/6 px-2 rounded-2xl md:w-full md:h-2/3"
+              className="w-5/6 h-4/6 px-2 rounded-2xl md:w-full md:h-4/6"
               src="/emailImg.jpg"
               alt="form igmage"
             />
