@@ -44,7 +44,8 @@ const Sector = () => {
     const selectedSector = e.target.value;
     setFormData((prevData) => ({
       ...prevData,
-      sector: selectedSector,
+
+      sectorThree: selectedSector,
     }));
 
     if (selectedSector === "Other") {
@@ -52,6 +53,20 @@ const Sector = () => {
     } else {
       setSectorInput(false);
     }
+  };
+
+  const handleSectorOneChange = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      sectorOne: e.target.value,
+    }));
+  };
+
+  const handleSectorTwoChange = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      sectorTwo: e.target.value,
+    }));
   };
 
   const handleSectorOtherChange = (e) => {
@@ -62,21 +77,21 @@ const Sector = () => {
   };
   console.log(formData);
   return (
-    <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col items-center justify-center py-5 md:w-screen md:py-20 md:px-44 invisible ">
-      <div className="absolute -z-10">
+    <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col items-center justify-center py-5 md:w-screen md:py-20 md:px-44 ipad:py-36 ipad:px-0 horizontal:h-[200%] horizontal:py-5  invisible ">
+      <div className="absolute -z-10 ">
         <ParticlesBg />
       </div>
       <Form>
         <div className="h-full w-full flex flex-col items-center justify-center">
-          <div className="bg bg-black opacity-60 absolute h-4/6 w-3/4 rounded-2xl mb-5 md:mb-0 md:h-[72%] md:w-2/5 z-10 invisible"></div>
+          <div className="bg bg-black opacity-60 absolute h-4/6 w-3/4 rounded-2xl mb-5 md:mb-0 md:h-[72%] md:w-2/5 z-10 ipad:w-3/5 ipad:h-4/6 invisible"></div>
           <div className="container w-full h-full flex flex-col items-center justify-center  z-20 invisible">
-            <div className="header w-full h-1/6 flex flex-col justify-center items-center mt-10 z-20">
+            <div className="header w-full h-1/6 flex flex-col justify-center items-center mt-20  z-20 horizontal:mt-20 ">
               <Header
                 titleClassName="text-3xl md:text-6xl text-white "
                 title="Sectors of interest"
               />
             </div>
-            <div className="subheader w-11/12 h-1/6 flex flex-col items-center mt-10 justify-between z-20">
+            <div className="subheader w-11/12 h-1/6 flex flex-col items-center  justify-between z-20 horizontal:mt-6">
               <SubHeader
                 titleClassName="text-lg text-white"
                 title="Select upto 3 sectors that interest you."
@@ -97,8 +112,8 @@ const Sector = () => {
                   <select
                     className="w-64  border-black text-gray-700 bg-gray-200 rounded-lg p-1 md:p-2 md:w-96"
                     name="sector"
-                    value={formData.sector}
-                    onChange={handleSectorOther}
+                    value={formData.sectorOne}
+                    onChange={handleSectorOneChange}
                   >
                     <option>First Sector</option>
                     <option>Commercial Law</option>
@@ -125,8 +140,8 @@ const Sector = () => {
                 <select
                   className="w-64  border-black text-gray-700 bg-gray-200 rounded-lg p-1 md:p-2 md:w-96"
                   name="sector"
-                  value={formData.sector}
-                  onChange={handleSectorOther}
+                  value={formData.sectorTwo}
+                  onChange={handleSectorTwoChange}
                 >
                   <option>Second Sector</option>
                   <option>Commercial Law</option>
@@ -150,9 +165,9 @@ const Sector = () => {
                   </label>
                 </div>
                 <select
-                  className="w-64  border-black text-gray-700 bg-gray-200 rounded-lg p-1 md:p-1 md:w-96"
+                  className="w-64  border-black text-gray-700 bg-gray-200 rounded-lg p-1 md:p-2 md:w-96"
                   name="sector"
-                  value={formData.sector}
+                  value={formData.sectorThree}
                   onChange={handleSectorOther}
                 >
                   <option>Sector of interest</option>
@@ -184,22 +199,22 @@ const Sector = () => {
               </div>
             </div>
           </div>
-          <div className="img h-2/3 absolute md:h-full  flex items-center justify-center invisible ">
+          <div className="img h-2/3 absolute md:h-full  flex items-center justify-center ipad:w-4/5 ipad:h-2/3  invisible ">
             <img
               src="/sectors.jpg"
               alt="sectors image"
-              className="w-5/6 h-4/6 px-2 rounded-2xl md:w-full md:h-2/3"
+              className="w-5/6 h-3/6 px-2 rounded-2xl md:w-full md:h-2/3 horizontal:h-full"
             />
           </div>
           <div className="btn h-24 w-full flex items-center justify-around z-20 pt-10 md:h-fit md:w-4/6 md:mt-5 invisible ">
             <Link className="" href="education">
               <LargeButton
-                text="Previous"
+                text="PREVIOUS"
                 className="bg-teal-500  md:bg-blue-500"
               />
             </Link>
             <Link href="criteria">
-              <LargeButton text="Next" className="bg-teal-500 md:bg-blue-500" />
+              <LargeButton text="NEXT" className="bg-teal-500 md:bg-blue-500" />
             </Link>
           </div>
         </div>

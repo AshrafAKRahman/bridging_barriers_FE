@@ -3,7 +3,6 @@ import Header from "../../components/header/header";
 import Checkbox from "../../components/checbox/checbox";
 import { useEffect, useRef, useState } from "react";
 import Form from "../../components/form/form";
-import NormalButton from "../../components/buttons/normalButton";
 import Link from "next/link";
 import { useFormContext } from "../../context/FormContext.js";
 import LargeButton from "@/app/components/buttons/largeButton";
@@ -171,13 +170,13 @@ const Criteria = () => {
   ];
 
   return (
-    <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 md:px-44 invisible ">
+    <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 md:px-44 ipad:py-36 ipad:px-0 horizontal:h-[200%] horizontal:py-5 invisible ">
       <div className="absolute -z-10">
         <ParticlesBg />
       </div>
       <Form>
         <div className="form w-full h-full flex flex-col items-center justify-center">
-          <div className="bg bg-black opacity-60 absolute h-3/4 w-3/4 rounded-2xl mb-14 md:mb-6   md:h-3/5 md:w-1/3 z-10 invisible"></div>
+          <div className="bg bg-black opacity-60 absolute h-3/4 w-3/4 rounded-2xl mb-14 md:mb-6   md:h-3/5 md:w-1/3 z-10 ipad:w-4/6 invisible"></div>
           <div className="headerContainer md:w-2/3 w-full h-2/6 mt-10 flex-col flex items-center justify-center z-20 invisible  ">
             <div className="header w-5/6 h-fit  text-center   flex flex-col justify-center  items-center z-20 ">
               <Header
@@ -193,7 +192,7 @@ const Criteria = () => {
             </div>
           </div>
 
-          <div className="labelsContainer w-5/6 h-1/3 flex flex-col justify-center mt-10 z-30 md:w-3/6 md:p-8 invisible  ">
+          <div className="labelsContainer w-5/6 h-1/3 flex flex-col justify-center mt-10 z-30 md:w-3/6 md:p-8 ipad:w-5/6 horizontal:px-10 invisible  ">
             <div
               className={`label w-full h-full flex flex-col justify-center md:w-full   ${
                 showInput ? "block" : "hidden"
@@ -262,7 +261,7 @@ const Criteria = () => {
             </div>
           </div>
 
-          <div className="img h-2/3 absolute md:h-full  flex items-center justify-center  ">
+          <div className="img h-2/3 absolute md:h-full  flex items-center justify-center ipad:w-4/5 ipad:h-2/3 horizontal:h-full horizontal:w-full">
             <img
               src="/criteria.jpg"
               alt="sectors image"
@@ -272,13 +271,13 @@ const Criteria = () => {
           <div className="btn mt-0 z-20 h-1/6 w-80 flex items-center justify-around px-5 md:w-3/6 ">
             <Link className="mr-10" href="sector">
               <LargeButton
-                text="Previous"
+                text="PREVIOUS"
                 className="md:bg-blue-500 bg-teal-500"
               />
             </Link>
             <Link href="ethnicity">
               <LargeButton
-                text="Next"
+                text="NEXT"
                 className="md:bg-blue-500 bg-teal-500 "
               />
             </Link>

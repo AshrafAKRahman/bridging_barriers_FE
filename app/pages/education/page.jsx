@@ -83,15 +83,10 @@ const Education = () => {
     e.preventDefault();
     const index = addedEducation.findIndex((item) => item.id === editEducation);
     if (index !== -1) {
-      addedEducation[index] = educationData;
+      addedEducation[index] = editedEducationData;
       setAddedEducation([...addedEducation]);
       setEditEducation(null);
-      setEditedEducationData({
-        qualification: "",
-        subject: "",
-        status: "",
-        schoolName: "",
-      });
+      setEditedEducationData({ ...editedEducationData });
       window.localStorage.setItem(
         "educationData",
         JSON.stringify(addedEducation)
@@ -304,13 +299,13 @@ const Education = () => {
           <div className=" h-1/3 w-full flex items-center justify-around z-20 pt-20 md:w-4/5">
             <Link className="mr-10" href="profile">
               <LargeButton
-                text="Previous"
+                text="PREVIOUS"
                 className="md:bg-blue-500 md:hover:bg-blue-700 bg-teal-500 hover:bg-teal-800 mt-10"
               />
             </Link>
             <Link href="sector">
               <LargeButton
-                text="Next"
+                text="NEXT"
                 className="md:bg-blue-500 md:hover:bg-blue-700 bg-teal-500 hover:bg-teal-800 mt-10"
               />
             </Link>

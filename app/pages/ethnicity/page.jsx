@@ -109,13 +109,13 @@ const Ethnicity = () => {
   console.log(formData);
 
   return (
-    <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 md:px-44 invisible ">
+    <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 md:px-44 ipad:py-36 ipad:px-0 horizontal:h-[200%] horizontal:py-5 invisible ">
       <div className="absolute -z-10">
         <ParticlesBg />
       </div>
       {showParticles ? (
         <div className="w-full h-full z-30 text-center flex flex-col items-center justify-center">
-          <div className="bgFinal bg-black opacity-40 absolute h-1/3 w-5/6 rounded-2xl mb-14 md:mb-6 md:h-3/6 md:w-1/2 -z-10 invisible"></div>
+          <div className="bgFinal bg-black opacity-40 absolute h-1/3 w-5/6 rounded-2xl mb-14 md:mb-6 md:h-3/6 md:w-1/2 -z-10 ipad:w-4/6 invisible"></div>
           <div className="headerFinal w-4/6 h-fit text-center mt-20 md:w-1/4 invisible">
             <Header
               title={
@@ -133,14 +133,11 @@ const Ethnicity = () => {
       ) : (
         <Form onSubmit={handleSignIn}>
           <div className="form w-full h-full flex flex-col items-center justify-center ">
-            <div className="bg bg-black opacity-60 absolute h-4/6 w-3/4 mt-10 rounded-2xl mb-14 md:mb-6   md:h-3/6 md:w-1/3 z-10 invisible"></div>
+            <div className="bg bg-black opacity-60 absolute h-4/6 w-3/4 mt-10 rounded-2xl mb-14 md:mb-6   md:h-3/6 md:w-1/3 z-10 ipad:w-4/6  invisible"></div>
 
             <>
               <div className="headerContainer w-full h-1/3 mt-24 flex-col flex  justify-center  items-center z-20 md:w-2/3 invisible  ">
-                <div
-                  className="header w-full h-fit  text-center   flex flex-col justify-center items-center z-20 
-            "
-                >
+                <div className="header w-full h-fit  text-center   flex flex-col justify-center items-center z-20">
                   <Header
                     titleClassName="text-3xl text-white"
                     title="Equal opportunities"
@@ -159,7 +156,7 @@ const Ethnicity = () => {
                 </div>
               </div>
 
-              <div className="inputContainer w-5/6 h-1/3 flex flex-col justify-center mt-10 md:mt-4 z-30 md:w-2/6 invisible ">
+              <div className="inputContainer w-5/6 h-1/3 flex flex-col justify-center mt-10 md:mt-4 z-30 md:w-2/6 ipad:w-5/6 ipad:px-10 invisible ">
                 {labels.map((labels, index) => (
                   <div key={index} className="flex flex-col mb-2 md:mb-0 ">
                     <Checkbox
@@ -173,17 +170,17 @@ const Ethnicity = () => {
                   </div>
                 ))}
               </div>
-              <div className="img h-2/3 absolute md:h-full  flex items-center justify-center invisible">
+              <div className="img h-2/3 absolute md:h-full  flex items-center justify-center ipad:w-4/5 ipad:h-2/3 invisible">
                 <img
                   src="/heritage.jpg"
                   alt="sectors image"
-                  className="w-5/6 h-4/6 px-2 rounded-2xl md:w-full md:h-2/3"
+                  className="w-5/6 h-4/6 px-2 rounded-2xl md:w-full md:h-2/3 horizontal:h-full horizontal:w-full"
                 />
               </div>
               <div className="btn mt-10 z-20 h-1/6 w-80 flex items-center justify-around px-5 md:w-3/6 ">
                 <Link className="mr-10" href="criteria">
                   <LargeButton
-                    text="Previous"
+                    text="PREVIOUS"
                     className="md:bg-blue-500 bg-teal-500"
                   />
                 </Link>
