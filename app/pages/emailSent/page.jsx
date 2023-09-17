@@ -44,11 +44,11 @@ const EmailSent = () => {
               titleClassName="text-2xl md:text-4xl horizontal:text-lg "
             />
           </div>
-          <div className="img h-2/3 absolute md:h-full md:w-2/5 flex items-center justify-center ipad:w-4/5 ipad:h-2/3 horizontal:w-3/5 horizontal:h-[120%] invisible">
+          <div className="img h-1/2 absolute md:h-full md:w-3/6 flex items-center justify-center ipad:w-4/5 ipad:h-2/3 horizontal:w-3/5 horizontal:h-[120%] invisible">
             <img
               src="/emailSent.jpg"
               alt="email Sent"
-              className="w-5/6 h-4/6 px-2 rounded-2xl md:w-full md:h-2/3 "
+              className="w-5/6 h-4/6 px-2 rounded-2xl md:w-full md:h-2/3"
             />
           </div>
         </div>
