@@ -30,7 +30,7 @@ const EmailSent = () => {
       </div>
       <Form>
         <div className="w-full h-full flex flex-col justify-evenly items-center ">
-          <div className="bg bg-black opacity-60 absolute h-4/6 w-3/4 rounded-2xl mb-5 md:mb-0 md:h-[72%] md:w-1/3 z-10 ipad:w-4/6 horizontal:w-2/5 "></div>
+          <div className="bg bg-black opacity-60 absolute h-4/6 w-3/4 rounded-2xl mb-5 md:mb-0 md:h-[72%] md:w-1/3 z-10 ipad:w-4/6 ipad:h-2/3 horizontal:w-2/5 "></div>
           <div className="h-1/2 w-full flex justify-center place-items-end mb-5 z-20 mt-10 md:mt-0 md:w-96 md:h-1/2 horizontal:items-center">
             <img
               className="logo h-14 w-30 invisible md:h-24 md:w-30 z-20"
@@ -38,7 +38,7 @@ const EmailSent = () => {
               alt="Logo"
             />
           </div>
-          <div className="title flex h-1/2 text-center leading-6 text-white  w-5/6 invisible z-20 md:w-3/6 horizontal:w-1/3 horizontal:mb-16">
+          <div className="title flex h-1/2 text-center leading-6 text-white  w-5/6 invisible z-20 md:w-2/5 ipad:w-2/3 horizontal:w-1/3 horizontal:mb-16">
             <Header
               title="Please check your email and spam for the confirmation link to complete your profile"
               titleClassName="text-2xl md:text-4xl horizontal:text-lg "
