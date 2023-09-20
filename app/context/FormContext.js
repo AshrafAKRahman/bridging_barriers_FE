@@ -18,8 +18,8 @@ export const FormProvider = ({ children }) => {
     location: "",
     education: [
       {
-        qualification: "",
         subject: "",
+        qualification: "",
         status: "",
         schoolName: "",
       },

@@ -75,23 +75,47 @@ const Education = () => {
 
   const educationEdit = (id) => {
     setEditEducation(id);
-    const editedEducation = addedEducation.find((item) => item.id === id);
-    setEditedEducationData(editedEducation);
+
+    // Find the education item with the given ID
+    const itemToEdit = addedEducation.find((item) => item.id === id);
+
+    // Initialize editedEducationData with the data of the item
+    if (itemToEdit) {
+      setEditedEducationData({
+        qualification: itemToEdit.qualification,
+        subject: itemToEdit.subject,
+        status: itemToEdit.status,
+        schoolName: itemToEdit.schoolName,
+      });
+    }
   };
 
   const updateEducation = (e) => {
     e.preventDefault();
     const index = addedEducation.findIndex((item) => item.id === editEducation);
     if (index !== -1) {
-      addedEducation[index] = editedEducationData;
-      setAddedEducation([...addedEducation]);
+      // Create a copy of the education item being edited
+      const updatedEducationItem = { ...addedEducation[index] };
+
+      // Update the properties of the copied education item with the edited data
+      updatedEducationItem.subject = editedEducationData.subject;
+      updatedEducationItem.qualification = editedEducationData.qualification;
+      updatedEducationItem.status = editedEducationData.status;
+      updatedEducationItem.schoolName = editedEducationData.schoolName;
+
+      // Create a copy of the addedEducation array and replace the edited item
+      const updatedEducation = [...addedEducation];
+      updatedEducation[index] = updatedEducationItem;
+
+      // Update state and local storage
+      setAddedEducation(updatedEducation);
       setEditEducation(null);
-      setEditedEducationData({ ...editedEducationData });
       window.localStorage.setItem(
         "educationData",
-        JSON.stringify(addedEducation)
+        JSON.stringify(updatedEducation)
       );
     }
+    console.log("update called");
   };
 
   const reveal = () => {
@@ -118,8 +142,8 @@ const Education = () => {
       </div>
       <Form>
         <div className="form w-full h-full flex flex-col items-center justify-center">
-          <div className="bg bg-black opacity-60 absolute h-3/4 w-3/4 rounded-2xl mb-14 md:mb-6   md:h-3/5 md:w-1/3 z-10 invisible"></div>
-          <div className="headerContainer w-full h-fit md:mt-24 flex-col flex justify-center items-center z-20 md:w-2/3">
+          <div className="bg bg-black opacity-60 absolute h-4/5 w-3/4 rounded-2xl mb-14 md:mb-0  md:h-4/6 md:w-1/3 z-10 invisible"></div>
+          <div className="headerContainer w-5/6 h-1/3 flex-col flex justify-center items-center z-20 md:mt-10  md:w-1/3 ">
             <div className="header w-5/6 h-fit text-center  flex flex-col justify-center items-center z-20">
               <Header
                 title="Education details"
@@ -128,110 +152,104 @@ const Education = () => {
             </div>
           </div>
 
-          <div className="educationContainer h-2/6 w-full mt-10 flex flex-col items-center justify-center z-30 md:mt-0 md:w-2/3 md:h-4/6 ">
-            <div className="w-5/6 h-full flex flex-col justify-center items-center z-10">
-              <div className="w-full h-full md:w-5/6 md:h-3/4 ">
-                <div className="w-full flex justify-between mb-3 md:mb-5">
-                  <div>
-                    <label>
-                      <Header
-                        title="Qualifaction"
-                        titleClassName="text-white text-lg md:text-2xl"
-                      />
-                    </label>
-                  </div>
-                  <InputField
-                    name="qualification"
-                    type={"text"}
-                    value={educationData.qualification}
-                    onChange={(e) =>
-                      setEducationData({
-                        ...educationData,
-                        qualification: e.target.value,
-                      })
-                    }
-                    placeholder="Enter the qualification"
+          <div className="educationContainer h-1/3 w-5/6 flex flex-col items-center justify-center z-30 mt-10 md:w-3/6 md:h-4/6 ">
+            <div className="w-full flex justify-between mb-3 md:mb-5">
+              <div>
+                <label>
+                  <Header
+                    title="Subject"
+                    titleClassName="text-white text-lg md:text-2xl"
                   />
-                </div>
-                <div className="w-full flex justify-between mb-3 md:mb-5">
-                  <label>
-                    <Header
-                      title="Subject"
-                      titleClassName="text-white text-lg md:text-2xl"
-                    />
-                  </label>
-                  <InputField
-                    name="subject"
-                    type={"text"}
-                    value={educationData.subject}
-                    onChange={(e) =>
-                      setEducationData({
-                        ...educationData,
-                        subject: e.target.value,
-                      })
-                    }
-                    placeholder="Enter the subject"
-                  />
-                </div>
-                <div className="w-full flex justify-between mb-3 md:mb-5">
-                  <label>
-                    <Header
-                      title="Status"
-                      titleClassName="text-white text-lg md:text-2xl"
-                    />
-                  </label>
-                  <InputField
-                    name="status"
-                    type={"text"}
-                    value={educationData.status}
-                    onChange={(e) =>
-                      setEducationData({
-                        ...educationData,
-                        status: e.target.value,
-                      })
-                    }
-                    placeholder="Achieved/predicted"
-                  />
-                </div>
-                <div className="w-full flex justify-between mb-3 md:mb-5">
-                  <label>
-                    <Header
-                      title="School"
-                      titleClassName="text-white text-lg md:text-2xl"
-                    />
-                  </label>
-                  <InputField
-                    name="schoolName"
-                    type="text"
-                    value={educationData.schoolName}
-                    onChange={(e) =>
-                      setEducationData({
-                        ...educationData,
-                        schoolName: e.target.value,
-                      })
-                    }
-                    placeholder="School achieved grade at"
-                  />
-                </div>
+                </label>
               </div>
+              <InputField
+                name="subject"
+                type={"text"}
+                value={educationData.subject}
+                onChange={(e) =>
+                  setEducationData({
+                    ...educationData,
+                    subject: e.target.value,
+                  })
+                }
+                placeholder="Enter Subject"
+              />
+            </div>
+            <div className="w-full flex justify-between mb-3 md:mb-5 ">
+              <label>
+                <Header
+                  title="Qualification"
+                  titleClassName="text-white text-lg md:text-2xl"
+                />
+              </label>
+              <InputField
+                name="qualification"
+                type={"text"}
+                value={educationData.qualification}
+                onChange={(e) =>
+                  setEducationData({
+                    ...educationData,
+                    qualification: e.target.value,
+                  })
+                }
+                placeholder="Enter qualification"
+              />
+            </div>
+            <div className="w-full flex justify-between mb-3 md:mb-5">
+              <label>
+                <Header
+                  title="Status"
+                  titleClassName="text-white text-lg md:text-2xl"
+                />
+              </label>
+              <InputField
+                name="status"
+                type={"text"}
+                value={educationData.status}
+                onChange={(e) =>
+                  setEducationData({
+                    ...educationData,
+                    status: e.target.value,
+                  })
+                }
+                placeholder="Achieved/predicted"
+              />
+            </div>
+            <div className="w-full flex justify-between mb-3 md:mb-5">
+              <label>
+                <Header
+                  title="School / Uni"
+                  titleClassName="text-white text-lg md:text-2xl"
+                />
+              </label>
+              <InputField
+                name="schoolName"
+                type="text"
+                value={educationData.schoolName}
+                onChange={(e) =>
+                  setEducationData({
+                    ...educationData,
+                    schoolName: e.target.value,
+                  })
+                }
+                placeholder="School / Uni achieved grade at"
+              />
             </div>
           </div>
 
-          <div className="flex flex-col justify-between z-10 ">
-            <div className="flex items-center justify-center h-fit w-full">
-              <button
-                className="text-white text-lg"
-                onClick={(e) => addQualification(e)}
-              >
-                Add another qualification
-              </button>
-            </div>
+          <div className="flex flex-col justify-between z-10">
+            <button
+              className="text-white text-lg"
+              onClick={(e) => addQualification(e)}
+            >
+              Add Qualification
+            </button>
           </div>
 
-          <div className="moreEducation w-5/6 h-fit flex justify-around items-center z-30 bg-yellow-400">
+          <div className="moreEducation w-5/6 h-1/3 z-30 grid gap-2 grid-cols-2 grid-rows-2 md:w-3/6">
             {addedEducation.map((value) => (
               <div
-                className="text-white z-30 w-5/6 flex justify-around bg-red-500"
+                className="text-white z-30 w-full p-4 flex justify-between overflow-hidden bg-gray-900"
                 key={value.id}
               >
                 {value.qualification}
@@ -241,32 +259,87 @@ const Education = () => {
                   key={value.id}
                 >
                   <MdDelete />
-                </div>
-                <div onClick={(e) => educationEdit(value.id)}>
-                  <AiFillEdit />
+                  <div onClick={(e) => educationEdit(value.id)}>
+                    <AiFillEdit />
+                  </div>
                 </div>
               </div>
             ))}
           </div>
 
           {editEducation !== null && (
-            <div className="bg-white p-4 rounded shadow z-30">
+            <div className="bg-white p-4 rounded shadow z-30 absolute md:w-2/6">
               <h2 className="text-xl font-semibold mb-2">Edit Education</h2>
               <form onSubmit={updateEducation}>
-                <div className="mb-2">
-                  <label htmlFor="qualification">Qualification:</label>
-                  <input
-                    type="text"
-                    id="qualification"
-                    name="qualification"
-                    value={editedEducationData.qualification}
-                    onChange={(e) =>
-                      setEditedEducationData({
-                        ...editedEducationData,
-                        qualification: e.target.value,
-                      })
-                    }
-                  />
+                <div className="w-full h-full">
+                  <div className="mb-6 mt-4 flex justify-between items-center">
+                    <label htmlFor="subject">Subject:</label>
+                    <input
+                      className="bg-gray-200 rounded-lg w-56 py-1 px-1 md:py-2 md:px-2 text-gray-700 border border-white ml-2 "
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      value={editedEducationData.subject}
+                      onChange={(e) =>
+                        setEditedEducationData({
+                          ...editedEducationData,
+                          subject: e.target.value,
+                        })
+                      }
+                      placeholder="Enter Subject"
+                    />
+                  </div>
+                  <div className="mb-6 mt-4 flex justify-between items-center">
+                    <label htmlFor="qualification">Qualification:</label>
+                    <input
+                      className="bg-gray-200 rounded-lg w-56 py-1 px-1 md:py-2 md:px-2 text-gray-700 border border-white ml-2 "
+                      type="text"
+                      id="qualification"
+                      name="qualification"
+                      value={editedEducationData.qualification}
+                      onChange={(e) =>
+                        setEditedEducationData({
+                          ...editedEducationData,
+                          qualification: e.target.value,
+                        })
+                      }
+                      placeholder="Enter qualification"
+                    />
+                  </div>
+                  <div className="mb-6 mt-4 flex justify-between items-center">
+                    <label htmlFor="status">Status:</label>
+                    <input
+                      className="bg-gray-200 rounded-lg w-56 py-1 px-1 md:py-2 md:px-2 text-gray-700 border border-white ml-2 "
+                      type="text"
+                      id="status"
+                      name="status"
+                      value={editedEducationData.status}
+                      onChange={(e) =>
+                        setEditedEducationData({
+                          ...editedEducationData,
+                          status: e.target.value,
+                        })
+                      }
+                      placeholder="Expected / Predicted grade"
+                    />
+                  </div>
+                  <div className="mb-6 mt-4 flex justify-between items-center">
+                    <label htmlFor="schoolName">School / Uni:</label>
+                    <input
+                      className="bg-gray-200 rounded-lg w-56 py-1 px-1 md:py-2 md:px-2 text-gray-700 border border-white ml-2 "
+                      type="text"
+                      id="schoolName"
+                      name="schoolName"
+                      value={editedEducationData.schoolName}
+                      onChange={(e) =>
+                        setEditedEducationData({
+                          ...editedEducationData,
+                          schoolName: e.target.value,
+                        })
+                      }
+                      placeholder="School / Uni achieved grade at"
+                    />
+                  </div>
                 </div>
 
                 <div className="flex justify-between">
@@ -279,8 +352,8 @@ const Education = () => {
                   </button>
                   <button
                     type="button"
-                    className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-                    onClick={() => setEditedEducationData(null)}
+                    className="bg-red-500 text-white px-3 py-1 rounded "
+                    onClick={() => setEditEducation(null)}
                   >
                     Cancel
                   </button>
@@ -296,17 +369,17 @@ const Education = () => {
               className="w-5/6 h-4/6 px-2 rounded-2xl md:w-full md:h-2/3"
             />
           </div>
-          <div className=" h-1/3 w-full flex items-center justify-around z-20 pt-20 md:w-4/5">
+          <div className=" h-1/5 w-full flex items-cener justify-center z-20 md:w-4/5 md:h-fit  ">
             <Link className="mr-10" href="profile">
               <LargeButton
                 text="PREVIOUS"
-                className="md:bg-blue-500 md:hover:bg-blue-700 bg-teal-500 hover:bg-teal-800 mt-10"
+                className="md:bg-blue-500 md:hover:bg-blue-700 bg-teal-500 hover:bg-teal-800 "
               />
             </Link>
             <Link href="sector">
               <LargeButton
                 text="NEXT"
-                className="md:bg-blue-500 md:hover:bg-blue-700 bg-teal-500 hover:bg-teal-800 mt-10"
+                className="md:bg-blue-500 md:hover:bg-blue-700 bg-teal-500 hover:bg-teal-800 "
               />
             </Link>
           </div>
