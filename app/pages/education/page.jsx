@@ -14,7 +14,7 @@ import { AiFillEdit } from "react-icons/ai";
 import { v4 as uuidv4 } from "uuid";
 
 const Education = () => {
-  const { formData, handleChange } = useFormContext();
+  const { formData, handleChange, educationUpdate } = useFormContext();
   const { education } = formData;
   const [educationData, setEducationData] = useState({
     qualification: "",
@@ -53,12 +53,8 @@ const Education = () => {
       id: uuidv4(),
       ...educationData,
     };
-    setAddedEducation((prevAddedEducation) => [
-      ...prevAddedEducation,
-      newEducationItem,
-    ]);
-
-    handleChange({ target: { name: "education", value: addedEducation } });
+    
+    handleChange({ target: { name: "education", value: newEducationItem } });
     setEducationData({
       qualification: "",
       subject: "",
@@ -68,20 +64,23 @@ const Education = () => {
   };
 
   const removeQualification = (id) => {
-    const newEducationData = addedEducation.filter((item) => item.id !== id);
-    setAddedEducation(newEducationData);
-    handleChange({ target: { name: "education", value: newEducationData } });
+    console.log(id)
+    const newEducationData = education.filter((item) => item.id !== id);
+    console.log(newEducationData)
+    educationUpdate({ target: { name: "education", value: newEducationData} });
   };
 
   const educationEdit = (id) => {
+    console.log(id)
     setEditEducation(id);
 
     // Find the education item with the given ID
-    const itemToEdit = addedEducation.find((item) => item.id === id);
+    const itemToEdit = education.find((item) => item.id === id);
 
     // Initialize editedEducationData with the data of the item
     if (itemToEdit) {
       setEditedEducationData({
+        id: itemToEdit.id,
         qualification: itemToEdit.qualification,
         subject: itemToEdit.subject,
         status: itemToEdit.status,
@@ -92,29 +91,44 @@ const Education = () => {
 
   const updateEducation = (e) => {
     e.preventDefault();
-    const index = addedEducation.findIndex((item) => item.id === editEducation);
-    if (index !== -1) {
-      // Create a copy of the education item being edited
-      const updatedEducationItem = { ...addedEducation[index] };
+    console.log(editedEducationData)
+    const updatedEducation = education.map((item) => item.id === editedEducationData.id ? editedEducationData : item)
+    handleChange({target :{name: "education", value: updatedEducation}})
+    setEditedEducationData ({
+      id:null, 
+      qualification:"",
+      subject: "",
+      status: "",
+      schoolName: "",
+    })
+    setEditEducation(null)
+    
+    // const newEducation = [...education]
+    //     const index = newEducation.findIndex((item) => item.id === editedEducationData.id);
+    // if (index !== -1) {
+    //   // Create a copy of the education item being edited
+    //   newEducation[index] = {...newEducation[index], ...editedEducationData}
+    //   console.log(newEducation)
+    //   // const updatedEducationItem = { ...addedEducation[index] };
 
-      // Update the properties of the copied education item with the edited data
-      updatedEducationItem.subject = editedEducationData.subject;
-      updatedEducationItem.qualification = editedEducationData.qualification;
-      updatedEducationItem.status = editedEducationData.status;
-      updatedEducationItem.schoolName = editedEducationData.schoolName;
+    //   // // Update the properties of the copied education item with the edited data
+    //   // updatedEducationItem.subject = editedEducationData.subject;
+    //   // updatedEducationItem.qualification = editedEducationData.qualification;
+    //   // updatedEducationItem.status = editedEducationData.status;
+    //   // updatedEducationItem.schoolName = editedEducationData.schoolName;
 
-      // Create a copy of the addedEducation array and replace the edited item
-      const updatedEducation = [...addedEducation];
-      updatedEducation[index] = updatedEducationItem;
+    //   // // Create a copy of the addedEducation array and replace the edited item
+    //   // const updatedEducation = [...addedEducation];
+    //   // updatedEducation[index] = updatedEducationItem;
 
-      // Update state and local storage
-      setAddedEducation(updatedEducation);
-      setEditEducation(null);
-      window.localStorage.setItem(
-        "educationData",
-        JSON.stringify(updatedEducation)
-      );
-    }
+    //   // // Update state and local storage
+    //   // setAddedEducation(updatedEducation);
+    //   // setEditEducation(null);
+    //   // window.localStorage.setItem(
+    //   //   "educationData",
+    //   //   JSON.stringify(updatedEducation)
+    //   // );
+    // }
     console.log("update called");
   };
 
@@ -247,7 +261,7 @@ const Education = () => {
           </div>
 
           <div className="moreEducation w-5/6 h-1/3 z-30 grid gap-2 grid-cols-2 grid-rows-2 md:w-3/6">
-            {addedEducation.map((value) => (
+            {education && education.map((value) => (
               <div
                 className="text-white z-30 w-full p-4 flex justify-between overflow-hidden bg-gray-900"
                 key={value.id}
@@ -270,7 +284,7 @@ const Education = () => {
           {editEducation !== null && (
             <div className="bg-white p-4 rounded shadow z-30 absolute md:w-2/6">
               <h2 className="text-xl font-semibold mb-2">Edit Education</h2>
-              <form onSubmit={updateEducation}>
+              <form >
                 <div className="w-full h-full">
                   <div className="mb-6 mt-4 flex justify-between items-center">
                     <label htmlFor="subject">Subject:</label>
@@ -346,7 +360,7 @@ const Education = () => {
                   <button
                     type="submit"
                     className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
-                    onClick={updateEducation}
+                    onClick={(e)=> updateEducation(e)}
                   >
                     Update
                   </button>
