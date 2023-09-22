@@ -17,8 +17,8 @@ const Education = () => {
   const { formData, handleChange, educationUpdate } = useFormContext();
   const { education } = formData;
   const [educationData, setEducationData] = useState({
-    qualification: "",
     subject: "",
+    qualification: "",
     status: "",
     schoolName: "",
   });
@@ -34,8 +34,8 @@ const Education = () => {
 
   const [editEducation, setEditEducation] = useState(null);
   const [editedEducationData, setEditedEducationData] = useState({
-    qualification: "",
     subject: "",
+    qualification: "",
     status: "",
     schoolName: "",
   });
@@ -53,25 +53,25 @@ const Education = () => {
       id: uuidv4(),
       ...educationData,
     };
-    
+
     handleChange({ target: { name: "education", value: newEducationItem } });
     setEducationData({
-      qualification: "",
       subject: "",
+      qualification: "",
       status: "",
       schoolName: "",
     });
   };
 
   const removeQualification = (id) => {
-    console.log(id)
+    console.log(id);
     const newEducationData = education.filter((item) => item.id !== id);
-    console.log(newEducationData)
-    educationUpdate({ target: { name: "education", value: newEducationData} });
+    console.log(newEducationData);
+    educationUpdate({ target: { name: "education", value: newEducationData } });
   };
 
   const educationEdit = (id) => {
-    console.log(id)
+    console.log(id);
     setEditEducation(id);
 
     // Find the education item with the given ID
@@ -81,8 +81,8 @@ const Education = () => {
     if (itemToEdit) {
       setEditedEducationData({
         id: itemToEdit.id,
-        qualification: itemToEdit.qualification,
         subject: itemToEdit.subject,
+        qualification: itemToEdit.qualification,
         status: itemToEdit.status,
         schoolName: itemToEdit.schoolName,
       });
@@ -91,45 +91,33 @@ const Education = () => {
 
   const updateEducation = (e) => {
     e.preventDefault();
-    console.log(editedEducationData)
-    const updatedEducation = education.map((item) => item.id === editedEducationData.id ? editedEducationData : item)
-    handleChange({target :{name: "education", value: updatedEducation}})
-    setEditedEducationData ({
-      id:null, 
-      qualification:"",
+    console.log(editedEducationData);
+    const updatedEducation = education.map((item) =>
+      item.id === editedEducationData.id ? editedEducationData : item
+    );
+    handleChange({ target: { name: "education", value: updatedEducation } });
+
+    setEditedEducationData({
+      id: null,
       subject: "",
+      qualification: "",
       status: "",
       schoolName: "",
-    })
-    setEditEducation(null)
-    
-    // const newEducation = [...education]
-    //     const index = newEducation.findIndex((item) => item.id === editedEducationData.id);
-    // if (index !== -1) {
-    //   // Create a copy of the education item being edited
-    //   newEducation[index] = {...newEducation[index], ...editedEducationData}
-    //   console.log(newEducation)
-    //   // const updatedEducationItem = { ...addedEducation[index] };
+    });
+    setEditEducation(null);
 
-    //   // // Update the properties of the copied education item with the edited data
-    //   // updatedEducationItem.subject = editedEducationData.subject;
-    //   // updatedEducationItem.qualification = editedEducationData.qualification;
-    //   // updatedEducationItem.status = editedEducationData.status;
-    //   // updatedEducationItem.schoolName = editedEducationData.schoolName;
-
-    //   // // Create a copy of the addedEducation array and replace the edited item
-    //   // const updatedEducation = [...addedEducation];
-    //   // updatedEducation[index] = updatedEducationItem;
-
-    //   // // Update state and local storage
-    //   // setAddedEducation(updatedEducation);
-    //   // setEditEducation(null);
-    //   // window.localStorage.setItem(
-    //   //   "educationData",
-    //   //   JSON.stringify(updatedEducation)
-    //   // );
-    // }
     console.log("update called");
+  };
+
+  const cancelEdit = () => {
+    setEditedEducationData({
+      id: null,
+      subject: "",
+      qualification: "",
+      status: "",
+      schoolName: "",
+    });
+    setEditEducation(null);
   };
 
   const reveal = () => {
@@ -260,31 +248,32 @@ const Education = () => {
             </button>
           </div>
 
-          <div className="moreEducation w-5/6 h-1/3 z-30 grid gap-2 grid-cols-2 grid-rows-2 md:w-3/6">
-            {education && education.map((value) => (
-              <div
-                className="text-white z-30 w-full p-4 flex justify-between overflow-hidden bg-gray-900"
-                key={value.id}
-              >
-                {value.qualification}
+          <div className="moreEducation w-5/6 h-1/3 z-30 grid gap-2 grid-cols-2 grid-rows-2 md:w-3/6 bg-red-800">
+            {education &&
+              education.map((value) => (
                 <div
-                  className="text-white text-lg"
-                  onClick={(e) => removeQualification(value.id)}
+                  className="addedQualification text-white z-30 w-full p-4 flex justify-between overflow-hidden bg-gray-900"
                   key={value.id}
                 >
-                  <MdDelete />
-                  <div onClick={(e) => educationEdit(value.id)}>
-                    <AiFillEdit />
+                  {value.qualification}
+                  <div
+                    className="text-white text-lg"
+                    onClick={(e) => removeQualification(value.id)}
+                    key={value.id}
+                  >
+                    <MdDelete />
+                    <div onClick={(e) => educationEdit(value.id)}>
+                      <AiFillEdit />
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
 
           {editEducation !== null && (
             <div className="bg-white p-4 rounded shadow z-30 absolute md:w-2/6">
               <h2 className="text-xl font-semibold mb-2">Edit Education</h2>
-              <form >
+              <form>
                 <div className="w-full h-full">
                   <div className="mb-6 mt-4 flex justify-between items-center">
                     <label htmlFor="subject">Subject:</label>
@@ -360,14 +349,14 @@ const Education = () => {
                   <button
                     type="submit"
                     className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
-                    onClick={(e)=> updateEducation(e)}
+                    onClick={(e) => updateEducation(e)}
                   >
                     Update
                   </button>
                   <button
                     type="button"
                     className="bg-red-500 text-white px-3 py-1 rounded "
-                    onClick={() => setEditEducation(null)}
+                    onClick={() => cancelEdit()}
                   >
                     Cancel
                   </button>
