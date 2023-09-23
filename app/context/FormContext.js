@@ -16,14 +16,7 @@ export const FormProvider = ({ children }) => {
     email: "",
     password: "",
     location: "",
-    education: [
-      {
-        subject: "",
-        qualification: "",
-        status: "",
-        schoolName: "",
-      },
-    ],
+    education: [],
     sectorOne: "",
     sectorTwo: "",
     sectorThree: "",
@@ -43,14 +36,22 @@ export const FormProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
+  
+
+  const educationUpdate = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      education: e.target.value
+    }))
+  }
   const handleChange = (e) => {
     // console.log(e.target.value, e.target.name)
     if (e.target.name === "education") {
       setFormData((prevData) => ({
         ...prevData,
-        [e.target.name]: [...formData.education, e.target.value],
+        education: [...formData.education, e.target.value]
       }));
-    } else if (e.target.name === "email" || "password") {
+    } else if (e.target.name === "email" || e.target.name === "password") {
       setFormData((prevData) => ({
         ...prevData,
         [e.target.name]: e.target.value,
@@ -69,6 +70,7 @@ export const FormProvider = ({ children }) => {
         formData,
         setFormData,
         handleChange,
+        educationUpdate
       }}
     >
       {children}
