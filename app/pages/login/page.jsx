@@ -1,5 +1,3 @@
-
-
 "use client";
 import NormalButton from "../../components/buttons/normalButton";
 import Header from "../../components/header/header";
@@ -73,7 +71,7 @@ const logIn = () => {
       [e.target.name]: e.target.value,
     }));
   };
-  console.log(logInData)
+  console.log(logInData);
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -139,7 +137,7 @@ const logIn = () => {
                     placeholder="password..."
                   />
                 </div>
-                
+
                 <div className="btn mt-6">
                   <LargeButton
                     type="submit"
@@ -148,10 +146,14 @@ const logIn = () => {
                     className="text-center text-sm font-bold py-3 transform hover:scale-110 transition-transform shadow-xl bg-blue-500"
                   />
                 </div>
-                <div className="mt-6">
+                <div className="mt-4">
                   <p className="link text-white text-sm  underline font-sans">
-                    
                     <Link href="/">Back to home page</Link>
+                  </p>
+                </div>
+                <div className="mt-2">
+                  <p className="link text-white text-sm  underline font-sans">
+                    <Link href="emailReset">Forgot password</Link>
                   </p>
                 </div>
               </div>

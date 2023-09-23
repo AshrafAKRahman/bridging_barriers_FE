@@ -71,8 +71,8 @@ const EmailLink = () => {
       return email.includes("@");
     };
     if (userEmail === "") {
-      console.log("email fieldis empty");
-      alert("Please enter your rmail address");
+      console.log("email field is empty");
+      alert("Please enter your email address");
       return;
     } else if (!isValidEmail(userEmail)) {
       console.log("email is invalid");
@@ -83,7 +83,9 @@ const EmailLink = () => {
         await sendEmailLink(userEmail);
         window.location.href = "/pages/emailSent";
       } catch (error) {
-        console.log("Error here");
+        const erorrCode = error.Code;
+        const erorrMessage = error.message;
+        console.log(erorrCode, erorrMessage);
       }
     }
   };
