@@ -9,7 +9,6 @@ import LargeButton from "../../components/buttons/largeButton";
 import { gsap } from "gsap";
 import SubHeader from "../../components/subHeader/subHeader";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import ParticlesBg from "../../components/particles/Particles";
 import InputField from "../../components/inputField/inputField";
 
 const Profile = () => {
@@ -26,7 +25,7 @@ const Profile = () => {
     const FADE = gsap.timeline();
     FADE.from(".backdrop, .bg, .headerContainer, .btn, .header, .subheader", {
       autoAlpha: 0,
-      y: -100,
+      x: 99,
       duration: 1,
       stagger: 0.5,
     });
@@ -34,7 +33,7 @@ const Profile = () => {
     const TLIMAGE = gsap.timeline();
     TLIMAGE.from(".img", {
       autoAlpha: 0,
-      y: -100,
+      x: 99,
       duration: 1.5,
     });
   };
@@ -187,14 +186,16 @@ const Profile = () => {
   }, [user]);
 
   return (
-    <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col items-center justify-center py-5 md:h-screen md:py-20 md:px-44 ipad:px-0 ipad:py-36 invisible horizontal:h-[200%] horizontal:py-5 ">
-      <div className="absolute -z-10">
-        <ParticlesBg />
-      </div>
+    <div className="backdrop  w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 ipad:py-36 ipad:px-0 horizontal:h-[200%] invisible">
+      <img
+        src="/loginBg.jpg"
+        alt="login bg image"
+        className="object-cover h-screen w-screen horizontal:h-[200%] absolute"
+      />
       <Form>
         <div className="form w-full h-full flex flex-col items-center justify-center">
-          <div className="bg bg-black opacity-60 absolute h-4/5  w-3/4 mt-10 rounded-2xl mb-14 md:mb-8 md:h-4/6 md:w-1/3 z-10 ipad:w-3/5 invisible"></div>
-          <div className="headerContainer w-full h-1/3 mt-16  flex-col flex  justify-center place-items-end items-center  z-20  md:w-2/3 invisible ">
+          <div className="bg bg-black opacity-50 absolute z-10 h-[70%] w-11/12 rounded-2xl md:w-2/3 ipad:w-4/6 invisible"></div>
+          <div className="headerContainer w-full h-1/3 mt-36 flex-col flex  justify-center place-items-end items-center z-20 md:w-2/3 invisible ">
             <div
               className="header w-5/6 h-fit  text-center   flex flex-col justify-center items-center z-20
             "
@@ -204,7 +205,7 @@ const Profile = () => {
                 title="Personal Details"
               />
             </div>
-            <div className="subheader w-5/6 md:h-fit  text-center flex flex-col items-center justify-center mt-5 z-20 ">
+            <div className="subheader w-5/6 md:h-fit  text-center flex flex-col items-center justify-center mt-5 z-20 md:mb-5 ">
               <SubHeader
                 titleClassName="text-lg text-white"
                 title="Please complete all required feilds"
@@ -212,7 +213,7 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="dropDownContainer w-5/6 h-fit flex flex-col justify-center items-center z-30 md:w-3/6 md:h-fit ipad:w-5/6 horizontal:w-4/6 horizontal:mt-10 invisible ">
+          <div className="dropDownContainer w-5/6 h-fit flex flex-col justify-center items-center z-30 md:w-4/6 md:h-fit ipad:w-5/6 horizontal:w-4/6 horizontal:mt-10 invisible ">
             <div
               className={`firstInput w-full h-full flex flex-col   ${
                 showInput ? "block" : "hidden"
@@ -438,18 +439,17 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="img h-2/3 absolute md:h-full  flex items-center justify-center ipad:w-4/5 ipad:h-2/3 invisible ">
-            <img
-              className="w-5/6 h-3/6 px-2 rounded-2xl md:w-full md:h-4/6 horizontal:h-5/6"
-              src="/profileImg.jpg"
-              alt="form igmage"
-            />
-          </div>
-          <div className="btn flex justify-center place-items-center w-full h-1/4 z-30 horizontal:mt-10 ">
+          <img
+            className="img absolute object-cover w-5/6 h-3/6 px-2 rounded-2xl md:w-5/6 md:h-3/4 horizontal:h-5/6 invisible"
+            src="/profileImg.jpg"
+            alt="form igmage"
+          />
+
+          <div className="btn flex justify-center place-items-center w-full h-1/4 z-30 mt-16 md:mt-5 horizontal:mt-10 ">
             <Link href="education">
               <LargeButton
                 text="NEXT"
-                className="md:bg-blue-500 md:hover:bg-blue-700 bg-teal-500 hover:bg-teal-800  "
+                className="bg-blue-500 hover:bg-blue-700 "
               />
             </Link>
           </div>

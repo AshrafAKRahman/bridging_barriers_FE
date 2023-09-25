@@ -2,7 +2,7 @@ const Form = ({ children, onSubmit }) => {
   return (
     <form
       onSubmit={onSubmit}
-      className="bg-blue-200 rounded-lg w-5/6 h-4/6 shadow-2xl shadow-black md:w-4/5"
+      className="bg-white w-5/6 h-2/6  md:w-1/2 bg-opacity-20 backdrop-blur-md rounded-md drop-shadow-lg flex flex-col items-center justify-center"
       style={{
         height: "80vh",
         flex: 1,

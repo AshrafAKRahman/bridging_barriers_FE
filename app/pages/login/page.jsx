@@ -84,7 +84,7 @@ const logIn = () => {
         onSubmit={handleSignIn}
         className="form w-4/6 h-4/6 flex flex-col items-center justify-center md:w-1/3 md:h-4/5 z-10 ipad:w-5/6 invisible"
       >
-        <div className="bg bg-gray-600  bg-opacity-20 backdrop-blur-md rounded-md  drop-shadow-lg absolute h-3/5 w-4/5 md:w-full md:h-full horizontal:h-[110%] invisible"></div>
+        <div className="bg bg-teal-600 bg-opacity-20 backdrop-blur-md rounded-md drop-shadow-lg absolute w-full h-full horizontal:h-[110%] invisible"></div>
 
         <div className="logo h-1/6 mt-5 flex items-center justify-center md:h-1/4 md:mt-10 ipad:w-4/5 ipad:h-1/5 z-10 invisible">
           <img

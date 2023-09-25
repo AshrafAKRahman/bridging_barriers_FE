@@ -19,7 +19,7 @@ const Sector = () => {
         " .backdrop, .bg, .container, .header, .subheader, .sectors, .btn",
         {
           autoAlpha: 0,
-          y: -100,
+          x: 99,
           duration: 1.5,
           stagger: 0.5,
         }
@@ -29,7 +29,7 @@ const Sector = () => {
 
       TLCONTAINER.from(".img", {
         autoAlpha: 0,
-        y: -100,
+        x: 99,
         duration: 1,
       });
     };

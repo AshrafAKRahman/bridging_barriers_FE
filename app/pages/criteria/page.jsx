@@ -23,7 +23,7 @@ const Criteria = () => {
     const TLFADE = gsap.timeline();
     TLFADE.from(".backdrop, .bg, .headerContainer, .btn, .header, .subheader", {
       autoAlpha: 0,
-      y: -100,
+      x: 99,
       duration: 1.5,
       stagger: 0.5,
     });
@@ -31,7 +31,7 @@ const Criteria = () => {
     const TLIMAGE = gsap.timeline();
     TLIMAGE.from(".img", {
       autoAlpha: 0,
-      y: -100,
+      x: 99,
       duration: 1.5,
     });
   };
@@ -40,7 +40,7 @@ const Criteria = () => {
     const TLLABELCONTAINER = gsap.timeline();
     TLLABELCONTAINER.from(".labelsContainer", {
       autoAlpha: 0,
-      x: 100,
+      x: 99,
       duration: 1.5,
       delay: 3.5,
     });
@@ -55,7 +55,7 @@ const Criteria = () => {
     const TLLABEL = gsap.timeline();
     TLLABEL.from(".label", {
       autoAlpha: 0,
-      x: 100,
+      x: 99,
       duration: 1,
       delay: 0.25,
       stagger: 2,
@@ -67,7 +67,7 @@ const Criteria = () => {
 
     TLMORE.from(".more", {
       autoAlpha: 0,
-      x: -100,
+      x: 99,
       duration: 1.5,
       delay: delay,
     });
@@ -171,9 +171,6 @@ const Criteria = () => {
 
   return (
     <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 md:px-44 ipad:py-36 ipad:px-0 horizontal:h-[200%] horizontal:py-5 invisible ">
-      <div className="absolute -z-10">
-        <ParticlesBg />
-      </div>
       <Form>
         <div className="form w-full h-full flex flex-col items-center justify-center">
           <div className="bg bg-black opacity-60 absolute h-3/4 w-3/4 rounded-2xl mb-14 md:mb-6   md:h-3/5 md:w-1/3 z-10 ipad:w-4/6 invisible"></div>

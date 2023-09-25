@@ -90,13 +90,15 @@ const EmailLink = () => {
     }
   };
   return (
-    <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 ipad:py-36 ipad:px-0 horizontal:h-[200%] invisible">
-      <div className="absolute -z-10">
-        <ParticlesBg />
-      </div>
+    <div className="backdrop  w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 ipad:py-36 ipad:px-0 horizontal:h-[200%] invisible">
+      <img
+        src="/loginBg.jpg"
+        alt="login bg image"
+        className="object-cover h-screen w-screen horizontal:h-[200%] absolute"
+      />
       <Form onSubmit={handleSignIn}>
         <div className="form h-full w-full flex flex-col justify-center items-center">
-          <div className="bg bg-black opacity-40 absolute z-10 h-[70%] w-4/6 rounded-2xl md:w-1/3 ipad:w-4/6  invisible"></div>
+          <div className="bg bg-black opacity-40 absolute z-10 h-[70%] w-5/6 rounded-2xl md:w-2/3 ipad:w-4/6  invisible"></div>
           <div className="container w-4/5 h-4/5  flex flex-col justify-center items-center z-20 invisible">
             <div className="header h-1/3 pt-20 invisible ">
               <Header
@@ -105,7 +107,7 @@ const EmailLink = () => {
               />
             </div>
 
-            <div className="emailContainer w-full h-2/3 flex flex-col items-center pt-10 invisible ">
+            <div className="emailContainer w-full h-2/3 flex flex-col items-center pt-10 md:pt-0 invisible ">
               <div className="emailLabel mt-8 invisible">
                 <label className="text-white" htmlFor="inline-emai">
                   Please enter your email address
@@ -140,13 +142,11 @@ const EmailLink = () => {
             </div>
           </div>
 
-          <div className="img h-2/3 absolute md:h-full  flex items-center justify-center ipad:w-4/5 ipad:h-2/3   invisible ">
-            <img
-              className="w-5/6 h-4/6 px-2 rounded-2xl md:w-full md:h-4/6"
-              src="/emailImg.jpg"
-              alt="form igmage"
-            />
-          </div>
+          <img
+            className="img absolute object-cover w-5/6 h-3/6 px-2 rounded-2xl md:w-5/6 md:h-3/4 invisible"
+            src="/emailImg.jpg"
+            alt="form igmage"
+          />
         </div>
       </Form>
     </div>
