@@ -319,7 +319,7 @@ const Education = () => {
             </button>
           </div>
 
-          <div className="moreEducation absolute w-5/6 h-24  z-30 grid gap-2 grid-cols-2 grid-rows-2 translate-y-96 mt-10 md:w-3/5  ">
+          <div className="moreEducation w-5/6 h-1/6 z-30 grid gap-2 grid-cols-2 grid-rows-2 md:w-3/6 bg-cyan-400">
             {education &&
               education.map((value) => (
                 <div
