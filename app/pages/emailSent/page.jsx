@@ -7,9 +7,9 @@ import React, { useEffect } from "react";
 const EmailSent = () => {
   const revealAnimation = () => {
     const TLFADE = gsap.timeline();
-    TLFADE.from([".img, .bg, .backdrop, .emailSent", ".logo", ".title"], {
+    TLFADE.from([".img, .bg, .emailSent", ".logo", ".title"], {
       autoAlpha: 0,
-      y: -50,
+      x: 150,
       duration: 1,
       stagger: {
         each: 0.75,
@@ -23,7 +23,7 @@ const EmailSent = () => {
   }, []);
 
   return (
-    <div className="backdrop  w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 ipad:py-36 ipad:px-0 horizontal:h-[200%] invisible">
+    <div className="backdrop  w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 ipad:py-36 ipad:px-0 horizontal:h-[200%] ">
       <img
         src="/loginBg.jpg"
         alt="login bg image"

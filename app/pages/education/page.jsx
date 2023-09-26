@@ -13,43 +13,72 @@ import { MdDelete } from "react-icons/md";
 import { AiFillEdit } from "react-icons/ai";
 import { v4 as uuidv4 } from "uuid";
 import SubHeader from "@/app/components/subHeader/subHeader";
+import { ToastContainer, toast } from "react-toastify";
 
 const Education = () => {
   const { formData, handleChange, educationUpdate } = useFormContext();
   const { education } = formData;
   const [educationData, setEducationData] = useState({
-    qualification: "",
     subject: "",
+    qualification: "",
     status: "",
-
     date: "",
     schoolName: "",
   });
 
   const [editEducation, setEditEducation] = useState(null);
   const [editedEducationData, setEditedEducationData] = useState({
-    qualification: "",
     subject: "",
+    qualification: "",
     status: "",
     date: "",
     schoolName: "",
   });
 
+  const notify = (e) => {
+    e.preventDefault();
+    const currentQualifications = formData.education || [];
+    if (currentQualifications.length === 0) {
+      toast("Please add at least 1 qualification");
+    } else {
+      window.location.href = "/pages/sector";
+    }
+  };
+
   const addQualification = (e) => {
     e.preventDefault();
-    const newEducationItem = {
-      id: uuidv4(),
-      ...educationData,
-    };
-
-    handleChange({ target: { name: "education", value: newEducationItem } });
-    setEducationData({
-      qualification: "",
-      subject: "",
-      status: "",
-      date: "",
-      schoolName: "",
-    });
+    if (
+      !educationData.subject ||
+      !educationData.qualification ||
+      !educationData.status ||
+      !educationData.date ||
+      !educationData.schoolName
+    ) {
+      toast("Please complete all input fields");
+      return;
+    }
+    const currentQualifications = formData.education || [];
+    if (currentQualifications.length < 4) {
+      const newEducationItem = {
+        id: uuidv4(),
+        ...educationData,
+      };
+      handleChange({
+        target: {
+          name: "education",
+          value: newEducationItem,
+        },
+      });
+      setEducationData({
+        subject: "",
+        qualification: "",
+        status: "",
+        date: "",
+        schoolName: "",
+      });
+    } else {
+      toast("You have reached the maximum limit of 4 qualifications.");
+    }
   };
 
   const removeQualification = (id) => {
@@ -62,8 +91,8 @@ const Education = () => {
   const cancelEdit = () => {
     setEditEducation(null);
     setEditedEducationData({
-      qualification: "",
       subject: "",
+      qualification: "",
       status: "",
       date: "",
       schoolName: "",
@@ -79,8 +108,8 @@ const Education = () => {
     if (itemToEdit) {
       setEditedEducationData({
         id: itemToEdit.id,
-        qualification: itemToEdit.qualification,
         subject: itemToEdit.subject,
+        qualification: itemToEdit.qualification,
         status: itemToEdit.status,
         date: itemToEdit.date,
         schoolName: itemToEdit.schoolName,
@@ -95,8 +124,8 @@ const Education = () => {
       if (data.id === editedEducationData.id) {
         return {
           ...data,
-          qualification: editedEducationData.qualification,
           subject: editedEducationData.subject,
+          qualification: editedEducationData.qualification,
           status: editedEducationData.status,
           date: editedEducationData.date,
           schoolName: editedEducationData.schoolName,
@@ -107,8 +136,8 @@ const Education = () => {
     educationUpdate({ target: { name: "education", value: newEdcuation } });
     setEditEducation(null);
     setEditedEducationData({
-      qualification: "",
       subject: "",
+      qualification: "",
       status: "",
       date: "",
       schoolName: "",
@@ -117,23 +146,41 @@ const Education = () => {
 
   const reveal = () => {
     const FADE = gsap.timeline();
-    FADE.from(".backdrop, .bg", {
+    FADE.from(".bg, .headerContainer, .header, .subheader", {
+      autoAlpha: 0,
+      x: -99,
+      duration: 1,
+      stagger: 0.5,
+    });
+    const TLIMAGE = gsap.timeline();
+    TLIMAGE.from(".img", {
       autoAlpha: 0,
       x: 99,
-      duration: 1,
+      duration: 1.5,
+    });
+  };
+
+  const revealContainer = () => {
+    const TLCONTAINER = gsap.timeline();
+    TLCONTAINER.from(".educationContainer, .btn, .addQuali ", {
+      autoAlpha: 0,
+      y: 100,
+      duration: 0.5,
+      delay: 2.5,
       stagger: 0.5,
     });
   };
 
   useEffect(() => {
     reveal();
+    revealContainer();
   }, []);
 
   console.log(educationData);
 
   console.log(education);
   return (
-    <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:h-[200%] invisible">
+    <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:h-[200%] ">
       <img
         src="/loginBg.jpg"
         alt="login bg image"
@@ -142,14 +189,14 @@ const Education = () => {
       <Form>
         <div className="bg bg-black opacity-60 absolute z-10 h-[70%] w-11/12 rounded-2xl md:w-9/12 md:h-4/5 ipad:w-4/6 invisible"></div>
         <div className="form w-11/12 h-[70%] flex flex-col items-center md:w-9/12">
-          <div className="headerContainer w-full h-fit flex-col flex justify-center items-center text-center z-20 mt-5 mb-5 md:w-full md:h-fit md:-mt-5 ">
-            <div className="header w-5/6 h-fit z-20">
+          <div className="headerContainer w-full h-fit flex-col flex justify-center items-center text-center z-20 mt-5 mb-5 md:w-full md:h-fit md:-mt-5 invisible">
+            <div className="header w-5/6 h-fit z-20 invisible">
               <Header
                 title="Education details"
                 titleClassName="text-3xl text-white"
               />
             </div>
-            <div className="mt-5 w-5/6 md:mt-0">
+            <div className="subheader mt-5 w-5/6 md:mt-0 invisible">
               <SubHeader
                 title="Please Enter 4 of your most recent qualifications"
                 titleClassName="text-lg text-white"
@@ -159,14 +206,13 @@ const Education = () => {
 
           <div className="educationContainer h-fit w-full flex flex-col items-center  z-30 px-3 md:px-10 md:w-full md:h-2/3">
             <div className="w-full flex justify-between mb-3 md:mb-5">
-              <div>
-                <label>
-                  <Header
-                    title="Subject"
-                    titleClassName="text-white text-lg md:text-2xl"
-                  />
-                </label>
-              </div>
+              <label>
+                <Header
+                  title="Subject"
+                  titleClassName="text-white text-lg md:text-2xl"
+                />
+              </label>
+
               <InputField
                 name="subject"
                 type={"text"}
@@ -262,10 +308,12 @@ const Education = () => {
             </div>
           </div>
 
-          <div className="flex flex-col justify-between z-10  cursor-pointer">
+          <div className="addQuali flex flex-col justify-between z-10  cursor-pointer invisible">
             <button
               className="text-white text-lg"
-              onClick={(e) => addQualification(e)}
+              onClick={(e) => {
+                addQualification(e);
+              }}
             >
               Add Qualification
             </button>
@@ -275,7 +323,7 @@ const Education = () => {
             {education &&
               education.map((value) => (
                 <div
-                  className="text-white z-30 w-full p-2 flex justify-between overflow-hidden bg-white bg-opacity-20 backdrop-blur-md rounded-md drop-shadow-lg"
+                  className="addedQuali text-white z-30 w-full p-2 flex justify-between overflow-hidden bg-white bg-opacity-20 backdrop-blur-md rounded-md drop-shadow-lg"
                   key={value.id}
                 >
                   {value.subject}
@@ -298,6 +346,7 @@ const Education = () => {
 
           <Link href="sector">
             <LargeButton
+              onClick={(e) => notify(e)}
               text="NEXT"
               className="bg-blue-500 hover:bg-blue-700"
             />
@@ -306,21 +355,24 @@ const Education = () => {
         <img
           src="/education.jpg"
           alt="certificate image"
-          className="img absolute object-cover w-5/6 h-3/6 px-2 rounded-2xl md:w-11/12 md:h-5/6 -z-10"
+          className="img absolute object-cover w-5/6 h-3/6 px-2 rounded-2xl md:w-11/12 md:h-5/6 -z-10 invisible"
         />
+        <ToastContainer />
       </Form>
       {editEducation !== null && (
-        <div className="bg-white p-4 rounded shadow z-30 absolute md:w-2/6">
-          <h2 className="text-xl font-semibold mb-2">Edit Education</h2>
+        <div className="bg-white p-4 px-8 bg-opacity-10 backdrop-blur-md rounded-md drop-shadow-lg  z-30 absolute md:w-2/6">
+          <h2 className="text-xl font-semibold mb-2 text-gray-200">
+            Edit Education
+          </h2>
           <form>
             <div className="w-full h-full">
               <div className="mb-6 mt-4 flex justify-between items-center">
-                <label htmlFor="subject">Subject:</label>
+                <label className="text-gray-200">Subject:</label>
                 <input
-                  className="bg-gray-200 rounded-lg w-56 py-1 px-1 md:py-2 md:px-2 text-gray-700 border border-white ml-2 "
+                  className="bg-gray-600 rounded-lg w-56 py-1 px-1 md:py-2 md:px-2 text-white border border-white ml-2 "
+                  name="subject"
                   type="text"
                   id="subject"
-                  name="subject"
                   value={editedEducationData.subject}
                   onChange={(e) =>
                     setEditedEducationData({
@@ -331,10 +383,11 @@ const Education = () => {
                   placeholder="Enter Subject"
                 />
               </div>
+
               <div className="mb-6 mt-4 flex justify-between items-center">
-                <label htmlFor="qualification">Qualification:</label>
+                <label className="text-gray-200">Qualification:</label>
                 <input
-                  className="bg-gray-200 rounded-lg w-56 py-1 px-1 md:py-2 md:px-2 text-gray-700 border border-white ml-2 "
+                  className="bg-gray-600 rounded-lg w-56 py-1 px-1 md:py-2 md:px-2 text-white border border-white ml-2 "
                   type="text"
                   id="qualification"
                   name="qualification"
@@ -349,9 +402,9 @@ const Education = () => {
                 />
               </div>
               <div className="mb-6 mt-4 flex justify-between items-center">
-                <label htmlFor="status">Status:</label>
+                <label className="text-gray-200">Status:</label>
                 <input
-                  className="bg-gray-200 rounded-lg w-56 py-1 px-1 md:py-2 md:px-2 text-gray-700 border border-white ml-2 "
+                  className="bg-gray-600 rounded-lg w-56 py-1 px-1 md:py-2 md:px-2 text-white border border-white ml-2 "
                   type="text"
                   id="status"
                   name="status"
@@ -365,33 +418,28 @@ const Education = () => {
                   placeholder="Expected / Predicted grade"
                 />
               </div>
-              <div className="dob w-full h-fit mb-5 flex justify-between ">
-                <div className="text-white md:ml-16 ">
-                  <label>
-                    <Header
-                      title="Date Expected / Achieved"
-                      titleClassName="text-lg md:text-2xl"
-                    />
-                  </label>
-                </div>
-                <div className="md:mr-10">
-                  <InputField
-                    name="date"
-                    type={"date"}
-                    value={editedEducationData.date}
-                    onChange={(e) =>
-                      setEditEducation({
-                        ...editedEducationData,
-                        date: e.target.value,
-                      })
-                    }
-                  />
-                </div>
-              </div>
+
               <div className="mb-6 mt-4 flex justify-between items-center">
-                <label htmlFor="schoolName">School / Uni:</label>
+                <label className="text-gray-200">Date:</label>
                 <input
-                  className="bg-gray-200 rounded-lg w-56 py-1 px-1 md:py-2 md:px-2 text-gray-700 border border-white ml-2 "
+                  className="bg-gray-600 rounded-lg w-56 py-1 px-1 md:py-2 md:px-2 text-gray-300 border border-white ml-2 "
+                  name="date"
+                  type={"date"}
+                  id="date"
+                  value={editedEducationData.date}
+                  onChange={(e) =>
+                    setEditedEducationData({
+                      ...editedEducationData,
+                      date: e.target.value,
+                    })
+                  }
+                />
+              </div>
+
+              <div className="mb-6 mt-4 flex justify-between items-center">
+                <label className="text-gray-200">School / Uni:</label>
+                <input
+                  className="bg-gray-600 rounded-lg w-56 py-1 px-1 text-white md:py-2 md:px-2 border border-white ml-2 "
                   type="text"
                   id="schoolName"
                   name="schoolName"
@@ -407,7 +455,7 @@ const Education = () => {
               </div>
             </div>
 
-            <div className="flex justify-between">
+            <div className="flex justify-around">
               <button
                 type="submit"
                 className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"

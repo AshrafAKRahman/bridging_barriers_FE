@@ -10,6 +10,7 @@ import { gsap } from "gsap";
 import SubHeader from "../../components/subHeader/subHeader";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import InputField from "../../components/inputField/inputField";
+import { ToastContainer, toast } from "react-toastify";
 
 const Profile = () => {
   const { formData, setFormData, handleChange } = useFormContext();
@@ -21,12 +22,70 @@ const Profile = () => {
   const moreFirstRender = useRef(true);
   const rightArrowFirstRender = useRef(true);
 
+  useEffect(() => {
+    if (typeof localStorage !== "undefined") {
+      const emailForSignIn = localStorage.getItem("emailForSignIn");
+      if (emailForSignIn) {
+        setFormData((prevData) => ({
+          ...prevData,
+          email: emailForSignIn,
+        }));
+      }
+    }
+    setLoading(false);
+  }, []);
+
+  const toggleInput = (e) => {
+    setShowInput((prevShowInput) => !prevShowInput);
+  };
+  const toggleSecondInput = (e) => {
+    setShowSecondInput((prevShowSecondInput) => !prevShowSecondInput);
+  };
+
+  const handleGenderOther = (e) => {
+    const selectedGender = e.target.value;
+    setFormData((prevData) => ({
+      ...prevData,
+      gender: selectedGender,
+    }));
+
+    if (selectedGender === "Other") {
+      setGenderInput(true);
+    } else {
+      setGenderInput(false);
+    }
+  };
+
+  const notify = (e) => {
+    e.preventDefault();
+    if (
+      formData.firstName === "" ||
+      formData.surName === "" ||
+      formData.dob === "" ||
+      formData.gender === "" ||
+      formData.phone === "" ||
+      formData.email === "" ||
+      formData.password === "" ||
+      formData.location === ""
+    ) {
+      toast("Please complete all the fields");
+    } else {
+      window.location.href = "/pages/education";
+    }
+  };
+
+  const handleGenderOtherChange = (e) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      otherGender: e.target.value,
+    }));
+  };
   const reveal = () => {
     const FADE = gsap.timeline();
-    FADE.from(".backdrop, .bg, .headerContainer, .btn, .header, .subheader", {
+    FADE.from(".bg, .headerContainer,  .header, .subheader", {
       autoAlpha: 0,
-      x: 99,
-      duration: 1,
+      x: -99,
+      duration: 0.5,
       stagger: 0.5,
     });
 
@@ -40,11 +99,12 @@ const Profile = () => {
 
   const revealContainer = () => {
     const TLINPUTCONTAINER = gsap.timeline();
-    TLINPUTCONTAINER.from(".dropDownContainer", {
+    TLINPUTCONTAINER.from(".dropDownContainer,.btn", {
       autoAlpha: 0,
-      x: 100,
-      duration: 1.5,
-      delay: 3.5,
+      y: 100,
+      duration: 0.5,
+      delay: 2.5,
+      stagger: 0.5,
     });
   };
 
@@ -136,48 +196,8 @@ const Profile = () => {
     previous();
   }, [showSecondInput]);
 
-  useEffect(() => {
-    if (typeof localStorage !== "undefined") {
-      const emailForSignIn = localStorage.getItem("emailForSignIn");
-      if (emailForSignIn) {
-        setFormData((prevData) => ({
-          ...prevData,
-          email: emailForSignIn,
-        }));
-      }
-    }
-    setLoading(false);
-  }, []);
-
-  const toggleInput = (e) => {
-    setShowInput((prevShowInput) => !prevShowInput);
-  };
-  const toggleSecondInput = (e) => {
-    setShowSecondInput((prevShowSecondInput) => !prevShowSecondInput);
-  };
-
-  const handleGenderOther = (e) => {
-    const selectedGender = e.target.value;
-    setFormData((prevData) => ({
-      ...prevData,
-      gender: selectedGender,
-    }));
-
-    if (selectedGender === "Other") {
-      setGenderInput(true);
-    } else {
-      setGenderInput(false);
-    }
-  };
-
-  const handleGenderOtherChange = (e) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      otherGender: e.target.value,
-    }));
-  };
-
   console.log(formData);
+
   useEffect(() => {
     const checkAuthentication = async () => {
       await new Promise((resolve) => setTimeout(resolve, 5));
@@ -187,7 +207,7 @@ const Profile = () => {
   }, [user]);
 
   return (
-    <div className="backdrop  w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-12 ipad:py-36 ipad:px-0 horizontal:h-[200%] invisible">
+    <div className="backdrop  w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-12 ipad:py-36 ipad:px-0 horizontal:h-[200%]">
       <img
         src="/loginBg.jpg"
         alt="login bg image"
@@ -449,12 +469,14 @@ const Profile = () => {
           <div className="btn flex justify-center place-items-center w-full h-1/4 z-30 mt-16 md:mt-5 horizontal:mt-10 ">
             <Link href="education">
               <LargeButton
+                onClick={(e) => notify(e)}
                 text="NEXT"
                 className="bg-blue-500 hover:bg-blue-700 "
               />
             </Link>
           </div>
         </div>
+        <ToastContainer />
       </Form>
     </div>
   );

@@ -9,7 +9,8 @@ import LargeButton from "@/app/components/buttons/largeButton";
 import SubHeader from "@/app/components/subHeader/subHeader";
 import { gsap } from "gsap";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import ParticlesBg from "@/app/components/particles/Particles";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Criteria = () => {
   const [showInput, setShowInput] = useState(true);
@@ -18,12 +19,37 @@ const Criteria = () => {
   const { criteria } = formData;
   const moreFirstRender = useRef(true);
   const rightArrowFirstRender = useRef(true);
+  const [checkedCheckboxes, setCheckedCheckboxes] = useState([]);
+
+  const toggleInput = (e) => {
+    setShowInput((prevShowInput) => !prevShowInput);
+  };
+  const toggleSecondInput = () => {
+    setShowSecondInput((prevShowSecondInput) => !prevShowSecondInput);
+  };
+
+  const notify = (e) => {
+    e.preventDefault();
+    if (checkedCheckboxes.length === 0) {
+      toast("Please choose the option that applies");
+    } else {
+      window.location.href = "/pages/ethnicity";
+    }
+  };
+  const handleCheckboxChange = (isChecked, label) => {
+    console.log(isChecked, label);
+    const updatedCheckboxes = isChecked
+      ? [...checkedCheckboxes, label]
+      : checkedCheckboxes.filter((value) => value !== label);
+    setCheckedCheckboxes(updatedCheckboxes);
+    handleChange({ target: { name: "criteria", value: updatedCheckboxes } });
+  };
 
   const revealAnim = () => {
     const TLFADE = gsap.timeline();
-    TLFADE.from(".backdrop, .bg, .headerContainer, .btn, .header, .subheader", {
+    TLFADE.from(".bg, .headerContainer, .header, .subheader", {
       autoAlpha: 0,
-      x: 99,
+      x: -99,
       duration: 1.5,
       stagger: 0.5,
     });
@@ -38,11 +64,12 @@ const Criteria = () => {
 
   const revealContainer = () => {
     const TLLABELCONTAINER = gsap.timeline();
-    TLLABELCONTAINER.from(".labelsContainer", {
+    TLLABELCONTAINER.from(".labelsContainer, .btn", {
       autoAlpha: 0,
-      x: 99,
-      duration: 1.5,
-      delay: 3.5,
+      y: 99,
+      duration: 0.75,
+      delay: 2.5,
+      stagger: 0.5,
     });
   };
 
@@ -55,10 +82,10 @@ const Criteria = () => {
     const TLLABEL = gsap.timeline();
     TLLABEL.from(".label", {
       autoAlpha: 0,
-      x: 99,
-      duration: 1,
+      y: 99,
+      duration: 0.5,
       delay: 0.25,
-      stagger: 2,
+      stagger: 0.5,
     });
   };
   const more = () => {
@@ -67,7 +94,7 @@ const Criteria = () => {
 
     TLMORE.from(".more", {
       autoAlpha: 0,
-      x: 99,
+      x: -99,
       duration: 1.5,
       delay: delay,
     });
@@ -77,11 +104,11 @@ const Criteria = () => {
   };
   const rightArrow = () => {
     const TLRIGHTARROW = gsap.timeline();
-    const delay = rightArrowFirstRender.current ? 4.5 : 2.5;
+    const delay = rightArrowFirstRender.current ? 5 : 2.5;
 
     TLRIGHTARROW.from(".rightArrow", {
       autoAlpha: 0,
-      x: -50,
+      x: 50,
       duration: 1.37,
       repeat: -1,
       delay: delay,
@@ -132,26 +159,6 @@ const Criteria = () => {
     leftArrow();
   }, [showSecondInput]);
 
-  const toggleInput = (e) => {
-    setShowInput((prevShowInput) => !prevShowInput);
-  };
-  const toggleSecondInput = () => {
-    setShowSecondInput((prevShowSecondInput) => !prevShowSecondInput);
-  };
-
-  const handleCheckboxChange = (isChecked, label) => {
-    const newCriteria = [...criteria, label];
-    if (isChecked) {
-      handleChange({ target: { name: "criteria", value: newCriteria } });
-    } else {
-      const newCriteria = criteria.filter((value) => {
-        return value !== label;
-      });
-      console.log(newCriteria);
-      handleChange({ target: { name: "criteria", value: newCriteria } });
-    }
-  };
-
   console.log(formData);
 
   const labels = [
@@ -170,7 +177,7 @@ const Criteria = () => {
   ];
 
   return (
-    <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:h-[200%] invisible">
+    <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:h-[200%]">
       <img
         src="/loginBg.jpg"
         alt="login bg image"
@@ -277,12 +284,14 @@ const Criteria = () => {
             </Link>
             <Link href="ethnicity">
               <LargeButton
+                onClick={(e) => notify(e)}
                 text="NEXT"
                 className="bg-blue-500 hover:bg-blue-700"
               />
             </Link>
           </div>
         </div>
+        <ToastContainer />
       </Form>
     </div>
   );

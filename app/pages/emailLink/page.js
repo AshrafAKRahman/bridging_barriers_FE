@@ -6,56 +6,14 @@ import Link from "next/link";
 import { UserAuth } from "../../context/AuthContext";
 import LargeButton from "../../components/buttons/largeButton";
 import { gsap } from "gsap";
-import { useRouter } from "next/navigation";
-import ParticlesBg from "@/app/components/particles/Particles.js";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const EmailLink = () => {
-  const router = useRouter();
   const { user, sendEmailLink } = UserAuth();
   const [email, setEmail] = useState({
     email: "",
   });
-
-  const revealBasckdrop = () => {
-    const TLBACKDROP = gsap.timeline();
-    TLBACKDROP.from(".backdrop, .bg", {
-      autoAlpha: 0,
-      x: 50,
-      duration: 1.5,
-      opacity: 0,
-    });
-  };
-
-  const revealAnim = () => {
-    const TLFADE = gsap.timeline();
-    TLFADE.from(
-      " .form .container, .emailContainer, .header, .emailLabel, .emailInput, .btn, .link",
-      {
-        autoAlpha: 0,
-        y: -100,
-        duration: 1.5,
-        delay: 1.5,
-        stagger: 0.5,
-        opacity: 0,
-      }
-    );
-  };
-
-  const revealImg = () => {
-    const TLIMG = gsap.timeline();
-    TLIMG.from(".img", {
-      autoAlpha: 0,
-      x: 50,
-      duration: 1,
-      delay: 0.75,
-    });
-  };
-
-  useEffect(() => {
-    revealBasckdrop();
-    revealAnim();
-    revealImg();
-  }, []);
 
   const handleChange = (e) => {
     setEmail((prevData) => ({
@@ -72,11 +30,11 @@ const EmailLink = () => {
     };
     if (userEmail === "") {
       console.log("email field is empty");
-      alert("Please enter your email address");
+      toast("Please enter your email address");
       return;
     } else if (!isValidEmail(userEmail)) {
       console.log("email is invalid");
-      alert("Please enter a vaild email address");
+      toast("Please enter a vaild email address");
       return;
     } else {
       try {
@@ -89,8 +47,51 @@ const EmailLink = () => {
       }
     }
   };
+  const revealBasckdrop = () => {
+    const TLBACKDROP = gsap.timeline();
+    TLBACKDROP.from(".bg", {
+      autoAlpha: 0,
+      x: 50,
+      duration: 1,
+      opacity: 0,
+    });
+  };
+
+  const revealAnim = () => {
+    const TLFADE = gsap.timeline();
+    TLFADE.from(
+      " .form .container, .emailContainer, .header, .emailLabel, .emailInput, .btn, .link",
+      {
+        autoAlpha: 0,
+        x: -100,
+        duration: 1,
+        delay: 1,
+        stagger: 0.25,
+        opacity: 0,
+      }
+    );
+  };
+
+  const revealImg = () => {
+    const TLIMG = gsap.timeline();
+    TLIMG.from(".img", {
+      autoAlpha: 0,
+      x: 150,
+      duration: 1.25,
+      delay: 0.75,
+      opacity: 10,
+      ease: 2,
+    });
+  };
+
+  useEffect(() => {
+    revealBasckdrop();
+    revealAnim();
+    revealImg();
+  }, []);
+
   return (
-    <div className="backdrop  w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 ipad:py-36 ipad:px-0 horizontal:h-[200%] invisible">
+    <div className="backdrop  w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 ipad:py-36 ipad:px-0 horizontal:h-[200%]">
       <img
         src="/loginBg.jpg"
         alt="login bg image"
@@ -147,6 +148,7 @@ const EmailLink = () => {
             src="/emailImg.jpg"
             alt="form igmage"
           />
+          <ToastContainer />
         </div>
       </Form>
     </div>

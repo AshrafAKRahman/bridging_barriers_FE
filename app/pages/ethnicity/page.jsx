@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 import Header from "../../components/header/header";
 import SubHeader from "../../components/subHeader/subHeader";
 import Checkbox from "../../components/checbox/checbox";
-import NormalButton from "../../components/buttons/normalButton";
 import Link from "next/link";
 import { useFormContext } from "@/app/context/FormContext";
 import { gsap } from "gsap";
 import LargeButton from "@/app/components/buttons/largeButton";
 import { UserAuth } from "@/app/context/AuthContext";
-import ParticlesBg from "@/app/components/particles/Particles";
 import ParticlesBtn from "@/app/components/particles/ParticlesBtn";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Ethnicity = () => {
   const { user, newUser } = UserAuth();
@@ -19,8 +19,13 @@ const Ethnicity = () => {
   const { ethnicity } = formData;
   const [loading, setLoading] = useState(true);
   const [showParticles, setShowParticles] = useState(false);
+  const [checkedCheckboxes, setCheckedCheckboxes] = useState([]);
 
   const handleSignIn = async () => {
+    if (checkedCheckboxes.length === 0) {
+      toast("Please choose an option");
+      return;
+    }
     try {
       await newUser(formData.email, formData.password);
       console.log("handleSignIn function called");
@@ -38,11 +43,29 @@ const Ethnicity = () => {
     checkAuthentication();
   }, [user]);
 
+  const labels = [
+    "Mixed or multiple ethnic groups",
+    "Asian or Asian British",
+    "Black British, Caribbean or African",
+    "White British, European, White other",
+    "Self Describe",
+  ];
+
+  const handleCheckBoxChange = (isChecked, label) => {
+    console.log(isChecked, label);
+    const updatedCheckboxes = isChecked
+      ? [...checkedCheckboxes, label]
+      : checkedCheckboxes.filter((value) => value !== label);
+    setCheckedCheckboxes(updatedCheckboxes);
+    handleChange({ target: { name: "ethnicity", value: updatedCheckboxes } });
+  };
+
+  console.log(formData);
   const revealAnimation = () => {
     const TLFADE = gsap.timeline();
-    TLFADE.from(".backdrop, .bg, .headerContainer, .btn, .header, .subheader", {
+    TLFADE.from(".bg, .headerContainer, .header, .subheader", {
       autoAlpha: 0,
-      y: -100,
+      x: -100,
       duration: 1.5,
       stagger: 0.5,
     });
@@ -50,18 +73,19 @@ const Ethnicity = () => {
     const TLIMAGE = gsap.timeline();
     TLIMAGE.from(".img", {
       autoAlpha: 0,
-      y: -100,
+      x: 100,
       duration: 1.5,
     });
   };
 
   const revealContainer = () => {
     const TLLABELCONTAINER = gsap.timeline();
-    TLLABELCONTAINER.from(".inputContainer", {
+    TLLABELCONTAINER.from(".inputContainer, .btn", {
       autoAlpha: 0,
-      x: 100,
-      duration: 1.5,
-      delay: 3.5,
+      y: 100,
+      duration: 0.75,
+      delay: 1.5,
+      stagger: 0.5,
     });
   };
 
@@ -85,31 +109,8 @@ const Ethnicity = () => {
       animateElements();
     }
   }, [showParticles]);
-
-  const labels = [
-    "Mixed or multiple ethnic groups",
-    "Asian or Asian British",
-    "Black British, Caribbean or African",
-    "White British, European, White other",
-    "Self Describe",
-  ];
-
-  const handleCheckBoxChange = (isChecked, label) => {
-    console.log(isChecked, label);
-    if (isChecked) {
-      const newEhtnicity = [...ethnicity, label];
-      handleChange({ target: { name: "ethnicity", value: newEhtnicity } });
-    } else {
-      const newEhtnicity = ethnicity.filter((value) => {
-        return value !== label;
-      });
-      handleChange({ target: { name: "ethnicity", value: newEhtnicity } });
-    }
-  };
-  console.log(formData);
-
   return (
-    <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:h-[200%] invisible">
+    <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:h-[200%]">
       <img
         src="/loginBg.jpg"
         alt="login bg image"
@@ -198,6 +199,9 @@ const Ethnicity = () => {
           </div>
         </Form>
       )}
+      <div className="absolute ">
+        <ToastContainer />
+      </div>
     </div>
   );
 };
