@@ -170,10 +170,15 @@ const Criteria = () => {
   ];
 
   return (
-    <div className="backdrop bg-blue-500 w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 md:px-44 ipad:py-36 ipad:px-0 horizontal:h-[200%] horizontal:py-5 invisible ">
+    <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:h-[200%] invisible">
+      <img
+        src="/loginBg.jpg"
+        alt="login bg image"
+        className="object-cover h-screen w-screen horizontal:h-[200%] absolute"
+      />
       <Form>
         <div className="form w-full h-full flex flex-col items-center justify-center">
-          <div className="bg bg-black opacity-60 absolute h-3/4 w-3/4 rounded-2xl mb-14 md:mb-6   md:h-3/5 md:w-1/3 z-10 ipad:w-4/6 invisible"></div>
+          <div className="bg bg-black opacity-60 absolute h-5/6 w-11/12 rounded-2xl mb-5 md:mb-0 md:w-9/12 md:h-4/5  z-10 ipad:w-3/5 ipad:h-4/6 invisible"></div>
           <div className="headerContainer md:w-2/3 w-full h-2/6 mt-10 flex-col flex items-center justify-center z-20 invisible  ">
             <div className="header w-5/6 h-fit  text-center   flex flex-col justify-center  items-center z-20 ">
               <Header
@@ -189,7 +194,7 @@ const Criteria = () => {
             </div>
           </div>
 
-          <div className="labelsContainer w-5/6 h-1/3 flex flex-col justify-center mt-10 z-30 md:w-3/6 md:p-8 ipad:w-5/6 horizontal:px-10 invisible  ">
+          <div className="labelsContainer w-5/6 h-1/3 flex flex-col justify-center mt-10 z-30 md:w-4/6 md:p-8 ipad:w-5/6 horizontal:px-10 invisible  ">
             <div
               className={`label w-full h-full flex flex-col justify-center md:w-full   ${
                 showInput ? "block" : "hidden"
@@ -258,24 +263,22 @@ const Criteria = () => {
             </div>
           </div>
 
-          <div className="img h-2/3 absolute md:h-full  flex items-center justify-center ipad:w-4/5 ipad:h-2/3 horizontal:h-full horizontal:w-full">
-            <img
-              src="/criteria.jpg"
-              alt="sectors image"
-              className="w-5/6 h-4/6 px-2 rounded-2xl md:w-full md:h-2/3"
-            />
-          </div>
-          <div className="btn mt-0 z-20 h-1/6 w-80 flex items-center justify-around px-5 md:w-3/6 ">
+          <img
+            src="/criteria.jpg"
+            alt="sectors image"
+            className="img absolute object-cover w-5/6 h-3/6 px-2 rounded-2xl md:w-11/12 md:h-5/6 invisible"
+          />
+          <div className="btn h-24 w-full flex items-center justify-between  z-20 px-5 pt-2 md:h-fit md:w-full md:mt-5 md:px-24 invisible ">
             <Link className="mr-10" href="sector">
               <LargeButton
                 text="PREVIOUS"
-                className="md:bg-blue-500 bg-teal-500"
+                className="bg-blue-500 hover:bg-blue-700"
               />
             </Link>
             <Link href="ethnicity">
               <LargeButton
                 text="NEXT"
-                className="md:bg-blue-500 bg-teal-500 "
+                className="bg-blue-500 hover:bg-blue-700"
               />
             </Link>
           </div>

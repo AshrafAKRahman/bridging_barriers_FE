@@ -116,6 +116,7 @@ const Profile = () => {
 
   const leftArrow = () => {
     const TLLEFTARROW = gsap.timeline();
+
     TLLEFTARROW.from(".leftArrow", {
       autoAlpha: 0,
       x: 50,
@@ -186,7 +187,7 @@ const Profile = () => {
   }, [user]);
 
   return (
-    <div className="backdrop  w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 ipad:py-36 ipad:px-0 horizontal:h-[200%] invisible">
+    <div className="backdrop  w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-12 ipad:py-36 ipad:px-0 horizontal:h-[200%] invisible">
       <img
         src="/loginBg.jpg"
         alt="login bg image"
@@ -440,7 +441,7 @@ const Profile = () => {
           </div>
 
           <img
-            className="img absolute object-cover w-5/6 h-3/6 px-2 rounded-2xl md:w-5/6 md:h-3/4 horizontal:h-5/6 invisible"
+            className="img absolute object-cover w-5/6 h-3/6 px-2 rounded-2xl md:w-11/12 md:h-4/5 horizontal:h-5/6 invisible"
             src="/profileImg.jpg"
             alt="form igmage"
           />
