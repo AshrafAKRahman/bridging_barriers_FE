@@ -132,24 +132,23 @@ const Education = () => {
 
   console.log(education);
   return (
-    <div className="backdrop  w-screen h-screen flex flex-col items-center justify-center py-10 md:py-20  ipad:py-36 ipad:px-0 horizontal:h-[200%] invisible">
+    <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:h-[200%] invisible">
       <img
         src="/loginBg.jpg"
         alt="login bg image"
         className="object-cover h-screen w-screen horizontal:h-[200%] absolute"
       />
       <Form>
-        <div className="form w-11/12 h-[70%] flex flex-col items-center justify-center md:w-9/12 bg-green-600 ">
-          <div className="bg bg-black opacity-50 absolute z-10 h-[70%] w-11/12 rounded-2xl md:w-9/12 ipad:w-4/6 invisible"></div>
-
-          <div className="headerContainer w-full h-1/3 flex-col flex justify-center items-center text-center z-20 md:w-full md:h-1/3 bg-red-400 ">
+        <div className="bg bg-black opacity-60 absolute z-10 h-[70%] w-11/12 rounded-2xl md:w-9/12 md:h-4/5 ipad:w-4/6 invisible"></div>
+        <div className="form w-11/12 h-[70%] flex flex-col items-center md:w-9/12">
+          <div className="headerContainer w-full h-fit flex-col flex justify-center items-center text-center z-20 mt-5 mb-5 md:w-full md:h-fit md:-mt-5 ">
             <div className="header w-5/6 h-fit z-20">
               <Header
                 title="Education details"
                 titleClassName="text-3xl text-white"
               />
             </div>
-            <div className="mt-5 w-5/6 ">
+            <div className="mt-5 w-5/6 md:mt-0">
               <SubHeader
                 title="Please Enter 4 of your most recent qualifications"
                 titleClassName="text-lg text-white"
@@ -157,7 +156,7 @@ const Education = () => {
             </div>
           </div>
 
-          <div className="educationContainer h-1/3 w-11/12 flex flex-col items-center justify-center z-30 mt-10 md:w-5/6 md:h-4/6 bg-yellow-500 ">
+          <div className="educationContainer h-fit w-full flex flex-col items-center  z-30 px-3 md:px-10 md:w-full md:h-2/3">
             <div className="w-full flex justify-between mb-3 md:mb-5">
               <div>
                 <label>
@@ -220,28 +219,25 @@ const Education = () => {
                 placeholder="Achieved/predicted"
               />
             </div>
-            <div className="dob w-full h-fit mb-5 flex justify-between ">
-              <div className="text-white md:ml-16 ">
-                <label>
-                  <Header
-                    title="Date Expected / Achieved"
-                    titleClassName="text-lg md:text-2xl"
-                  />
-                </label>
-              </div>
-              <div className="md:mr-10">
-                <InputField
-                  name="date"
-                  type={"date"}
-                  value={educationData.date}
-                  onChange={(e) =>
-                    setEducationData({
-                      ...educationData,
-                      date: e.target.value,
-                    })
-                  }
+            <div className="w-full flex justify-between mb-3 md:mb-5">
+              <label>
+                <Header
+                  title="Date"
+                  titleClassName="text-white text-lg md:text-2xl"
                 />
-              </div>
+              </label>
+
+              <InputField
+                name="date"
+                type={"date"}
+                value={educationData.date}
+                onChange={(e) =>
+                  setEducationData({
+                    ...educationData,
+                    date: e.target.value,
+                  })
+                }
+              />
             </div>
             <div className="w-full flex justify-between mb-3 md:mb-5">
               <label>
@@ -265,7 +261,7 @@ const Education = () => {
             </div>
           </div>
 
-          <div className="flex flex-col justify-between z-10">
+          <div className="flex flex-col justify-between z-10  cursor-pointer">
             <button
               className="text-white text-lg"
               onClick={(e) => addQualification(e)}
@@ -274,48 +270,45 @@ const Education = () => {
             </button>
           </div>
 
+
           <div className="moreEducation w-5/6 h-1/6 z-30 grid gap-2 grid-cols-2 grid-rows-2 md:w-3/6 bg-cyan-400">
+
             {education &&
               education.map((value) => (
                 <div
-                  className="text-white z-30 w-full p-4 flex justify-between overflow-hidden bg-white bg-opacity-20 backdrop-blur-md rounded-md drop-shadow-lg"
+                  className="text-white z-30 w-full p-2 flex justify-between overflow-hidden bg-white bg-opacity-20 backdrop-blur-md rounded-md drop-shadow-lg"
                   key={value.id}
                 >
-                  {value.qualification}
-                  <div className="text-white text-lg" key={value.id}>
+                  {value.subject}
+                  <div className="text-white text-sm" key={value.id}>
                     <MdDelete onClick={(e) => removeQualification(value.id)} />
-                    <div>
-                      <AiFillEdit onClick={(e) => educationEdit(value.id)} />
-                    </div>
+
+                    <AiFillEdit onClick={(e) => educationEdit(value.id)} />
                   </div>
                 </div>
               ))}
           </div>
-
-          <img
-            src="/education.jpg"
-            alt="certificate image"
-            className="img absolute object-cover w-5/6 h-3/6 px-2 rounded-2xl md:w-11/12 md:h-4/5 hidden"
-          />
-
-          <div
-            className=" h-1/5 w-full flex items-cener justify-center z-20 static md:w-4/5 md:h-full
-           bg-pink-600 "
-          >
-            <Link className="mr-10" href="profile">
-              <LargeButton
-                text="PREVIOUS"
-                className="md:bg-blue-500 md:hover:bg-blue-700 bg-teal-500 hover:bg-teal-800 "
-              />
-            </Link>
-            <Link href="sector">
-              <LargeButton
-                text="NEXT"
-                className="md:bg-blue-500 md:hover:bg-blue-700 bg-teal-500 hover:bg-teal-800 "
-              />
-            </Link>
-          </div>
         </div>
+        <div className="btn absolute translate-y-2/3 mt-20 h-1/3 w-full flex place-items-end justify-between px-5 md:px-24 md:w-full md:h-1/3 md:mt-36 ">
+          <Link className="" href="profile">
+            <LargeButton
+              text="PREVIOUS"
+              className="bg-blue-500 hover:bg-blue-700"
+            />
+          </Link>
+
+          <Link href="sector">
+            <LargeButton
+              text="NEXT"
+              className="bg-blue-500 hover:bg-blue-700"
+            />
+          </Link>
+        </div>
+        <img
+          src="/education.jpg"
+          alt="certificate image"
+          className="img absolute object-cover w-5/6 h-3/6 px-2 rounded-2xl md:w-11/12 md:h-5/6 -z-10"
+        />
       </Form>
       {editEducation !== null && (
         <div className="bg-white p-4 rounded shadow z-30 absolute md:w-2/6">
