@@ -64,7 +64,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="backdrop w-screen h-full absolute bg-blue-400 z-20 horizontal:h-[200%]   invisible">
+    <div className="backdrop w-screen h-full absolute bg-blue-400 z-20 horizontal:h-[200%]  horizontal:w-full invisible">
       <Navbar />
 
       <div className="w-full h-[100%] flex items-center flex-col md:flex md:items-center md:flex-col md:h-[90%%] md:w-[100%]  ">

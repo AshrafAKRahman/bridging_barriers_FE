@@ -26,7 +26,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const resetPassword = (email) => {
     sendPasswordResetEmail(auth, email).then(() => {
-      alert("password reset email link sent");
+      console.log("password reset email link sent");
     });
   };
   const sendEmailLink = (email) => {
