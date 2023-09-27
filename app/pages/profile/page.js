@@ -392,7 +392,7 @@ const Profile = () => {
                 </div>
                 <div className="md:mr-10">
                   <InputField
-                    type="text"
+                    type="password"
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
