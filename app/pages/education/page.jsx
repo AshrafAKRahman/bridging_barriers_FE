@@ -35,6 +35,7 @@ const Education = () => {
     schoolName: "",
   });
 
+
   const notify = (e) => {
     e.preventDefault();
     const currentQualifications = formData.education || [];
@@ -44,6 +45,7 @@ const Education = () => {
       window.location.href = "/pages/sector";
     }
   };
+
 
   const addQualification = (e) => {
     e.preventDefault();
@@ -99,6 +101,16 @@ const Education = () => {
     });
   };
 
+  const cancelEdit = () => {
+    setEditEducation(null); // Hide the edit form
+    setEditedEducationData({ // Reset the edited data to its initial state
+      qualification: "",
+      subject: "",
+      status: "",
+      schoolName: "",
+    });
+  };
+  
   const educationEdit = (id) => {
     console.log(id);
     setEditEducation(id);
@@ -116,6 +128,7 @@ const Education = () => {
       });
     }
   };
+
   console.log(editedEducationData);
 
   const updateEducation = (e) => {
@@ -143,6 +156,7 @@ const Education = () => {
       schoolName: "",
     });
   };
+
 
   const reveal = () => {
     const FADE = gsap.timeline();
@@ -323,13 +337,13 @@ const Education = () => {
             {education &&
               education.map((value) => (
                 <div
+
                   className="addedQuali text-white z-30 w-full p-2 flex justify-between overflow-hidden bg-white bg-opacity-20 backdrop-blur-md rounded-md drop-shadow-lg"
                   key={value.id}
                 >
                   {value.subject}
                   <div className="text-white text-sm" key={value.id}>
                     <MdDelete onClick={(e) => removeQualification(value.id)} />
-
                     <AiFillEdit onClick={(e) => educationEdit(value.id)} />
                   </div>
                 </div>
@@ -343,7 +357,6 @@ const Education = () => {
               className="bg-blue-500 hover:bg-blue-700"
             />
           </Link>
-
           <Link href="sector">
             <LargeButton
               onClick={(e) => notify(e)}
@@ -474,6 +487,7 @@ const Education = () => {
           </form>
         </div>
       )}
+
     </div>
   );
 };

@@ -37,6 +37,7 @@ export const FormProvider = ({ children }) => {
   }, []);
 
   
+
   const educationUpdate = (e) => {
     setFormData((prevData) => ({
       ...prevData,
