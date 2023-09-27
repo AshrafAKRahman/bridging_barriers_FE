@@ -8,8 +8,10 @@ import LargeButton from "../../components/buttons/largeButton";
 import { gsap } from "gsap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
 
 const EmailLink = () => {
+  const router = useRouter();
   const { user, sendEmailLink } = UserAuth();
   const [email, setEmail] = useState({
     email: "",
@@ -39,7 +41,7 @@ const EmailLink = () => {
     } else {
       try {
         await sendEmailLink(userEmail);
-        window.location.href = "/pages/emailSent";
+        router.push("/pages/emailSent");
       } catch (error) {
         const erorrCode = error.Code;
         const erorrMessage = error.message;
@@ -89,7 +91,7 @@ const EmailLink = () => {
     revealAnim();
     revealImg();
   }, []);
-
+  console.log(email);
   return (
     <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-5 md:w-screen md:py-20 ipad:py-36 ipad:px-0 horizontal:py-5">
       <img
