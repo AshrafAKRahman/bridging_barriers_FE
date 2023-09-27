@@ -25,10 +25,12 @@ const Profile = () => {
   useEffect(() => {
     if (typeof localStorage !== "undefined") {
       const emailForSignIn = localStorage.getItem("emailForSignIn");
+      const passwordForSignIn = localStorage.getItem("passwordForSignIn");
       if (emailForSignIn) {
         setFormData((prevData) => ({
           ...prevData,
           email: emailForSignIn,
+          password: passwordForSignIn,
         }));
       }
     }

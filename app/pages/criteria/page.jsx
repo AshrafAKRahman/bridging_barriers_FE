@@ -177,15 +177,15 @@ const Criteria = () => {
   ];
 
   return (
-    <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:h-[200%]">
+    <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:py-5">
       <img
         src="/loginBg.jpg"
         alt="login bg image"
-        className="object-cover h-screen w-screen horizontal:h-[200%] absolute"
+        className="object-cover h-screen w-screen  absolute"
       />
       <Form>
         <div className="form w-full h-full flex flex-col items-center justify-center">
-          <div className="bg bg-black opacity-60 absolute h-5/6 w-11/12 rounded-2xl mb-5 md:mb-0 md:w-9/12 md:h-4/5  z-10 ipad:w-5/6 ipad:h-4/6 invisible"></div>
+          <div className="bg bg-black opacity-60 absolute h-5/6 w-11/12 rounded-2xl mb-5 md:mb-0 md:w-9/12 md:h-4/5  z-10 ipad:w-5/6 ipad:h-4/6 horizontal:h-3/4 invisible"></div>
           <div className="headerContainer md:w-2/3 w-full h-2/6 mt-10 flex-col flex items-center justify-center z-20 invisible ipad:mt-24 ipad:h-fit ">
             <div className="header w-5/6 h-fit  text-center flex flex-col justify-center  items-center z-20">
               <Header
