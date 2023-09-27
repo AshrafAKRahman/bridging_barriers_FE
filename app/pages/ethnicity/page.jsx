@@ -114,7 +114,7 @@ const Ethnicity = () => {
       <img
         src="/loginBg.jpg"
         alt="login bg image"
-        className="object-cover h-screen w-screen horizontal:h-[200%] absolute"
+        className="object-cover h-screen w-screen horizontal:w-[200%] absolute"
       />
       {showParticles ? (
         <div className="w-full h-full z-20 text-center flex flex-col items-center justify-center">
@@ -137,7 +137,7 @@ const Ethnicity = () => {
       ) : (
         <Form onSubmit={handleSignIn}>
           <div className="form w-full h-full flex flex-col items-center justify-center ">
-            <div className="bg bg-black opacity-60 absolute h-5/6 w-11/12 rounded-2xl mb-5 md:mb-0 md:w-9/12 md:h-4/5  z-10 ipad:w-3/5 ipad:h-4/6 invisible"></div>
+            <div className="bg bg-black opacity-60 absolute h-5/6 w-11/12 rounded-2xl mb-5 md:mb-0 md:w-9/12 md:h-4/5  z-10 ipad:w-5/6 ipad:h-4/6 invisible"></div>
 
             <>
               <div className="headerContainer w-full h-1/3 mt-24 flex-col flex  justify-center  items-center z-20 md:w-2/3 invisible  ">

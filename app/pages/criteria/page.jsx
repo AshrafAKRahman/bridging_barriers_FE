@@ -185,9 +185,9 @@ const Criteria = () => {
       />
       <Form>
         <div className="form w-full h-full flex flex-col items-center justify-center">
-          <div className="bg bg-black opacity-60 absolute h-5/6 w-11/12 rounded-2xl mb-5 md:mb-0 md:w-9/12 md:h-4/5  z-10 ipad:w-3/5 ipad:h-4/6 invisible"></div>
-          <div className="headerContainer md:w-2/3 w-full h-2/6 mt-10 flex-col flex items-center justify-center z-20 invisible  ">
-            <div className="header w-5/6 h-fit  text-center   flex flex-col justify-center  items-center z-20 ">
+          <div className="bg bg-black opacity-60 absolute h-5/6 w-11/12 rounded-2xl mb-5 md:mb-0 md:w-9/12 md:h-4/5  z-10 ipad:w-5/6 ipad:h-4/6 invisible"></div>
+          <div className="headerContainer md:w-2/3 w-full h-2/6 mt-10 flex-col flex items-center justify-center z-20 invisible ipad:mt-24 ipad:h-fit ">
+            <div className="header w-5/6 h-fit  text-center flex flex-col justify-center  items-center z-20">
               <Header
                 titleClassName="text-3xl text-white"
                 title="Criteria & Circumstances"
@@ -201,7 +201,7 @@ const Criteria = () => {
             </div>
           </div>
 
-          <div className="labelsContainer w-5/6 h-1/3 flex flex-col justify-center mt-10 z-30 md:w-4/6 md:p-8 ipad:w-5/6 horizontal:px-10 invisible  ">
+          <div className="labelsContainer w-5/6 h-1/3 flex flex-col justify-center mt-10 z-30 md:w-4/6 md:p-8 ipad:w-5/6 horizontal:px-10 invisible">
             <div
               className={`label w-full h-full flex flex-col justify-center md:w-full   ${
                 showInput ? "block" : "hidden"
@@ -275,7 +275,7 @@ const Criteria = () => {
             alt="sectors image"
             className="img absolute object-cover w-5/6 h-3/6 px-2 rounded-2xl md:w-11/12 md:h-5/6 invisible"
           />
-          <div className="btn h-24 w-full flex items-center justify-between  z-20 px-5 pt-2 md:h-fit md:w-full md:mt-5 md:px-24 invisible ">
+          <div className="btn h-24 w-full flex items-center justify-between z-20 px-5 pt-2 md:h-fit md:w-full md:mt-5 md:px-24 invisible">
             <Link className="mr-10" href="sector">
               <LargeButton
                 text="PREVIOUS"

@@ -74,11 +74,11 @@ const logIn = () => {
     }
   };
   return (
-    <div className="h-screen w-screen md:h-screen md:w-screen flex flex-col items-center justify-center horizontal:h-[200%] horizontal:py-10 ">
+    <div className="h-screen w-screen md:h-screen md:w-screen flex flex-col items-center justify-center horizontal:h-[200%]">
       <img
         src="/loginBg.jpg"
         alt="login bg image"
-        className="object-cover h-screen w-screen horizontal:h-[200%] absolute"
+        className="object-cover h-screen w-screen absolute"
       />
       <form
         onSubmit={handleSignIn}

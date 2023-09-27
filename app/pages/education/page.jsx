@@ -187,9 +187,9 @@ const Education = () => {
         className="object-cover h-screen w-screen horizontal:h-[200%] absolute"
       />
       <Form>
-        <div className="bg bg-black opacity-60 absolute z-10 h-[70%] w-11/12 rounded-2xl md:w-9/12 md:h-4/5 ipad:w-4/6 invisible"></div>
+        <div className="bg bg-black opacity-60 absolute z-10 h-[70%] w-11/12 rounded-2xl md:w-9/12 md:h-4/5 ipad:w-5/6 invisible"></div>
         <div className="form w-11/12 h-[70%] flex flex-col items-center md:w-9/12">
-          <div className="headerContainer w-full h-fit flex-col flex justify-center items-center text-center z-20 mt-5 mb-5 md:w-full md:h-fit md:-mt-5 invisible">
+          <div className="headerContainer w-full h-fit flex-col flex justify-center items-center text-center z-20 mt-5 mb-5 md:w-full md:h-fit md:-mt-5 ipad:mt-5 invisible">
             <div className="header w-5/6 h-fit z-20 invisible">
               <Header
                 title="Education details"
@@ -204,7 +204,7 @@ const Education = () => {
             </div>
           </div>
 
-          <div className="educationContainer h-fit w-full flex flex-col items-center  z-30 px-3 md:px-10 md:w-full md:h-2/3">
+          <div className="educationContainer h-fit w-full flex flex-col items-center  z-30 px-3 md:px-10 md:w-full md:h-2/3 ipad:mt-2">
             <div className="w-full flex justify-between mb-3 md:mb-5">
               <label>
                 <Header
@@ -308,7 +308,7 @@ const Education = () => {
             </div>
           </div>
 
-          <div className="addQuali flex flex-col justify-between z-10  cursor-pointer invisible">
+          <div className="addQuali flex flex-col justify-between z-10 cursor-pointer mb-5 invisible">
             <button
               className="text-white text-lg"
               onClick={(e) => {
@@ -319,7 +319,7 @@ const Education = () => {
             </button>
           </div>
 
-          <div className="moreEducation w-5/6 h-1/6 z-30 grid gap-2 grid-cols-2 grid-rows-2 md:w-3/6 bg-cyan-400">
+          <div className="moreEducation w-5/6 h-1/6 z-30 grid gap-2 grid-cols-2 grid-rows-2 md:w-5/6">
             {education &&
               education.map((value) => (
                 <div

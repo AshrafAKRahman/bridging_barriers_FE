@@ -91,15 +91,15 @@ const EmailLink = () => {
   }, []);
 
   return (
-    <div className="backdrop  w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 ipad:py-36 ipad:px-0 horizontal:h-[200%]">
+    <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-5 md:w-screen md:py-20 ipad:py-36 ipad:px-0 horizontal:py-5">
       <img
         src="/loginBg.jpg"
         alt="login bg image"
-        className="object-cover h-screen w-screen horizontal:h-[200%] absolute"
+        className="object-cover h-screen w-screen absolute"
       />
       <Form onSubmit={handleSignIn}>
         <div className="form h-full w-full flex flex-col justify-center items-center">
-          <div className="bg bg-black opacity-40 absolute z-10 h-[70%] w-5/6 rounded-2xl md:w-2/3 ipad:w-4/6  invisible"></div>
+          <div className="bg bg-black opacity-40 absolute z-10 h-[70%] w-5/6 rounded-2xl md:w-2/3 ipad:w-4/6 horizontal:h-5/6 invisible"></div>
           <div className="container w-4/5 h-4/5  flex flex-col justify-center items-center z-20 invisible">
             <div className="header h-1/3 pt-20 invisible ">
               <Header

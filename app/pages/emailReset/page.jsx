@@ -145,7 +145,7 @@ const EmailReset = () => {
                 />
               </div>
               <div className="emailContainer w-full h-2/3 flex flex-col items-center pt-10 invisible">
-                <div className="emailLabel invisible">
+                <div className="emailLabel text-center invisible">
                   <label className="text-white text-2xl " htmlFor="inline-emai">
                     Please enter your email address
                   </label>

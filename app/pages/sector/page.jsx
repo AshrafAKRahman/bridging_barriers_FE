@@ -103,7 +103,7 @@ const Sector = () => {
       />
       <Form>
         <div className="h-full w-full flex flex-col items-center justify-center">
-          <div className="bg bg-black opacity-60 absolute h-5/6 w-11/12 rounded-2xl mb-5 md:mb-0 md:w-9/12 md:h-4/5  z-10 ipad:w-3/5 ipad:h-4/6 invisible"></div>
+          <div className="bg bg-black opacity-60 absolute h-5/6 w-11/12 rounded-2xl mb-5 md:mb-0 md:w-9/12 md:h-4/5  z-10 ipad:w-4/5 ipad:h-11/12 invisible"></div>
           <div className="container w-full h-full flex flex-col items-center justify-center z-20">
             <div className="header w-full h-1/6 flex flex-col justify-center items-center mt-20  z-20 horizontal:mt-20 invisible">
               <Header
@@ -118,7 +118,7 @@ const Sector = () => {
               />
             </div>
 
-            <div className="sectors w-full h-1/2  flex flex-col justify-around items-center md:w-3/6 md:h-5/6 invisible">
+            <div className="sectors w-full h-1/2 flex flex-col justify-around items-center md:w-3/6 md:h-5/6 invisible">
               <div className="flex flex-col items-center justify-center ">
                 <div className="text-white">
                   <label>

@@ -234,7 +234,7 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="dropDownContainer w-5/6 h-fit flex flex-col justify-center items-center z-30 md:w-4/6 md:h-fit ipad:w-5/6 horizontal:w-4/6 horizontal:mt-10 invisible ">
+          <div className="dropDownContainer w-5/6 h-fit flex flex-col justify-center items-center z-30 md:w-4/6 md:h-fit ipad:w-3/4 horizontal:w-4/6 horizontal:mt-10 invisible ">
             <div
               className={`firstInput w-full h-full flex flex-col   ${
                 showInput ? "block" : "hidden"
@@ -466,7 +466,7 @@ const Profile = () => {
             alt="form igmage"
           />
 
-          <div className="btn flex justify-center place-items-center w-full h-1/4 z-30 mt-16 md:mt-5 horizontal:mt-10 ">
+          <div className="btn flex justify-center place-items-center w-full h-1/4 z-30 mt-16 md:mt-5 horizontal:mt-10 invisible">
             <Link href="education">
               <LargeButton
                 onClick={(e) => notify(e)}
