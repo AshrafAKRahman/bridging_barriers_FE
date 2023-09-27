@@ -11,9 +11,9 @@ import SubHeader from "../../components/subHeader/subHeader";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import InputField from "../../components/inputField/inputField";
 import { ToastContainer, toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const Profile = () => {
-  const { formData, setFormData, handleChange } = useFormContext();
   const { user, newUser } = UserAuth();
   const [loading, setLoading] = useState();
   const [genderInput, setGenderInput] = useState(false);
@@ -21,6 +21,8 @@ const Profile = () => {
   const [showSecondInput, setShowSecondInput] = useState(false);
   const moreFirstRender = useRef(true);
   const rightArrowFirstRender = useRef(true);
+  const { formData, setFormData, handleChange } = useFormContext();
+  const router = useRouter();
 
   useEffect(() => {
     if (typeof localStorage !== "undefined") {
@@ -72,7 +74,7 @@ const Profile = () => {
     ) {
       toast("Please complete all the fields");
     } else {
-      window.location.href = "/pages/education";
+      router.push("/pages/education");
     }
   };
 
@@ -255,7 +257,7 @@ const Profile = () => {
                   <InputField
                     name="firstName"
                     type={"text"}
-                    value={formData.firstName}
+                    value={formData.firstName || ""}
                     onChange={handleChange}
                     placeholder="Enter your first name"
                   />
@@ -274,7 +276,7 @@ const Profile = () => {
                   <InputField
                     name="surName"
                     type={"text"}
-                    value={formData.surName}
+                    value={formData.surName || ""}
                     onChange={handleChange}
                     placeholder="Enter your last name"
                   />
@@ -293,7 +295,7 @@ const Profile = () => {
                   <InputField
                     name="dob"
                     type={"date"}
-                    value={formData.dob}
+                    value={formData.dob || ""}
                     onChange={handleChange}
                   />
                 </div>
@@ -328,7 +330,7 @@ const Profile = () => {
                       <InputField
                         type="text"
                         name="otherGender"
-                        value={formData.otherGender}
+                        value={formData.otherGender || ""}
                         onChange={handleGenderOtherChange}
                         placeholder="Specify your gender"
                       />
@@ -356,7 +358,7 @@ const Profile = () => {
                   <InputField
                     type="text"
                     name="phone"
-                    value={formData.phone}
+                    value={formData.phone || ""}
                     onChange={handleChange}
                     placeholder="Please enter a UK number"
                   />
@@ -375,7 +377,7 @@ const Profile = () => {
                   <InputField
                     type="email"
                     name="email"
-                    value={formData.email}
+                    value={formData.email || ""}
                     onChange={handleChange}
                     placeholder="Please enter your Email"
                   />
@@ -394,7 +396,7 @@ const Profile = () => {
                   <InputField
                     type="password"
                     name="password"
-                    value={formData.password}
+                    value={formData.password || ""}
                     onChange={handleChange}
                     placeholder="min 8 charecters"
                   />

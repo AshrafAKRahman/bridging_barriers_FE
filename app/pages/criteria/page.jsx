@@ -11,8 +11,10 @@ import { gsap } from "gsap";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
 
 const Criteria = () => {
+  const router = useRouter();
   const [showInput, setShowInput] = useState(true);
   const [showSecondInput, setShowSecondInput] = useState(false);
   const { handleChange, formData } = useFormContext();
@@ -33,7 +35,7 @@ const Criteria = () => {
     if (checkedCheckboxes.length === 0) {
       toast("Please choose the option that applies");
     } else {
-      window.location.href = "/pages/ethnicity";
+      router.push("/pages/ethnicity");
     }
   };
   const handleCheckboxChange = (isChecked, label) => {
@@ -159,8 +161,6 @@ const Criteria = () => {
     leftArrow();
   }, [showSecondInput]);
 
-  console.log(formData);
-
   const labels = [
     "I have previously been eligible for free school meals or a bursary fund or equivalent",
     "Do you consider yourself to have a disability as defined by the Equality Act 2010?",
@@ -175,7 +175,7 @@ const Criteria = () => {
     "Are you, or have you been a parent or registered carer?",
     "None of the options are applicable",
   ];
-
+  console.log(formData);
   return (
     <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:py-5">
       <img

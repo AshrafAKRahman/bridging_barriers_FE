@@ -1,6 +1,5 @@
 "use client";
 import { createContext, useState, useEffect, useContext } from "react";
-import Criteria from "../pages/criteria/page";
 
 const FormContext = createContext({});
 
@@ -36,20 +35,18 @@ export const FormProvider = ({ children }) => {
     setLoading(false);
   }, []);
 
-  
-
   const educationUpdate = (e) => {
     setFormData((prevData) => ({
       ...prevData,
-      education: e.target.value
-    }))
-  }
+      education: e.target.value,
+    }));
+  };
   const handleChange = (e) => {
     // console.log(e.target.value, e.target.name)
     if (e.target.name === "education") {
       setFormData((prevData) => ({
         ...prevData,
-        education: [...formData.education, e.target.value]
+        education: [...formData.education, e.target.value],
       }));
     } else if (e.target.name === "email" || e.target.name === "password") {
       setFormData((prevData) => ({
@@ -70,7 +67,7 @@ export const FormProvider = ({ children }) => {
         formData,
         setFormData,
         handleChange,
-        educationUpdate
+        educationUpdate,
       }}
     >
       {children}
