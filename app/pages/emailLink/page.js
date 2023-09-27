@@ -130,7 +130,6 @@ const EmailLink = () => {
                 <LargeButton
                   type="submit"
                   text="SEND EMAIL"
-                  // onClick={handleSignIn}
                   className="text-center text-sm font-bold py-3 transform hover:scale-110 transition-transform shadow-xl bg-blue-500"
                 />
               </div>
@@ -144,7 +143,7 @@ const EmailLink = () => {
           </div>
 
           <img
-            className="img absolute object-cover w-5/6 h-3/6 px-2 rounded-2xl md:w-5/6 md:h-3/4 invisible"
+            className="img absolute object-cover w-5/6 h-3/6 px-2 rounded-2xl md:h-3/4 horizontal:h-[90%] invisible"
             src="/emailImg.jpg"
             alt="form igmage"
           />
