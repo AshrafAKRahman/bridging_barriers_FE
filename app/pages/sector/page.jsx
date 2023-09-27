@@ -10,8 +10,10 @@ import LargeButton from "../../components/buttons/largeButton";
 import { gsap } from "gsap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
 
 const Sector = () => {
+  const router = useRouter();
   const { formData, setFormData } = useFormContext();
   const [sectorInput, setSectorInput] = useState(false);
 
@@ -20,7 +22,7 @@ const Sector = () => {
     if (!formData.sectorOne || !formData.sectorTwo || !formData.sectorThree) {
       toast("Please choose 3 sectors");
     } else {
-      window.location.href = "/pages/criteria";
+      router.push("/pages/criteria");
     }
   };
 
@@ -93,7 +95,7 @@ const Sector = () => {
     revealAnim();
     revealContainer();
   }, []);
-
+  console.log(formData);
   return (
     <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:py-5">
       <img

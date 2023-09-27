@@ -109,6 +109,8 @@ const Ethnicity = () => {
       animateElements();
     }
   }, [showParticles]);
+
+  console.log(formData);
   return (
     <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:py-5">
       <img

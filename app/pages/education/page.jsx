@@ -14,8 +14,10 @@ import { AiFillEdit } from "react-icons/ai";
 import { v4 as uuidv4 } from "uuid";
 import SubHeader from "@/app/components/subHeader/subHeader";
 import { ToastContainer, toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const Education = () => {
+  const router = useRouter();
   const { formData, handleChange, educationUpdate } = useFormContext();
   const { education } = formData;
   const [educationData, setEducationData] = useState({
@@ -41,7 +43,7 @@ const Education = () => {
     if (currentQualifications.length === 0) {
       toast("Please add at least 1 qualification");
     } else {
-      window.location.href = "/pages/sector";
+      router.push("/pages/sector");
     }
   };
 
@@ -178,8 +180,8 @@ const Education = () => {
   }, []);
 
   console.log(educationData);
-
   console.log(education);
+  console.log(formData);
   return (
     <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:py-5">
       <img
