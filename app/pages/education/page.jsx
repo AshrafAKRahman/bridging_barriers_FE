@@ -35,7 +35,6 @@ const Education = () => {
     schoolName: "",
   });
 
-
   const notify = (e) => {
     e.preventDefault();
     const currentQualifications = formData.education || [];
@@ -45,7 +44,6 @@ const Education = () => {
       window.location.href = "/pages/sector";
     }
   };
-
 
   const addQualification = (e) => {
     e.preventDefault();
@@ -101,16 +99,6 @@ const Education = () => {
     });
   };
 
-  const cancelEdit = () => {
-    setEditEducation(null); // Hide the edit form
-    setEditedEducationData({ // Reset the edited data to its initial state
-      qualification: "",
-      subject: "",
-      status: "",
-      schoolName: "",
-    });
-  };
-  
   const educationEdit = (id) => {
     console.log(id);
     setEditEducation(id);
@@ -156,7 +144,6 @@ const Education = () => {
       schoolName: "",
     });
   };
-
 
   const reveal = () => {
     const FADE = gsap.timeline();
@@ -218,7 +205,7 @@ const Education = () => {
             </div>
           </div>
 
-          <div className="educationContainer h-fit w-full flex flex-col items-center  z-30 px-3 md:px-10 md:w-full md:h-2/3 ipad:mt-2">
+          <div className="educationContainer h-fit w-full flex flex-col items-center  z-30 px-3 md:px-10 md:w-full md:h-2/3 ipad:mt-2 invisible">
             <div className="w-full flex justify-between mb-3 md:mb-5">
               <label>
                 <Header
@@ -337,7 +324,6 @@ const Education = () => {
             {education &&
               education.map((value) => (
                 <div
-
                   className="addedQuali text-white z-30 w-full p-2 flex justify-between overflow-hidden bg-white bg-opacity-20 backdrop-blur-md rounded-md drop-shadow-lg"
                   key={value.id}
                 >
@@ -350,7 +336,7 @@ const Education = () => {
               ))}
           </div>
         </div>
-        <div className="btn absolute translate-y-2/3 mt-20 h-1/3 w-full flex place-items-end justify-between px-5 md:px-24 md:w-full md:h-1/3 md:mt-36 ">
+        <div className="btn absolute translate-y-2/3 mt-20 h-1/3 w-full flex place-items-end justify-between px-5 md:px-24 md:w-full md:h-1/3 md:mt-36 invisible">
           <Link className="" href="profile">
             <LargeButton
               text="PREVIOUS"
@@ -487,7 +473,6 @@ const Education = () => {
           </form>
         </div>
       )}
-
     </div>
   );
 };
