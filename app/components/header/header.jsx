@@ -10,7 +10,11 @@ const Header = ({ title, titleClassName }) => {
   return (
     <div className={asap.className}>
       <header>
-        <h1 className={`${titleClassName} tracking-wide font-bold`}>{title}</h1>
+        <h1
+          className={`${titleClassName} tracking-wide font-bold horizontal:text-lg `}
+        >
+          {title}
+        </h1>
       </header>
     </div>
   );

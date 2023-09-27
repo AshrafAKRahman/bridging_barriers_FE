@@ -207,16 +207,16 @@ const Profile = () => {
   }, [user]);
 
   return (
-    <div className="backdrop  w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-12 ipad:py-36 ipad:px-0 horizontal:h-[200%]">
+    <div className="backdrop  w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-12 ipad:py-36 ipad:px-0 horizontal:py-5">
       <img
         src="/loginBg.jpg"
         alt="login bg image"
-        className="object-cover h-screen w-screen horizontal:h-[200%] absolute"
+        className="object-cover h-screen w-screen absolute"
       />
       <Form>
         <div className="form w-full h-full flex flex-col items-center justify-center">
-          <div className="bg bg-black opacity-50 absolute z-10 h-[70%] w-11/12 rounded-2xl md:w-2/3 ipad:w-4/6 invisible"></div>
-          <div className="headerContainer w-full h-1/3 mt-36 flex-col flex  justify-center place-items-end items-center z-20 md:w-2/3 invisible ">
+          <div className="bg bg-black opacity-50 absolute z-10 h-[70%] w-11/12 rounded-2xl md:w-2/3 ipad:w-4/6 horizontal:h-3/4 invisible"></div>
+          <div className="headerContainer w-full h-1/3 mt-36 flex-col flex  justify-center place-items-end items-center z-20 md:w-2/3 horizontal:mt-28 invisible ">
             <div
               className="header w-5/6 h-fit  text-center   flex flex-col justify-center items-center z-20
             "
@@ -234,7 +234,7 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="dropDownContainer w-5/6 h-fit flex flex-col justify-center items-center z-30 md:w-4/6 md:h-fit ipad:w-3/4 horizontal:w-4/6 horizontal:mt-10 invisible ">
+          <div className="dropDownContainer w-5/6 h-fit flex flex-col justify-center items-center z-30 md:w-4/6 md:h-fit ipad:w-3/4 invisible ">
             <div
               className={`firstInput w-full h-full flex flex-col   ${
                 showInput ? "block" : "hidden"
@@ -428,7 +428,7 @@ const Profile = () => {
                 </div>
               </div>
             </div>
-            <div className="moreBtn z-30 h-fit w-full flex items-center justify-center md:w-1/4">
+            <div className="moreBtn z-30 h-fit w-full flex items-center justify-center md:w-1/4 horizontal:mb-5">
               <div className="w-full h-fit flex items center justify-center ">
                 <button
                   className="text-white"
@@ -461,12 +461,12 @@ const Profile = () => {
           </div>
 
           <img
-            className="img absolute object-cover w-5/6 h-3/6 px-2 rounded-2xl md:w-11/12 md:h-4/5 horizontal:h-5/6 invisible"
+            className="img absolute object-cover w-5/6 h-3/6 px-2 rounded-2xl md:w-11/12 md:h-4/5 invisible"
             src="/profileImg.jpg"
             alt="form igmage"
           />
 
-          <div className="btn flex justify-center place-items-center w-full h-1/4 z-30 mt-16 md:mt-5 horizontal:mt-10 invisible">
+          <div className="btn flex justify-center place-items-center w-full h-1/4 z-30 mt-16 md:mt-5 horizontal:mb-10 invisible">
             <Link href="education">
               <LargeButton
                 onClick={(e) => notify(e)}

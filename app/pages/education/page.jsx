@@ -181,16 +181,17 @@ const Education = () => {
 
   console.log(education);
   return (
-    <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:h-[200%] ">
+    <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:py-5">
       <img
         src="/loginBg.jpg"
         alt="login bg image"
-        className="object-cover h-screen w-screen horizontal:h-[200%] absolute"
+        className="object-cover h-screen w-screen horizontal:h-[150%] absolute"
       />
       <Form>
-        <div className="bg bg-black opacity-60 absolute z-10 h-[70%] w-11/12 rounded-2xl md:w-9/12 md:h-4/5 ipad:w-5/6 invisible"></div>
+        <div className="bg bg-black opacity-60 absolute z-10 h-[70%] w-11/12 rounded-2xl md:w-9/12 md:h-4/5 ipad:w-5/6 horizontal:h-3/4 invisible"></div>
+
         <div className="form w-11/12 h-[70%] flex flex-col items-center md:w-9/12">
-          <div className="headerContainer w-full h-fit flex-col flex justify-center items-center text-center z-20 mt-5 mb-5 md:w-full md:h-fit md:-mt-5 ipad:mt-5 invisible">
+          <div className="headerContainer w-full h-fit flex-col flex justify-center items-center text-center z-20 mt-5 mb-5 md:w-full md:h-fit md:-mt-5 ipad:mt-5 horizontal:mt-6 invisible">
             <div className="header w-5/6 h-fit z-20 invisible">
               <Header
                 title="Education details"
@@ -205,138 +206,143 @@ const Education = () => {
             </div>
           </div>
 
-          <div className="educationContainer h-fit w-full flex flex-col items-center  z-30 px-3 md:px-10 md:w-full md:h-2/3 ipad:mt-2 invisible">
-            <div className="w-full flex justify-between mb-3 md:mb-5">
-              <label>
-                <Header
-                  title="Subject"
-                  titleClassName="text-white text-lg md:text-2xl"
-                />
-              </label>
+          <div className="h-full w-full flex items-center flex-col  z-30 horizontal:flex-row horizontal:justify-between horizontal:h-fit horizontal:px-4">
+            <div className="educationContainer h-fit w-full flex flex-col items-center z-30 px-3 md:px-10 md:w-full md:h-2/3 ipad:mt-2 horizontal:w-5/6 horizontal:mr-20 horizontal:mt-0 horizontal:mb-24 invisible">
+              <div className="w-full flex justify-between mb-3 md:mb-5">
+                <label>
+                  <Header
+                    title="Subject"
+                    titleClassName="text-white text-lg md:text-2xl"
+                  />
+                </label>
 
-              <InputField
-                name="subject"
-                type={"text"}
-                value={educationData.subject}
-                onChange={(e) =>
-                  setEducationData({
-                    ...educationData,
-                    subject: e.target.value,
-                  })
-                }
-                placeholder="Enter Subject"
-              />
-            </div>
-            <div className="w-full flex justify-between mb-3 md:mb-5 ">
-              <label>
-                <Header
-                  title="Qualification"
-                  titleClassName="text-white text-lg md:text-2xl"
+                <InputField
+                  name="subject"
+                  type={"text"}
+                  value={educationData.subject}
+                  onChange={(e) =>
+                    setEducationData({
+                      ...educationData,
+                      subject: e.target.value,
+                    })
+                  }
+                  placeholder="Enter Subject"
                 />
-              </label>
-              <InputField
-                name="qualification"
-                type={"text"}
-                value={educationData.qualification}
-                onChange={(e) =>
-                  setEducationData({
-                    ...educationData,
-                    qualification: e.target.value,
-                  })
-                }
-                placeholder="Enter qualification"
-              />
-            </div>
-            <div className="w-full flex justify-between mb-3 md:mb-5">
-              <label>
-                <Header
-                  title="Status"
-                  titleClassName="text-white text-lg md:text-2xl"
+              </div>
+              <div className="w-full flex justify-between mb-3 md:mb-5 ">
+                <label>
+                  <Header
+                    title="Qualification"
+                    titleClassName="text-white text-lg md:text-2xl"
+                  />
+                </label>
+                <InputField
+                  name="qualification"
+                  type={"text"}
+                  value={educationData.qualification}
+                  onChange={(e) =>
+                    setEducationData({
+                      ...educationData,
+                      qualification: e.target.value,
+                    })
+                  }
+                  placeholder="Enter qualification"
                 />
-              </label>
-              <InputField
-                name="status"
-                type={"text"}
-                value={educationData.status}
-                onChange={(e) =>
-                  setEducationData({
-                    ...educationData,
-                    status: e.target.value,
-                  })
-                }
-                placeholder="Achieved/predicted"
-              />
-            </div>
-            <div className="w-full flex justify-between mb-3 md:mb-5">
-              <label>
-                <Header
-                  title="Date"
-                  titleClassName="text-white text-lg md:text-2xl"
+              </div>
+              <div className="w-full flex justify-between mb-3 md:mb-5">
+                <label>
+                  <Header
+                    title="Status"
+                    titleClassName="text-white text-lg md:text-2xl"
+                  />
+                </label>
+                <InputField
+                  name="status"
+                  type={"text"}
+                  value={educationData.status}
+                  onChange={(e) =>
+                    setEducationData({
+                      ...educationData,
+                      status: e.target.value,
+                    })
+                  }
+                  placeholder="Achieved/predicted"
                 />
-              </label>
+              </div>
+              <div className="w-full flex justify-between mb-3 md:mb-5">
+                <label>
+                  <Header
+                    title="Date"
+                    titleClassName="text-white text-lg md:text-2xl"
+                  />
+                </label>
 
-              <InputField
-                name="date"
-                type={"date"}
-                value={educationData.date}
-                onChange={(e) =>
-                  setEducationData({
-                    ...educationData,
-                    date: e.target.value,
-                  })
-                }
-              />
-            </div>
-            <div className="w-full flex justify-between mb-3 md:mb-5">
-              <label>
-                <Header
-                  title="School / Uni"
-                  titleClassName="text-white text-lg md:text-2xl"
+                <InputField
+                  name="date"
+                  type={"date"}
+                  value={educationData.date}
+                  onChange={(e) =>
+                    setEducationData({
+                      ...educationData,
+                      date: e.target.value,
+                    })
+                  }
                 />
-              </label>
-              <InputField
-                name="schoolName"
-                type="text"
-                value={educationData.schoolName}
-                onChange={(e) =>
-                  setEducationData({
-                    ...educationData,
-                    schoolName: e.target.value,
-                  })
-                }
-                placeholder="School / Uni achieved grade at"
-              />
+              </div>
+              <div className="w-full flex justify-between mb-3 md:mb-5">
+                <label>
+                  <Header
+                    title="School / Uni"
+                    titleClassName="text-white text-lg md:text-2xl"
+                  />
+                </label>
+                <InputField
+                  name="schoolName"
+                  type="text"
+                  value={educationData.schoolName}
+                  onChange={(e) =>
+                    setEducationData({
+                      ...educationData,
+                      schoolName: e.target.value,
+                    })
+                  }
+                  placeholder="School / Uni achieved grade at"
+                />
+              </div>
             </div>
-          </div>
-
-          <div className="addQuali flex flex-col justify-between z-10 cursor-pointer mb-5 invisible">
-            <button
-              className="text-white text-lg"
-              onClick={(e) => {
-                addQualification(e);
-              }}
-            >
-              Add Qualification
-            </button>
-          </div>
-
-          <div className="moreEducation w-5/6 h-1/6 z-30 grid gap-2 grid-cols-2 grid-rows-2 md:w-5/6">
-            {education &&
-              education.map((value) => (
-                <div
-                  className="addedQuali text-white z-30 w-full p-2 flex justify-between overflow-hidden bg-white bg-opacity-20 backdrop-blur-md rounded-md drop-shadow-lg"
-                  key={value.id}
+            <div className="h-full w-full flex flex-col items-center justify-center horizontal:flex horizontal:flex-col horizontal:h-fit ">
+              <div className="addQuali flex flex-col justify-between z-10 cursor-pointer mb-5 invisible">
+                <button
+                  className="text-white text-lg"
+                  onClick={(e) => {
+                    addQualification(e);
+                  }}
                 >
-                  {value.subject}
-                  <div className="text-white text-sm" key={value.id}>
-                    <MdDelete onClick={(e) => removeQualification(value.id)} />
-                    <AiFillEdit onClick={(e) => educationEdit(value.id)} />
-                  </div>
-                </div>
-              ))}
+                  Add Qualification
+                </button>
+              </div>
+
+              <div className="moreEducation w-5/6 h-4/5 z-30 grid gap-2 grid-cols-2 grid-rows-2 md:w-5/6 md:h-4/5 horizontal:grid-cols-1 horizontal:mb-16 ">
+                {education &&
+                  education.map((value) => (
+                    <div
+                      className="addedQuali text-white z-30 w-full p-2 flex justify-between overflow-hidden bg-white bg-opacity-20 backdrop-blur-md rounded-md drop-shadow-lg"
+                      key={value.id}
+                    >
+                      {value.subject}
+                      <div className="text-white text-sm" key={value.id}>
+                        <MdDelete
+                          onClick={(e) => removeQualification(value.id)}
+                        />
+                        <AiFillEdit onClick={(e) => educationEdit(value.id)} />
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </div>
           </div>
         </div>
-        <div className="btn absolute translate-y-2/3 mt-20 h-1/3 w-full flex place-items-end justify-between px-5 md:px-24 md:w-full md:h-1/3 md:mt-36 invisible">
+        <div className="btn absolute translate-y-2/3 mt-[180%] h-fit w-full flex place-items-end justify-between px-5 z-30 md:px-24 md:w-full md:h-fit md:mt-[70%]  horizontal:h-fit horizontal:mt-96 invisible">
           <Link className="" href="profile">
             <LargeButton
               text="PREVIOUS"
@@ -359,7 +365,7 @@ const Education = () => {
         <ToastContainer />
       </Form>
       {editEducation !== null && (
-        <div className="bg-white p-4 px-8 bg-opacity-10 backdrop-blur-md rounded-md drop-shadow-lg  z-30 absolute md:w-2/6">
+        <div className="bg-white p-4 px-8 bg-opacity-10 backdrop-blur-md rounded-md drop-shadow-lg  z-30 absolute md:w-2/6 horizontal:w-3/6">
           <h2 className="text-xl font-semibold mb-2 text-gray-200">
             Edit Education
           </h2>

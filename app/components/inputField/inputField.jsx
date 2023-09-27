@@ -5,7 +5,7 @@ const InputField = (props) => {
   return (
     <div>
       <input
-        className="bg-gray-200 rounded-lg w-36 py-1 px-1 md:py-2 md:px-2 text-gray-700 border border-white md:w-60 "
+        className="bg-gray-200 rounded-lg w-36 py-1 px-1 md:py-2 md:px-2 text-gray-700 border border-white md:w-60 horizontal:h-8 "
         id="inline-firstName"
         type={type}
         name={name}
