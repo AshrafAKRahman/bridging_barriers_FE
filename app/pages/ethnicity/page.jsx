@@ -126,8 +126,8 @@ const Ethnicity = () => {
             <Header
               title={
                 <>
-                  Thank you for completing the sign up process, you can now{" "}
-                  <Link href="login">Login</Link> here
+                  Thank you for completing the sign-up process, you can now{" "}
+                  <Link href="login">Login 👉🏽 HERE</Link> 👈🏽
                 </>
               }
               titleClassName="text-3xl text-gray-700 "
