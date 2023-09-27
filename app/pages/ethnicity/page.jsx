@@ -29,10 +29,10 @@ const Ethnicity = () => {
     try {
       await newUser(formData.email, formData.password);
       console.log("handleSignIn function called");
+      setShowParticles(true);
     } catch (error) {
       console.log("Error");
     }
-    setShowParticles(true);
   };
 
   useEffect(() => {
@@ -110,7 +110,7 @@ const Ethnicity = () => {
     }
   }, [showParticles]);
   return (
-    <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:h-[200%]">
+    <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:py-5">
       <img
         src="/loginBg.jpg"
         alt="login bg image"
@@ -118,6 +118,7 @@ const Ethnicity = () => {
       />
       {showParticles ? (
         <div className="w-full h-full z-20 text-center flex flex-col items-center justify-center">
+          <div className="z-30"></div>
           <div className="bg bg-white bg-opacity-40 backdrop-blur-md  absolute h-5/6 w-11/12 rounded-2xl mb-5 md:mb-0 md:w-1/3 md:h-1/2 ipad:w-3/5 ipad:h-4/6 "></div>
           <div className="headerFinal w-4/6 h-fit text-center md:w-1/4 z-10 invisible">
             <Header
@@ -130,9 +131,7 @@ const Ethnicity = () => {
               titleClassName="text-3xl text-gray-700 "
             />
           </div>
-          <div className="z-20">
-            <ParticlesBtn />
-          </div>
+          <ParticlesBtn />
         </div>
       ) : (
         <Form onSubmit={handleSignIn}>

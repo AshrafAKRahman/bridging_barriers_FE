@@ -23,7 +23,7 @@ const EmailSent = () => {
   }, []);
 
   return (
-    <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 ipad:py-36 ipad:px-0 horizontal:w-full">
+    <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-5  md:w-screen md:py-20 ipad:py-36 ipad:px-0 horizontal:py-5">
       <img
         src="/loginBg.jpg"
         alt="login bg image"
@@ -31,8 +31,8 @@ const EmailSent = () => {
       />
       <Form>
         <div className="w-full h-full flex flex-col justify-evenly items-center horizontal:w-full horizontal:h-3/4">
-          <div className="bg bg-black opacity-50 absolute z-10 h-[70%] w-5/6 rounded-2xl md:w-2/3 ipad:w-4/6 horizontal:h-5/6 invisible"></div>
-          <div className="h-1/2 w-full flex justify-center place-items-end mb-5 z-20 mt-10 md:mt-0 md:w-96 md:h-1/2 horizontal:items-center">
+          <div className="bg bg-black opacity-50 absolute z-10 h-[70%] w-5/6 rounded-2xl md:w-2/3 ipad:w-4/6 horizontal:h-4/6 invisible"></div>
+          <div className="h-1/2 w-full flex justify-center place-items-end mb-5 z-20 mt-10 md:mt-0 md:w-96 md:h-1/2 horizontal:">
             <img
               className="logo h-14 w-30 invisible md:h-24 md:w-30 z-20"
               src="/logo.png"
