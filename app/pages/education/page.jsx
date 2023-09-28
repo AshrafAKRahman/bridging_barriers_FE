@@ -7,7 +7,6 @@ import { useState } from "react";
 import { useFormContext } from "../../context/FormContext";
 import InputField from "../../components/inputField/inputField";
 import LargeButton from "../../components/buttons/largeButton";
-import ParticlesBg from "../../components/particles/Particles";
 import gsap from "gsap";
 import { MdDelete } from "react-icons/md";
 import { AiFillEdit } from "react-icons/ai";
@@ -192,7 +191,7 @@ const Education = () => {
       />
       <Form>
         <div className="bg bg-black opacity-60 absolute z-10 h-[70%] w-11/12 rounded-2xl md:w-9/12 md:h-4/5 ipad:w-5/6 horizontal:h-3/4 invisible"></div>
-
+        <ToastContainer />
         <div className="form w-11/12 h-[70%] flex flex-col items-center md:w-9/12">
           <div className="headerContainer w-full h-fit flex-col flex justify-center items-center text-center z-20 mt-5 mb-5 md:w-full md:h-fit md:-mt-5 ipad:mt-5 horizontal:mt-6 invisible">
             <div className="header w-5/6 h-fit z-20 invisible">
@@ -365,7 +364,6 @@ const Education = () => {
           alt="certificate image"
           className="img absolute object-cover w-5/6 h-3/6 px-2 rounded-2xl md:w-11/12 md:h-5/6 -z-10 invisible"
         />
-        <ToastContainer />
       </Form>
       {editEducation !== null && (
         <div className="bg-white p-4 px-8 bg-opacity-10 backdrop-blur-md rounded-md drop-shadow-lg  z-30 absolute md:w-2/6 horizontal:w-3/6">
