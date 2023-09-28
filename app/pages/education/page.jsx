@@ -183,7 +183,7 @@ const Education = () => {
   console.log(education);
   console.log(formData);
   return (
-    <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:py-5">
+    <div className="backdrop w-screen h-screen flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:py-5 horizontal:overflow-x-scroll ">
       <img
         src="/loginBg.jpg"
         alt="login bg image"
@@ -313,7 +313,7 @@ const Education = () => {
               </div>
             </div>
             <div className="h-full w-full flex flex-col items-center justify-center horizontal:flex horizontal:flex-col horizontal:h-fit ">
-              <div className="addQuali flex flex-col justify-between z-10 cursor-pointer mb-5 invisible">
+              <div className="addQuali flex flex-col justify-between z-10 cursor-pointer mb-5 md: mt-10 ipad:mt-10 invisible">
                 <button
                   className="text-white text-lg"
                   onClick={(e) => {
