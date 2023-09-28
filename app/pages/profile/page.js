@@ -11,6 +11,7 @@ import SubHeader from "../../components/subHeader/subHeader";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import InputField from "../../components/inputField/inputField";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
 
 const Profile = () => {
