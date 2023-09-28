@@ -16,7 +16,7 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const actionCodeSettings = {
-    url: "https://bridging-barriers-fe-s6wp.vercel.app/pages/profile",
+    url: "https://bridging-barriers-fe-yvr8.vercel.app/pages/profile",
     handleCodeInApp: true,
     iOSBundleId: "com.example.ios",
     androidPackageName: "com.example.android",
