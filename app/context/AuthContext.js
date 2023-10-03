@@ -16,7 +16,9 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const actionCodeSettings = {
-    url: "http://localhost:3000/profile",
+
+    url: "https://bridging-barriers-fe-yvr8.vercel.app/pages/profile",
+
     handleCodeInApp: true,
     iOSBundleId: "com.example.ios",
     androidPackageName: "com.example.android",
@@ -26,7 +28,11 @@ export const AuthContextProvider = ({ children }) => {
 
   const resetPassword = (email) => {
     sendPasswordResetEmail(auth, email).then(() => {
+
+      console.log("password reset email link sent");
+
       alert("password reset email link sent");
+
     });
   };
   const sendEmailLink = (email) => {
