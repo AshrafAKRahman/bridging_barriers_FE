@@ -64,6 +64,7 @@ export default function Home() {
   }, []);
 
   return (
+
     <div className="backdrop w-screen h-full absolute bg-blue-400 z-20 horizontal:h-[200%]  horizontal:w-full invisible">
       <Navbar />
 
@@ -126,5 +127,6 @@ export default function Home() {
         </div>
       </div>
     </div>
+
   );
 }
