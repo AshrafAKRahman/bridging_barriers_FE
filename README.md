@@ -19,7 +19,7 @@ This project is open source and welcomes contributors who are passionate about s
 ## Tech Stack
 
 - **Front-end Framework:** Next.js
-- **Project Management:** Trello
+- **Project Management:** Trello / Miro
 - **Component Tree Visualization:** Draw.io
 - **Back-end Framework:** Node.js
 - **Unit Testing:** Jest, Supertest
