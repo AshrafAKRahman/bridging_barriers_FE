@@ -20,7 +20,7 @@ This project is open source and welcomes contributors who are passionate about s
 ## Tech Stack
 
 - **Front-end Framework:** Next.js
-- **Project Management:** Trello
+- **Project Management:** Trello / Miro
 - **Component Tree Visualization:** Draw.io
 - **Back-end Framework:** Node.js
 - **Unit Testing:** Jest, Supertest
@@ -29,7 +29,7 @@ This project is open source and welcomes contributors who are passionate about s
 - **Database:** Amazon DB (PostgreSQL)
 - **Deployment:** Render.com
 - **Hosting:** AWS
-- **SSL Encryption:** Implemented
+- **SSL Encryption:** In project brief
 - **GitHub Strategy:**
   The project follows a GitHub-based workflow for version control and collaboration. It includes the following branches:
 
