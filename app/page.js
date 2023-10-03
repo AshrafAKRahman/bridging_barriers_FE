@@ -100,13 +100,13 @@ export default function Home() {
           <div className="largeBtn mt-10  flex justify-around w-full  invisible md:flex md:justify-around md:w-full md:mb-16 lg:mt-32 ">
             <Link href="/pages/emailLink">
               <LargeButton
-                className="bg-blue-500 hover:bg-blue-700"
+                className="bg-green-500 hover:bg-blue-700"
                 text="CREATE PROFILE "
               />
             </Link>
             <Link href="/pages/login">
               <LargeButton
-                className="bg-blue-500 hover:bg-blue-700"
+                className="bg-green-500 hover:bg-blue-700"
                 text="LOGIN"
               />
             </Link>
