@@ -28,7 +28,7 @@ This project is open source and welcomes contributors who are passionate about s
 - **Database:** Amazon DB (PostgreSQL)
 - **Deployment:** Render.com
 - **Hosting:** AWS
-- **SSL Encryption:** Implemented
+- **SSL Encryption:** In project brief
 - **GitHub Strategy:**
   The project follows a GitHub-based workflow for version control and collaboration. It includes the following branches:
 
