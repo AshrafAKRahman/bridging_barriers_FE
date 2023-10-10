@@ -2,14 +2,21 @@ import React from "react";
 import LargeButton from "../../components/buttons/largeButton";
 import Header from "../../components/header/header";
 import Image from "next/legacy/image";
+import Navbar from "@/app/components/navbar/navbar";
+import Footer from "@/app/components/footer/footer";
 
 const LogedIn = () => {
   return (
-    <div className="relative">
-      <Header
-        titleClassName="text-3xl absolute left-0 right-10 top-10 transform translate-x-6 translate-y-58 text-white"
-        title="Welcome to the Logged in Page"
-      />
+    <div>
+      <Navbar />
+      <div className="backdrop flex flex-col items-center justify-center py-10 md:py-12 ipad:py-36 ipad:px-0 horizontal:py-5">
+        <img
+          src="/loginBg.jpg"
+          alt="login bg image"
+          className="object-cover h-screen w-screen"
+        />
+      </div>
+      <Footer />
     </div>
   );
 };
