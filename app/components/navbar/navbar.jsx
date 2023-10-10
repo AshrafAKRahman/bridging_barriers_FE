@@ -141,7 +141,7 @@ const Navbar = () => {
       )}
       {/* mobile view */}
       {open ? (
-        <div className="bg md:hidden flex flex-col items-end  bg-teal-600 bg-opacity-20 backdrop-blur-md rounded-md drop-shadow-lg">
+        <div className="bg w-full h-[350%] flex flex-col items-end bg-teal-300 bg-opacity-20 backdrop-blur-md rounded-md drop-shadow-lg absolute md:hidden">
           <div className="w-fit">
             {user
               ? // Render navigation links if user is logged in
