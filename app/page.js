@@ -6,7 +6,7 @@ import SubHeader from "./components/subHeader/subHeader";
 import LargeButton from "./components/buttons/largeButton";
 import { Raleway } from "next/font/google";
 import { gsap } from "gsap";
-import Navbar from "./components/navBar/navBar";
+import Navbar from "./components/navbar/navBar";
 import Link from "next/link";
 
 const raleway = Raleway({
@@ -64,7 +64,6 @@ export default function Home() {
   }, []);
 
   return (
-
     <div className="backdrop w-screen h-full absolute bg-blue-400 z-20 horizontal:h-[200%]  horizontal:w-full invisible">
       <Navbar />
 
@@ -101,13 +100,13 @@ export default function Home() {
           <div className="largeBtn mt-10  flex justify-around w-full  invisible md:flex md:justify-around md:w-full md:mb-16 lg:mt-32 ">
             <Link href="/pages/emailLink">
               <LargeButton
-                className="bg-green-500 hover:bg-blue-700"
+                className="bg-blue-500 hover:bg-blue-700"
                 text="CREATE PROFILE "
               />
             </Link>
             <Link href="/pages/login">
               <LargeButton
-                className="bg-green-500 hover:bg-blue-700"
+                className="bg-blue-500 hover:bg-blue-700"
                 text="LOGIN"
               />
             </Link>
@@ -127,6 +126,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-
   );
 }

@@ -286,7 +286,7 @@ const Criteria = () => {
               <LargeButton
                 onClick={(e) => notify(e)}
                 text="NEXT"
-                className="bg-blue-500 hover:bg-blue-700"
+                className="bg-red-500 hover:bg-blue-700"
               />
             </Link>
           </div>
