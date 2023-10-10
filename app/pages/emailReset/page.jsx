@@ -153,7 +153,7 @@ const EmailReset = () => {
                 <div className="emailInput mt-5 invisible">
                   <input
                     className="bg-gray-200 w-full px-2 py-2 md:py-4 md:px-4 text-center text-gray-700 border border-black"
-                    id="inline-email"
+                    id="email"
                     type="email"
                     name="email"
                     value={email.email}

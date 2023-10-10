@@ -68,6 +68,7 @@ const logIn = () => {
     } else {
       try {
         await signIn(logInData.email, logInData.password);
+        router.push("/pages/loggedIn");
       } catch (error) {
         console.log(error, "Error here");
       }
@@ -103,7 +104,7 @@ const logIn = () => {
           <div className="emailInput mt-5 ipad:mt-16 ipad:w-full invisible">
             <input
               className="bg-gray-200 w-full px-2 py-2 text-center text-gray-700 border border-black md:py-4 md:px-4  ipad:w-3/4 "
-              id="inline-email"
+              id="email"
               type="email"
               name="email"
               value={logInData.email}
@@ -114,7 +115,7 @@ const logIn = () => {
           <div className="emailInput mt-5 ipad:w-full invisible">
             <input
               className="bg-gray-200 w-full px-2 py-2 text-center text-gray-700 border border-black md:py-4 md:px-4  ipad:w-3/4 "
-              id="inline-email"
+              id="password"
               type="password"
               name="password"
               value={logInData.password}
@@ -127,7 +128,7 @@ const logIn = () => {
             <LargeButton
               type="submit"
               text="LOGIN"
-              // onClick={handleSignIn}
+              onClick={handleSignIn}
               className="text-center text-sm font-bold py-3 transform hover:scale-110 transition-transform shadow-xl bg-blue-500"
             />
           </div>

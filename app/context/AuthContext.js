@@ -9,6 +9,7 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth";
 import { auth } from "../firebase.config";
+import { resolve } from "styled-jsx/css";
 
 const AuthContext = createContext();
 
@@ -17,6 +18,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const actionCodeSettings = {
     url: "https://bridging-barriers-fe-yvr8.vercel.app/pages/profile",
+
     handleCodeInApp: true,
     iOSBundleId: "com.example.ios",
     androidPackageName: "com.example.android",
@@ -27,6 +29,8 @@ export const AuthContextProvider = ({ children }) => {
   const resetPassword = (email) => {
     sendPasswordResetEmail(auth, email).then(() => {
       console.log("password reset email link sent");
+
+      alert("password reset email link sent");
     });
   };
   const sendEmailLink = (email) => {
@@ -54,16 +58,20 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   const signIn = (email, password) => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        setUser(userCredential.user);
-        console.log("this function has run");
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-      });
+    return new Promise((resolve, reject) => {
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          setUser(userCredential.user);
+          console.log("this function has run");
+          resolve();
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage);
+          reject(error);
+        });
+    });
   };
 
   const logOut = () => {
