@@ -1,165 +1,42 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { UserAuth } from "../../context/AuthContext";
 import { gsap } from "gsap";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { useRouter } from "next/navigation";
-import LargeButton from "../buttons/largeButton";
 import NormalButton from "../buttons/normalButton";
+import Image from "next/legacy/image";
+import Link from "next/link";
+import React, { useEffect } from "react";
+import LargeButton from "../buttons/largeButton";
 
 const Navbar = () => {
-  const { user, logOut } = UserAuth();
-  const [loading, setLoading] = useState(false);
-  const [open, setOpen] = useState(false);
-  const router = useRouter();
+  useEffect(() => {
+    const revealAnim = () => {
+      const TLFADE = gsap.timeline();
 
-  const handleMenu = () => {
-    setOpen((prev) => !prev);
-    console.log(open);
-  };
-
-  const handleSignOut = async () => {
-    try {
-      await logOut();
-      console.log("Logged out successfully");
-      window.location.href = "/";
-    } catch (error) {
-      console.log("error");
-    }
-  };
-  const navlinks = [
-    {
-      title: "HOME",
-      link: "/",
-    },
-    {
-      title: "BLOGS",
-      link: "/pages/blog",
-    },
-    {
-      title: "EVENTS",
-      link: "/pages/events",
-    },
-    {
-      title: "CAREERS",
-      link: "/pages/careers",
-    },
-  ];
-
-  const revealAnim = () => {
-    const TLFADE = gsap.timeline();
-    TLFADE.from(".nav-link", {
-      autoAlpha: 0,
-      y: -50,
-      stagger: 0.5,
-    });
-  };
-
-  const animateHamburgerMenu = () => {
-    gsap.from(".title, .btn", {
-      autoAlpha: 0,
-      y: -50,
-    });
-  };
-
-  const animateMobileLinks = () => {
-    if (open) {
-      gsap.from(".hamMenu", {
+      TLFADE.from(".nav", {
         autoAlpha: 0,
         y: -50,
-        stagger: 0.4,
+        duration: 1,
       });
-    }
-  };
-
-  useEffect(() => {
+    };
     revealAnim();
   }, []);
 
-  useEffect(() => {
-    animateHamburgerMenu();
-    animateMobileLinks();
-  }, [open]);
-
   return (
-    <div className="fixed w-screen border-b-2 border-solid border-blue-500  bg-white">
-      <div className="w-48 h-fit hidden md:visible">
-        <img src="/logo.png" alt="Logo" className="" />
-      </div>
-      <div className="flex items-center justify-center ">
-        {/* Navlinks */}
-        {user ? (
-          <div className="hidden w-screen h-20 md:flex md:items-center md:justify-between pl-10 pr-10">
-            <div className="w-48 h-fit md:visible">
-              <img src="/logo.png" alt="Logo" className="" />
-            </div>
-            <div className="ml-10 flex items-baseline justify-between">
-              {navlinks.map((link, index) => (
-                <a
-                  key={index}
-                  className="nav-link text-blue-500 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                  href={link.link}
-                >
-                  {link.title}
-                </a>
-              ))}
-              <NormalButton
-                type="submit"
-                text="LOG OUT"
-                onClick={handleSignOut}
-              />
-            </div>
-          </div>
-        ) : (
-          // Render the logo if user is not logged in
-          <div className="w-48 h-fit">
+    <nav className="w-screen">
+      <div className="nav fixed flex items-center w-full h-20  bg-white p-8 border-solid border-b-4 border-blue-500 invisible ">
+        <div className="w-screen flex items-center justify-center md:flex md:justify-between md:items-cente">
+          <div className="w-48  h-fit">
             <img src="/logo.png" alt="Logo" className="" />
           </div>
-        )}
+          <div className=" mt-0 hidden md:flex">
+            <Link href="/pages/login">
+              {/* <p className=" text-blue-600">LOGIN</p> */}
+              <LargeButton text="LOGIN" />
+            </Link>
+          </div>
+        </div>
       </div>
-      {/* Hamburger menu */}
-      {user ? (
-        <div className="flex justify-between px-10 py-5 md:hidden">
-          <div className="w-36  h-fit ">
-            <img src="/logo.png" alt="Logo" className="" />
-          </div>
-          <div>
-            <button type="button" onClick={handleMenu} className="btn ">
-              {open === true ? (
-                <FaTimes style={{ color: "#0091FB", fontSize: "2em" }} />
-              ) : (
-                <FaBars style={{ color: "#0091FB", fontSize: "2em" }} />
-              )}
-            </button>
-          </div>
-        </div>
-      ) : (
-        <div className="w-48 h-fit hidden md:visible">
-          <img src="/logo.png" alt="Logo" className="" />
-        </div>
-      )}
-      {/* mobile view */}
-      {open ? (
-        <div className="bg md:hidden flex flex-col items-end  bg-teal-600 bg-opacity-20 backdrop-blur-md rounded-md drop-shadow-lg">
-          <div className="w-fit">
-            {user
-              ? // Render navigation links if user is logged in
-                navlinks.map((link, index) => (
-                  <a
-                    key={index}
-                    className="hamMenu text-blue-500 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                    href={link.link}
-                  >
-                    {link.title}
-                  </a>
-                ))
-              : null}
-          </div>
-          <NormalButton type="submit" text="LOG OUT" onClick={handleSignOut} />
-        </div>
-      ) : null}
-    </div>
+    </nav>
   );
 };
 

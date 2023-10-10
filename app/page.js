@@ -6,7 +6,7 @@ import SubHeader from "./components/subHeader/subHeader";
 import LargeButton from "./components/buttons/largeButton";
 import { Raleway } from "next/font/google";
 import { gsap } from "gsap";
-import Navbar from "./components/navbar/navBar";
+import Navbar from "./components/navbar/navbar";
 import Link from "next/link";
 
 const raleway = Raleway({
