@@ -5,11 +5,11 @@ import Header from "../../components/header/header";
 import SubHeader from "../../components/subHeader/subHeader";
 import Checkbox from "../../components/checbox/checbox";
 import Link from "next/link";
-import { useFormContext } from "@/app/context/FormContext";
+import { useFormContext } from "../../context/FormContext";
 import { gsap } from "gsap";
-import LargeButton from "@/app/components/buttons/largeButton";
-import { UserAuth } from "@/app/context/AuthContext";
-import ParticlesBtn from "@/app/components/particles/ParticlesBtn";
+import LargeButton from "../../components/buttons/largeButton";
+import { UserAuth } from "../../context/AuthContext";
+import ParticlesBtn from "../../components/particles/ParticlesBtn";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
