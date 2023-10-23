@@ -1,6 +1,6 @@
 "use client";
-import Form from "@/app/components/form/form";
-import Header from "@/app/components/header/header";
+import Form from "../../components/form/form";
+import Header from "../../components/header/header";
 import { gsap } from "gsap";
 import React, { useEffect } from "react";
 
