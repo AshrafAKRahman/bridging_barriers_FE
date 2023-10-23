@@ -83,7 +83,7 @@ const Navbar = () => {
   }, [open]);
 
   return (
-    <div className="fixed w-screen border-b-2 border-solid border-blue-500  bg-white">
+    <div className="fixed w-screen flex items-center justify-center h-20 border-b-2 border-solid border-blue-500  bg-white">
       <div className="w-48 h-fit hidden md:visible">
         <img src="/logo.png" alt="Logo" className="" />
       </div>
