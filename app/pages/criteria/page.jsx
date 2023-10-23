@@ -6,7 +6,7 @@ import Form from "../../components/form/form";
 import Link from "next/link";
 import { useFormContext } from "../../context/FormContext.js";
 import LargeButton from "../../components/buttons/largeButton";
-import SubHeader from "../../app/components/subHeader/subHeader";
+import SubHeader from "../../components/subHeader/subHeader";
 import { gsap } from "gsap";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
