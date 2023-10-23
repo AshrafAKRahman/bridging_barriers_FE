@@ -11,7 +11,7 @@ import gsap from "gsap";
 import { MdDelete } from "react-icons/md";
 import { AiFillEdit } from "react-icons/ai";
 import { v4 as uuidv4 } from "uuid";
-import SubHeader from "@/app/components/subHeader/subHeader";
+import SubHeader from "../../components/subHeader/subHeader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";

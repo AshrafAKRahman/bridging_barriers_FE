@@ -1,10 +1,10 @@
 "use client";
-import Form from "@/app/components/form/form";
+import Form from "../../components/form/form";
 import { UserAuth } from "../../context/AuthContext";
 import { gsap } from "gsap";
 import { useEffect, useState } from "react";
-import Header from "@/app/components/header/header";
-import LargeButton from "@/app/components/buttons/largeButton";
+import Header from "../../components/header/header";
+import LargeButton from "../../components/buttons/largeButton";
 import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -153,7 +153,7 @@ const EmailReset = () => {
                 <div className="emailInput mt-5 invisible">
                   <input
                     className="bg-gray-200 w-full px-2 py-2 md:py-4 md:px-4 text-center text-gray-700 border border-black"
-                    id="inline-email"
+                    id="email"
                     type="email"
                     name="email"
                     value={email.email}
