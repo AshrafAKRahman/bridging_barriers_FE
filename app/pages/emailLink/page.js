@@ -49,7 +49,7 @@ const EmailLink = () => {
       }
     }
   };
-  const revealBasckdrop = () => {
+  const revealBackdrop = () => {
     const TLBACKDROP = gsap.timeline();
     TLBACKDROP.from(".bg", {
       autoAlpha: 0,
@@ -87,7 +87,7 @@ const EmailLink = () => {
   };
 
   useEffect(() => {
-    revealBasckdrop();
+    revealBackdrop();
     revealAnim();
     revealImg();
   }, []);
