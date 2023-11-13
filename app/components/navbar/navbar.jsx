@@ -83,7 +83,7 @@ const Navbar = () => {
   }, [open]);
 
   return (
-    <div className="fixed w-screen flex items-center justify-center h-20 border-b-2 border-solid border-blue-500  bg-white">
+    <div className="fixed w-screen flex items-center justify-center h-20 border-b-2 border-solid border-blue-500  bg-white z-10">
       <div className="w-48 h-fit hidden md:visible">
         <img src="/logo.png" alt="Logo" className="" />
       </div>
@@ -120,10 +120,10 @@ const Navbar = () => {
       </div>
       {/* Hamburger menu */}
       {user ? (
-        <div className="flex justify-between px-10 py-5 md:hidden">
-          <div className="w-36  h-fit ">
-            <img src="/logo.png" alt="Logo" className="" />
-          </div>
+        <div className=" md:hidden">
+          {/* <div className="w-36  h-fit ">
+            <img src="/logo.png" alt="Logo" className="mr-5" />
+          </div> */}
           <div>
             <button type="button" onClick={handleMenu} className="btn ">
               {open === true ? (
@@ -141,14 +141,14 @@ const Navbar = () => {
       )}
       {/* mobile view */}
       {open ? (
-        <div className="bg w-full h-[350%] flex flex-col items-end bg-teal-300 bg-opacity-20 backdrop-blur-md rounded-md drop-shadow-lg absolute md:hidden">
+        <div className="bg w-3/6 h-[350%] mt-96  flex flex-col items-center bg-teal-300 bg-opacity-20 backdrop-blur-md rounded-md drop-shadow-lg absolute  md:hidden">
           <div className="w-fit">
             {user
               ? // Render navigation links if user is logged in
                 navlinks.map((link, index) => (
                   <a
                     key={index}
-                    className="hamMenu text-blue-500 hover:bg-blue-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                    className="hamMenu text-gray-700 hover:bg-blue-700 hover:text-white block px-3 pt-6 rounded-md text-base font-medium"
                     href={link.link}
                   >
                     {link.title}
