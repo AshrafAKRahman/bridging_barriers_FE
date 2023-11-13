@@ -9,13 +9,13 @@ const LogedIn = () => {
     <div className="w-screen h-screen">
       <Navbar />
       <div className="w-full h-full flex flex-col justify-center items-center md:flex-row md:justify-center md:items-center ">
-        <img
+        {/* <img
           src="/loginBg.jpg"
           alt="login bg image"
           className="absolute -z-10 object-cover w-full h-full"
-        />
-        <div className="flex w-full h-1/2 flex-col items-center justify-center md:justify-center md:items-center md:w-1/2 md:h-full">
-          <div className="bg bg-white absolute w-5/6 h-2/6 mt-20  flex flex-col items-center justify-center bg-opacity-40 backdrop-blur-md rounded-2xl md:h-2/3 md:w-1/4 md:mt-0">
+        /> */}
+        <div className="flex w-full h-1/2 flex-col items-center justify-center md:mt-10 md:justify-center md:items-center md:w-1/2 md:h-full">
+          <div className="bg bg-gray-300 absolute w-5/6 h-2/6 mt-20  flex flex-col items-center justify-center bg-opacity-40 backdrop-blur-md rounded-2xl md:h-2/3 md:w-1/4 md:mt-0">
             <div className="w-full h-1/2 flex justify-center items-center">
               <CgProfile size={104} />
             </div>
@@ -28,8 +28,8 @@ const LogedIn = () => {
           </div>
         </div>
 
-        <div className="h-1/2 w-full flex justify-center items-center pb-10 md:w-1/2 md:h-full">
-          <div className="bg bg-white absolute w-5/6 h-1/3 overflow-scroll flex flex-col items-center justify-center bg-opacity-40 backdrop-blur-md rounded-2xl md:h-3/4 md:w-3/6 md:mt-10 md:mr-16">
+        <div className="h-1/2 w-full flex justify-center items-center pb-10 md:pb-0 md:mt-10 md:mr-10 md:w-1/2 md:h-full">
+          <div className="bg bg-gray-300 absolute w-5/6 h-1/3 flex flex-col items-center justify-center bg-opacity-40 backdrop-blur-md rounded-2xl md:h-3/4 md:w-3/6 md:mt-10 md:mr-16">
             <div className="w-fit h-1/4 flex justify-center pt-5 md:pt-16">
               <Header
                 titleClassName="text-2xl text-gray-700  text-center md:text-4xl"
