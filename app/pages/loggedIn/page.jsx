@@ -9,11 +9,6 @@ const LogedIn = () => {
     <div className="w-screen h-screen">
       <Navbar />
       <div className="w-full h-full flex flex-col justify-center items-center md:flex-row md:justify-center md:items-center ">
-        {/* <img
-          src="/loginBg.jpg"
-          alt="login bg image"
-          className="absolute -z-10 object-cover w-full h-full"
-        /> */}
         <div className="flex w-full h-1/2 flex-col items-center justify-center md:mt-10 md:justify-center md:items-center md:w-1/2 md:h-full">
           <div className="bg bg-gray-300 absolute w-5/6 h-2/6 mt-20  flex flex-col items-center justify-center bg-opacity-40 backdrop-blur-md rounded-2xl md:h-2/3 md:w-1/4 md:mt-0">
             <div className="w-full h-1/2 flex justify-center items-center">
