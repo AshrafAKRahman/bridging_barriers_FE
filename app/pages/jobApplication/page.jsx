@@ -1,0 +1,83 @@
+import React from "react";
+
+const JobApplication = () => {
+  return (
+    <>
+      <div className="h-screen flex flex-col justify-center items-center md:flex-row">
+        <div className="flex flex-col justify-center items-center overflow-y-scroll h-full md:w-1/2 mt-20 ">
+          <img className="w-2/3" src="/cvLayout.png" alt="cv layout photo" />
+          <div className="w-2/3 h-1/3 overflow-scroll  tracking-tight bg-blue-600">
+            <h1 className="text-white mt-4 ">How to create a good CV layout</h1>
+            <p className="text-white  mt-10">
+              Use a simple format Your CV should be plain, easy to read, and
+              structured in a way that highlights your core skills and recent
+              work experience. ● Put your name and contact details in the header
+              It’s important to leave your name and contact details on your CV,
+              so that potential employers can get hold of you for an interview.
+              ● Structure your roles for easy reading Long sentences and chunky
+              paragraphs are a big no when it comes to any CV. You want the
+              reading experience to be as easy as possible for the recruiter, so
+              offering bite-sized, memorable information is preferable.
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-col justify-center items-center overflow-y-scroll h-full md:w-1/2 mt-20 ">
+          <img className="w-2/3" src="/mistakes.png" alt="cv mistakes photo" />
+          <div className="w-2/3 h-1/3 overflow-scroll  tracking-tight bg-blue-600">
+            <h1 className="text-white mt-4 ">5 CV mistakes to avoid</h1>
+            <p className="text-white  mt-10">
+              ● Not tailoring your CV When hiring, recruiters look at a huge
+              number of applications. That means they know what a generic CV
+              looks like, and you don’t want to get passed over because your CV
+              didn’t do enough to stand out. If you aren’t tailoring your CV to
+              the specific company and role, it says to them that you’re not
+              that interested in their position – instead, you simply want any
+              job you can get. This definitely won’t leave a positive impression
+              on employers ● Not using keywords effectively Keywords can make or
+              break your CV. If you don’t use them at all, the recruiter might
+              find it harder to see why you’re a good match for the role ●
+              Including relevant information Your CV should be no longer than
+              two A4 pages; even better if you can keep it to just one. This
+              means you simply don’t have the space to cover irrelevant
+              information. You need to include only the skills, qualifications,
+              hobbies and employment history that are actually relevant to the
+              role you’re applying for ● Spelling or grammatical errors Last,
+              but certainly not least, you must make sure you proofread your
+              application before submitting. If your CV is full of spelling and
+              grammatical errors, it can look unprofessional or like you didn’t
+              care enough about the role to bother re-reading your application.
+              Proofread your CV several times before applying and perhaps even
+              have someone else look over it just to be sure.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col justify-center items-center overflow-y-scroll h-full md:w-1/2 mt-20 ">
+        <img className="w-2/3" src="/updateCV.jpg" alt="cv update photo" />
+        <div className="w-2/3 h-1/3 overflow-scroll bg-blue-600">
+          <h1 className="text-white mt-4 ">
+            How to update your CV without ruining it
+          </h1>
+          <p className="text-white  mt-10">
+            ● Tailor to the specific job One of the most important rules when
+            preparing your CV is to tailor it to the specific job description
+            and the charity you’re applying for. No two jobs are the same, and,
+            likewise, no two CVs you hand in should be the same. ● Make it
+            easier on the eyes When updating your CV, don’t just tweak the
+            text—be mindful of the design, as well. Make sure there’s plenty of
+            white space so it’s easy for the hiring manager to read. Use clear
+            headings for the various subsections to allow them to skim straight
+            to the parts which interest them the most. ● Remove old and
+            irrelevant entries As you dust off your CV to bring it up to date,
+            it may be time to prune previous entries to make space for new
+            experience and achievements. If you’ve had over a decade in your
+            career path already, leave off some of your earliest entries,
+            particularly when they have nothing to do with your profession now.
+          </p>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default JobApplication;

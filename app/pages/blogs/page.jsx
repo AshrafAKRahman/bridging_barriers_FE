@@ -2,6 +2,7 @@ import Header from "@/app/components/header/header";
 import Navbar from "@/app/components/navbar/navbar";
 import React from "react";
 import { Vina_Sans } from "next/font/google";
+import Link from "next/link";
 
 const vina = Vina_Sans({
   subsets: ["latin"],
@@ -10,25 +11,30 @@ const vina = Vina_Sans({
 });
 const Blogs = () => {
   return (
-    <div className="w-screen h-screen overflow-scroll bg-gray-200">
+    <div className="w-screen h-screen overflow-scroll bg-blue-400">
       <Navbar />
       <div className={vina.className}>
         <div className="w-screen h-1/5 flex text-center items-center justify-center mt-28">
-          <h1 className="text-6xl text-black">
+          <h1 className="text-6xl text-white">
             The Bridging Barriers Blog Page
           </h1>
         </div>
       </div>
       <div className="flex flex-col justify-center items-center md:flex-row">
-        <div className="flex flex-col justify-center items-center overflow-y-scroll h-1/2 md:w-1/2 mt-20 ">
-          <img
-            className="w-2/3"
-            src="/jobApplication.jpg"
-            alt="job application"
-          />
-          <div className="w-2/3 h-/3  tracking-tight bg-blue-600">
-            <h1 className="text-white mt-4 ">Job Application Blogs</h1>
-            <p className="text-white  mt-10">
+        <div className="flex flex-col justify-center items-center overflow-y-scroll  h-1/2 md:w-1/2 mt-20 ">
+          <Link
+            href="/pages/jobApplication"
+            className="flex flex-col justify-center items-center"
+          >
+            <img
+              className="w-2/3 rounded-tl-3xl"
+              src="/jobApplication.jpg"
+              alt="job application"
+            />
+          </Link>
+          <div className="w-2/3 h-/3  tracking-tight bg-white rounded-br-3xl ">
+            <h1 className="text-blue-800 mt-4 ">Job Application Blogs</h1>
+            <p className="text-blue-800  mt-10 ">
               How to create a good CV layout ● 5 CV mistakes to avoid ● How to
               update your CV without ruining it ● How to sell yourself on your
               CV without going overboard ● 3 signs that your CV is in good shape
