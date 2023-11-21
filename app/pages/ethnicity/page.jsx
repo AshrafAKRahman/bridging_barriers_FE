@@ -15,7 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Ethnicity = () => {
   const { user, newUser } = UserAuth();
-  const { formData, handleChange } = useFormContext();
+  const { formData, handleChange, handleSubmit } = useFormContext();
   const { ethnicity } = formData;
   const [loading, setLoading] = useState(true);
   const [showParticles, setShowParticles] = useState(false);
@@ -30,6 +30,7 @@ const Ethnicity = () => {
       await newUser(formData.email, formData.password);
       console.log("handleSignIn function called");
       setShowParticles(true);
+      handleSubmit();
     } catch (error) {
       console.log("Error");
     }
@@ -42,6 +43,22 @@ const Ethnicity = () => {
     };
     checkAuthentication();
   }, [user]);
+
+  // const handleSignInAndSubmit = async () => {
+  //   try {
+  //     // Call your handleSignIn function
+  //     await handleSignIn();
+
+  //     // Check if the handleSignIn process was successful before proceeding with handleSubmit
+  //     {
+  //       // Call your handleSubmit function
+  //       await handleSubmit();
+  //     }
+  //   } catch (error) {
+  //     console.error("Error in handleSignInAndSubmit:", error);
+  //     toast("Error during sign-in and submission");
+  //   }
+  // };
 
   const labels = [
     "Mixed or multiple ethnic groups",
