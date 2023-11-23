@@ -17,6 +17,7 @@ const BlogsComponent = ({
   linkText,
   subHeaderTitle,
 }) => {
+  const isWindowDefined = typeof window !== "undefined";
   return (
     <div className="w-full h-full">
       <div className="w-full relative group">
@@ -29,7 +30,12 @@ const BlogsComponent = ({
           <div className={raleway.className}>
             <ul className="text-xs text-gray-200 w-full h-full bg-blue-700 bg-opacity-20 backdrop-blur-md rounded-md drop-shadow-lg text-center p-4  md:text-lg">
               {listItems
-                .slice(0, window.innerWidth < 768 ? 6 : listItems.length)
+                .slice(
+                  0,
+                  isWindowDefined && window.innerWidth < 768
+                    ? 6
+                    : listItems.length
+                )
                 .map((item, index) => (
                   <li key={index}>{item}</li>
                 ))}
@@ -37,6 +43,16 @@ const BlogsComponent = ({
                 <NormalButton text={linkText} />
               </Link>
             </ul>
+            {/* <ul className="text-xs text-gray-200 w-full h-full bg-blue-700 bg-opacity-20 backdrop-blur-md rounded-md drop-shadow-lg text-center p-4  md:text-lg">
+              {listItems
+                .slice(0, window.innerWidth < 768 ? 6 : listItems.length)
+                .map((item, index) => (
+                  <li key={index}>{item}</li>
+                ))}
+              <Link href={linkHref}>
+                <NormalButton text={linkText} />
+              </Link>
+            </ul> */}
           </div>
         </div>
       </div>
