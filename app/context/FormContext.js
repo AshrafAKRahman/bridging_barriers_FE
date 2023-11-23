@@ -61,6 +61,25 @@ export const FormProvider = ({ children }) => {
     }
   };
 
+  const handleSubmit = async () => {
+    try {
+      const response = await fetch("http://localhost:5432/api/userdata", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (response.ok) {
+        console.log("The form has been submitted");
+      } else {
+        console.error("failed to submit the form");
+      }
+    } catch (error) {
+      console.error("an error has occured", error);
+    }
+  };
+
   return (
     <FormContext.Provider
       value={{
@@ -68,6 +87,7 @@ export const FormProvider = ({ children }) => {
         setFormData,
         handleChange,
         educationUpdate,
+        handleSubmit,
       }}
     >
       {children}

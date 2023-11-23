@@ -35,7 +35,7 @@ const Navbar = () => {
     },
     {
       title: "BLOGS",
-      link: "/pages/blog",
+      link: "/pages/blogs",
     },
     {
       title: "EVENTS",

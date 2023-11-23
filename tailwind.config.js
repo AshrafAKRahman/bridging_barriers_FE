@@ -7,7 +7,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-
       margin: {
         "420px": "420px",
       },
@@ -22,7 +21,6 @@ module.exports = {
   },
   theme: {
     extend: {
-
       colors: {
         teal: {
           100: "#E6FFFA",
@@ -40,7 +38,6 @@ module.exports = {
               "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
           },
         },
-
       },
     },
   },
@@ -49,7 +46,13 @@ module.exports = {
       screens: {
         ipad: { min: "660px", max: "912px" },
         horizontal: { raw: "(max-height: 600px) and (max-width: 1024px)" },
-
+      },
+    },
+  },
+  theme: {
+    exted: {
+      backgroundImage: {
+        parallax: 'url("../publicjobApplication.jpg")',
       },
     },
   },
