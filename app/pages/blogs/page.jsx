@@ -1,7 +1,7 @@
 "use client";
-import Navbar from "@/app/components/navbar/navbar";
-import BlogsComponent from "@/app/components/blogs/blogComponent";
-import Header from "@/app/components/header/header";
+import Navbar from "../../components/navbar/navbar";
+import BlogsComponent from "../../components/blogs/blogComponent";
+import Header from "../../components/header/header";
 
 const Blogs = () => {
   const listItemsSet1 = [
