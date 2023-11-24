@@ -24,7 +24,7 @@ const BlogsComponent = ({
         <img
           src={imageSrc}
           alt="application image"
-          className="object-contain rounded-tl-3xl  w-full h-full"
+          className="object-contain rounded-t-3xl  w-full h-full"
         />
         <div className="absolute flex flex-col items-center justify-center inset-0 opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 transition-opacity ease-out duration-100">
           <div className={raleway.className}>
@@ -46,7 +46,7 @@ const BlogsComponent = ({
           </div>
         </div>
       </div>
-      <div className="w-full rounded-br-3xl  bg-white">
+      <div className="w-full rounded-b-3xl  bg-white">
         <SubHeader title={subHeaderTitle} />
       </div>
     </div>

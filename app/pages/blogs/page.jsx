@@ -6,7 +6,7 @@ import Header from "../../components/header/header";
 const Blogs = () => {
   const listItemsSet1 = [
     "How to create a good CV layout",
-    "5 CV mistakes to avoid",
+    "4 CV mistakes to avoid",
     "How to update your CV without ruining it",
     "How to sell yourself on your CV without going overboard",
     "3 signs that your CV is in good shape",
@@ -60,7 +60,7 @@ const Blogs = () => {
           <BlogsComponent
             imageSrc="/professionalSkills.jpg"
             listItems={listItemsSet2}
-            linkHref="/pages/jobApplication"
+            linkHref="/pages/professionalSkills"
             linkText="Learn More"
             subHeaderTitle="Professional Skills Blogs"
           />
