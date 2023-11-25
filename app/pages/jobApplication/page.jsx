@@ -78,7 +78,7 @@ const JobApplication = () => {
       <div className="h-full w-full mt-10">
         <div className="mb-10">
           <SubjectBlogComponent
-            imageSrc="/cvLayout.png"
+            imageSrc="/cvLayout.jpg"
             SubHeaderTitle="How to create a good CV layout"
             listItems={listItems1}
           />
