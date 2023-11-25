@@ -44,7 +44,7 @@ const Blogs = () => {
       <Navbar />
       <Header
         titleClassName="text-3xl text-white pt-32 text-center md:text-5xl"
-        title="The Bridging Barriers Blog Page"
+        title="BRIDGING BARRIERS BLOGS"
       />
       <div className="h-full w-full px-10 pb-10 grid  md:grid-cols-2 md:gap-4">
         <div className="mt-10 md:h-full">
