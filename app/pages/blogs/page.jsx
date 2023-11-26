@@ -6,7 +6,7 @@ import Header from "../../components/header/header";
 const Blogs = () => {
   const listItemsSet1 = [
     "How to create a good CV layout",
-    "5 CV mistakes to avoid",
+    "4 CV mistakes to avoid",
     "How to update your CV without ruining it",
     "How to sell yourself on your CV without going overboard",
     "3 signs that your CV is in good shape",
@@ -44,7 +44,7 @@ const Blogs = () => {
       <Navbar />
       <Header
         titleClassName="text-3xl text-white pt-32 text-center md:text-5xl"
-        title="The Bridging Barriers Blog Page"
+        title="BRIDGING BARRIERS BLOGS"
       />
       <div className="h-full w-full px-10 pb-10 grid  md:grid-cols-2 md:gap-4">
         <div className="mt-10 md:h-full">
@@ -60,7 +60,7 @@ const Blogs = () => {
           <BlogsComponent
             imageSrc="/professionalSkills.jpg"
             listItems={listItemsSet2}
-            linkHref="/pages/jobApplication"
+            linkHref="/pages/professionalSkills"
             linkText="Learn More"
             subHeaderTitle="Professional Skills Blogs"
           />
@@ -69,7 +69,7 @@ const Blogs = () => {
           <BlogsComponent
             imageSrc="/wellbeing.jpg"
             listItems={listItems3}
-            linkHref="/pages/jobApplication"
+            linkHref="/pages/wellbeing"
             linkText="Learn More"
             subHeaderTitle="Wellbeing Blogs"
           />
