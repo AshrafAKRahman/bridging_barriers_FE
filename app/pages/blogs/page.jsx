@@ -69,7 +69,7 @@ const Blogs = () => {
           <BlogsComponent
             imageSrc="/wellbeing.jpg"
             listItems={listItems3}
-            linkHref="/pages/jobApplication"
+            linkHref="/pages/wellbeing"
             linkText="Learn More"
             subHeaderTitle="Wellbeing Blogs"
           />
