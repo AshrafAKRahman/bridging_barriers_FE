@@ -36,6 +36,7 @@ const Blogs = () => {
     "Interviews and deep insights on the industry by",
     "Jade Adewunmi",
     "Jadesola Adesola",
+    "Abdul Alimi",
     "Jermaine Robinson",
     "Joseph Boateng",
   ];
