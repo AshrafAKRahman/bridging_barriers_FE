@@ -1,6 +1,6 @@
 "use client";
 import Navbar from "../../components/navbar/navbar";
-import BlogsComponent from "../../components/blogs/blogComponent";
+import BlogsComponent from "../../components/blogs/blogComponent/blogComponent";
 import Header from "../../components/header/header";
 
 const Blogs = () => {
@@ -29,6 +29,7 @@ const Blogs = () => {
     " How to be happier at work",
     "3 simple changes that will make you happier at work",
     "Signs that work may be affecting your mental health and what to do",
+    "5 tips to be more confident at work",
   ];
 
   const listItems4 = [
@@ -37,7 +38,6 @@ const Blogs = () => {
     "Jadesola Adesola",
     "Jermaine Robinson",
     "Joseph Boateng",
-    "Abdul Alimi",
   ];
   return (
     <div className="w-screen h-screen overflow-scroll  bg-blue-400">
@@ -78,7 +78,7 @@ const Blogs = () => {
           <BlogsComponent
             imageSrc="/spotlight.jpg"
             listItems={listItems4}
-            linkHref="/pages/jobApplication"
+            linkHref="/pages/industrySpotlight"
             linkText="Learn More"
             subHeaderTitle="Industry Spotlight Blogs"
           />
