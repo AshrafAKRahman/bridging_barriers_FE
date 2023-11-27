@@ -1,6 +1,7 @@
-import React from "react";
-import SubHeader from "../subHeader/subHeader";
-import NormalButton from "../buttons/normalButton";
+"use client";
+import React, { useEffect, useState } from "react";
+import SubHeader from "../../subHeader/subHeader";
+import NormalButton from "../../buttons/normalButton";
 import Link from "next/link";
 import { Raleway } from "next/font/google";
 
@@ -17,7 +18,12 @@ const BlogsComponent = ({
   linkText,
   subHeaderTitle,
 }) => {
-  const isWindowDefined = typeof window !== "undefined";
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <div className="w-full h-full">
       <div className="w-full relative group">
@@ -32,9 +38,7 @@ const BlogsComponent = ({
               {listItems
                 .slice(
                   0,
-                  isWindowDefined && window.innerWidth < 768
-                    ? 6
-                    : listItems.length
+                  isClient && window.innerWidth < 768 ? 6 : listItems.length
                 )
                 .map((item, index) => (
                   <li key={index}>{item}</li>
