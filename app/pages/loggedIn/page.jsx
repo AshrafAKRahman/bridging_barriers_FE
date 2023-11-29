@@ -6,7 +6,7 @@ import Header from "../../components/header/header";
 
 const LogedIn = () => {
   return (
-    <div className="w-screen h-screen">
+    <div className="w-screen h-screen bg-blue-500 pb-10">
       <Navbar />
       <div className="w-full h-full flex flex-col justify-center items-center md:flex-row md:justify-center md:items-center ">
         <div className="flex w-full h-1/2 flex-col items-center justify-center md:mt-10 md:justify-center md:items-center md:w-1/2 md:h-full">
