@@ -1,24 +1,49 @@
 "use client";
 
-import Footer from "./components/footer/footer";
+// layout.js
+
+import Head from "next/head";
 import { AuthContextProvider } from "./context/AuthContext";
-import "./globals.css";
 import { FormProvider } from "./context/FormContext";
 import { ParallaxProvider } from "react-scroll-parallax";
+import "./globals.css";
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <>
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+        />
+      </Head>
       <ParallaxProvider scrollAxis="vertical">
-        <body>
-          <AuthContextProvider>
-            <FormProvider>
-              {children}
-              {/* <Footer /> */}
-            </FormProvider>
-          </AuthContextProvider>
-        </body>
+        <AuthContextProvider>
+          <FormProvider>{children}</FormProvider>
+        </AuthContextProvider>
       </ParallaxProvider>
-    </html>
+    </>
   );
 }
+
+// import { AuthContextProvider } from "./context/AuthContext";
+// import "./globals.css";
+// import { FormProvider } from "./context/FormContext";
+// import { ParallaxProvider } from "react-scroll-parallax";
+
+// export default function RootLayout({ children }) {
+//   return (
+//     <html lang="en">
+//       <ParallaxProvider scrollAxis="vertical">
+//         <body>
+//           <AuthContextProvider>
+//             <FormProvider>
+//               {children}
+//               {/* <Footer /> */}
+//             </FormProvider>
+//           </AuthContextProvider>
+//         </body>
+//       </ParallaxProvider>
+//     </html>
+//   );
+// }
