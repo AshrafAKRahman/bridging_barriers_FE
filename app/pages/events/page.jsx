@@ -1,14 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
+
 require("dotenv").config();
-console.log(process.env);
 const Events = () => {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const apiKey = process.env.EVENTBRITE_API;
+        const apiKey = process.env.EEVENTBRITE_API;
 
         const response = await fetch(
           `https://www.eventbriteapi.com/v3/users/me/?token=${apiKey}`,
