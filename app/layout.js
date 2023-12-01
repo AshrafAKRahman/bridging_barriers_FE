@@ -1,7 +1,4 @@
 "use client";
-
-// layout.js
-
 import Head from "next/head";
 import { AuthContextProvider } from "./context/AuthContext";
 import { FormProvider } from "./context/FormContext";

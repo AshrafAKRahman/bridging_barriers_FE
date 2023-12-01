@@ -3,6 +3,10 @@ import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import { CgProfile } from "react-icons/cg";
 import Header from "../../components/header/header";
+import "@uploadthing/react/styles.css";
+import { UploadButton } from "@uploadthing/react";
+import { useState } from "react";
+import Link from "next/link";
 
 const LogedIn = () => {
   return (
