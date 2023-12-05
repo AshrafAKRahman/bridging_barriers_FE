@@ -1,38 +1,10 @@
-"use client";
 import React from "react";
 import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import { CgProfile } from "react-icons/cg";
 import Header from "../../components/header/header";
-import "@uploadthing/react/styles.css";
-import { UploadButton } from "@uploadthing/react";
-import { useState } from "react";
-import Link from "next/link";
 
 const LogedIn = () => {
-  const [images, setImages] = useState([]);
-
-  const title = images.length ? (
-    <>
-      <p>Upload complete</p>
-      <p className="mt-2">{images.length} files</p>
-    </>
-  ) : null;
-
-  const imgList = (
-    <>
-      {title}
-      <ul>
-        {images.map((image) => (
-          <li key={image.fileKey} className="mt-2">
-            <Link href={image.fileUrl} target="_blank">
-              {image.fileUrl}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </>
-  );
   return (
     <div className="w-screen h-screen bg-blue-500 pb-10">
       <Navbar />

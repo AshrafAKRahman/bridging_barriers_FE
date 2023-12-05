@@ -8,10 +8,10 @@ const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const apiKey = process.env.EEVENTBRITE_API;
+        const apiKey = process.env.EVENTBRITE_API;
 
         const response = await fetch(
-          `https://www.eventbriteapi.com/v3/users/me/?token=${apiKey}`,
+          `https://www.eventbriteapi.com/v3/organizations/1906592885563/events/?status=live&token=${apiKey}`,
           {
             method: "GET",
             headers: {
