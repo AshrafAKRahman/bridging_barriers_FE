@@ -1,14 +1,4 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {};
 
-module.exports = {
-  head: {
-    meta: [
-      {
-        name: "viewport",
-        content:
-          "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover",
-      },
-    ],
-  },
-};
+module.exports = nextConfig;
