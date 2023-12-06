@@ -7,6 +7,18 @@ import React, { useEffect, useState } from "react";
 require("dotenv").config();
 const Events = () => {
   const [events, setEvents] = useState([]);
+  const formatDateTime = (dateTimeString) => {
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      timeZoneName: "short",
+    };
+    return new Date(dateTimeString).toLocaleString("en-UK", options);
+  };
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -48,7 +60,10 @@ const Events = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-5">
         {events.map((event) => (
-          <div key={event.id} className="bg-white p-4 shadow-md rounded-md">
+          <div
+            key={event.id}
+            className="bg-white p-4 shadow-md rounded-md w-full"
+          >
             <h2 className="text-xl font-semibold mb-2">{event.name.text}</h2>
             <img
               src={event.logo.original.url}
@@ -56,7 +71,26 @@ const Events = () => {
               className="mb-2 rounded-md"
             />
             <p>{event.description.text}</p>
-            <p>{event.start.utc}</p>
+            <p>
+              <strong>Location:</strong>{" "}
+              <span className="ml-2">{event.venue}</span>
+            </p>
+            <p className="mt-2">
+              <strong>Start Time:</strong>{" "}
+              <span className="ml-2">{formatDateTime(event.start.local)}</span>
+            </p>
+            <p>
+              <strong>End Time: </strong>{" "}
+              <span className="ml-2">{formatDateTime(event.end.local)}</span>
+            </p>
+            <p>
+              <strong>Price:</strong>{" "}
+              <span className="ml-2">
+                {event.is_free
+                  ? "Free"
+                  : event.currency + "" + event.cost.display}
+              </span>
+            </p>
           </div>
         ))}
       </div>
