@@ -3,6 +3,7 @@ import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import Header from "../../components/header/header";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 require("dotenv").config();
 const Events = () => {
@@ -27,7 +28,7 @@ const Events = () => {
         // process.env.EVENTBRITE_API;
 
         const response = await fetch(
-          `https://www.eventbriteapi.com/v3/organizations/1906592885563/events/?status=live&token=${apiKey}`,
+          `https://www.eventbriteapi.com/v3/organizations/1906592885563/events/?status=live&token=${apiKey}&expand=venue`,
           {
             method: "GET",
             headers: {
@@ -40,17 +41,29 @@ const Events = () => {
           throw new Error("failed to fetch events");
         }
         const data = await response.json();
-        console.log("Response from Eventbrite API:", data);
-        setEvents(data.events || []);
+        const eventsWithVenueDetails = data.events.map((event) => {
+          return {
+            ...event,
+            venueDetails: event.venue,
+          };
+        });
+        setEvents(eventsWithVenueDetails);
       } catch (error) {
         console.log("error fetching events:", error);
       }
     };
     fetchEvents();
   }, []);
+  const saveEvent = (event) => {
+    // Your save event logic here
+    console.log("Event saved:", event);
+  };
+  const handleSaveEvent = (event) => {
+    saveEvent(event);
+  };
 
   return (
-    <div className="w-screen h-screen bg-blue-500 pb-10">
+    <div className="w-full h-full bg-blue-500 pb-24">
       <Navbar />
       <div className="flex items-center justify-center pt-36 mb-10 ">
         <Header
@@ -71,11 +84,15 @@ const Events = () => {
               className="mb-2 rounded-md"
             />
             <p>{event.description.text}</p>
-            <p>
+            <p className="mt-4">
               <strong>Location:</strong>{" "}
-              <span className="ml-2">{event.venue}</span>
+              <span className="ml-2">
+                {event.venue && event.venue.address
+                  ? event.venue.address.localized_address_display
+                  : "Online"}
+              </span>
             </p>
-            <p className="mt-2">
+            <p>
               <strong>Start Time:</strong>{" "}
               <span className="ml-2">{formatDateTime(event.start.local)}</span>
             </p>
@@ -91,6 +108,14 @@ const Events = () => {
                   : event.currency + "" + event.cost.display}
               </span>
             </p>
+            <div className="flex items-center justify-between text-blue-800 underline">
+              <Link href={event.url} target="blank">
+                <strong>Find out more</strong>
+              </Link>
+              <button onClick={() => handleSaveEvent(event)}>
+                <strong>Save Event</strong>
+              </button>
+            </div>
           </div>
         ))}
       </div>

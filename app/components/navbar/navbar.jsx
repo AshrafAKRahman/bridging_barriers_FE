@@ -31,7 +31,7 @@ const Navbar = () => {
   const navlinks = [
     {
       title: "HOME",
-      link: "/",
+      link: "/pages/loggedIn",
     },
     {
       title: "BLOGS",
