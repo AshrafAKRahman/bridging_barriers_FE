@@ -4,22 +4,13 @@ import Footer from "../../components/footer/footer";
 import Header from "../../components/header/header";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import LogedIn from "../loggedIn/page";
 
 require("dotenv").config();
+
 const Events = () => {
   const [events, setEvents] = useState([]);
-  const formatDateTime = (dateTimeString) => {
-    const options = {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      timeZoneName: "short",
-    };
-    return new Date(dateTimeString).toLocaleString("en-UK", options);
-  };
+  const [savedEvents, setSavedEvents] = useState([]);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -54,12 +45,25 @@ const Events = () => {
     };
     fetchEvents();
   }, []);
-  const saveEvent = (event) => {
-    // Your save event logic here
-    console.log("Event saved:", event);
+
+  const formatDateTime = (dateTimeString) => {
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      timeZoneName: "short",
+    };
+    return new Date(dateTimeString).toLocaleString("en-UK", options);
   };
-  const handleSaveEvent = (event) => {
-    saveEvent(event);
+
+  const saveEvent = (eventToSave) => {
+    if (!savedEvents.some((savedEvent) => savedEvent.id === event.id)) {
+      setSavedEvents((prevEvents) => [...prevEvents, event]);
+    }
+    console.log("Saved Event:", eventToSave.name.text);
   };
 
   return (
@@ -112,13 +116,14 @@ const Events = () => {
               <Link href={event.url} target="blank">
                 <strong>Find out more</strong>
               </Link>
-              <button onClick={() => handleSaveEvent(event)}>
+              <button onClick={() => saveEvent(event)}>
                 <strong>Save Event</strong>
               </button>
             </div>
           </div>
         ))}
       </div>
+
       <Footer />
     </div>
   );
