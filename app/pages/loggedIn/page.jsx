@@ -4,14 +4,8 @@ import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import { CgProfile } from "react-icons/cg";
 import Header from "../../components/header/header";
-import Events from "../events/page";
 
 const LogedIn = () => {
-  const [savedEvents, setSavedEvents] = useState([]);
-
-  const saveEvent = (event) => {
-    setSavedEvents((prevSavedEvents) => [...prevSavedEvents, event]);
-  };
   return (
     <div className="w-screen h-screen bg-blue-500 pb-10">
       <Navbar />
@@ -52,6 +46,7 @@ const LogedIn = () => {
                   />
                 </div>
               </div>
+
               <div className="w-5/6 h-1/4 bg-white flex items-center justify-center border-solid border-2 border-sky-500 rounded-lg my-2">
                 <img
                   src="/events.png"
