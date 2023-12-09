@@ -5,7 +5,7 @@ import Footer from "../../components/footer/footer";
 import { CgProfile } from "react-icons/cg";
 import Header from "../../components/header/header";
 
-const LogedIn = () => {
+const LogedIn = ({ savedEvent }) => {
   return (
     <div className="w-screen h-screen bg-blue-500 pb-10">
       <Navbar />
@@ -48,7 +48,8 @@ const LogedIn = () => {
               </div>
 
               <div className="w-5/6 h-1/4 bg-white flex items-center justify-center border-solid border-2 border-sky-500 rounded-lg my-2">
-                <img
+                {savedEvent}
+                {/* <img
                   src="/events.png"
                   alt="events image"
                   className="w-1/6 h-5/6 pl-4"
@@ -58,7 +59,7 @@ const LogedIn = () => {
                     titleClassName="text-sm text-gray-700  text-center md:text-2xl"
                     title="Your Saved Events"
                   />
-                </div>
+                </div> */}
               </div>
 
               <div className="w-5/6 h-1/4 bg-white flex items-center justify-center border-solid border-2 border-sky-500 rounded-lg my-5">
