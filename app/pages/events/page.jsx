@@ -60,8 +60,8 @@ const Events = () => {
   };
 
   const saveEvent = (eventToSave) => {
-    if (!savedEvents.some((savedEvent) => savedEvent.id === event.id)) {
-      setSavedEvents((prevEvents) => [...prevEvents, event]);
+    if (!savedEvents.some((savedEvent) => savedEvent.id === eventToSave.id)) {
+      setSavedEvents((prevEvents) => [...prevEvents, eventToSave]);
     }
     console.log("Saved Event:", eventToSave.name.text);
   };
