@@ -4,7 +4,6 @@ import Footer from "../../components/footer/footer";
 import Header from "../../components/header/header";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import LogedIn from "../loggedIn/page";
 
 require("dotenv").config();
 
