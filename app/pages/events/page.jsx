@@ -11,6 +11,14 @@ const Events = () => {
   const [events, setEvents] = useState([]);
   const [savedEvents, setSavedEvents] = useState([]);
 
+  const saveEvent = (event) => {
+    if (!savedEvents.some((savedEvent) => savedEvent.id === event.id)) {
+      const updatedSavedEvents = [...savedEvents, event];
+      setSavedEvents(updatedSavedEvents);
+      localStorage.setItem("savedEvents", JSON.stringify(updatedSavedEvents));
+    }
+  };
+
   useEffect(() => {
     const fetchEvents = async () => {
       try {
@@ -56,13 +64,6 @@ const Events = () => {
       timeZoneName: "short",
     };
     return new Date(dateTimeString).toLocaleString("en-UK", options);
-  };
-
-  const saveEvent = (eventToSave) => {
-    if (!savedEvents.some((savedEvent) => savedEvent.id === eventToSave.id)) {
-      setSavedEvents((prevEvents) => [...prevEvents, eventToSave]);
-    }
-    console.log("Saved Event:", eventToSave.name.text);
   };
 
   return (
