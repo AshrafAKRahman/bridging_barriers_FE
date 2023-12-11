@@ -4,6 +4,8 @@ import Footer from "../../components/footer/footer";
 import Header from "../../components/header/header";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 require("dotenv").config();
 
@@ -13,9 +15,16 @@ const Events = () => {
 
   const saveEvent = (event) => {
     if (!savedEvents.some((savedEvent) => savedEvent.id === event.id)) {
-      const updatedSavedEvents = [...savedEvents, event];
+      const updatedSavedEvents = [...savedEvents, event].slice(0, 3);
       setSavedEvents(updatedSavedEvents);
       localStorage.setItem("savedEvents", JSON.stringify(updatedSavedEvents));
+      toast.success(`Event "${event.name.text}" saved!`, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+      });
     }
   };
 
@@ -75,6 +84,7 @@ const Events = () => {
           title="Upcoming Events"
         />
       </div>
+      <ToastContainer />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-5">
         {events.map((event) => (
           <div

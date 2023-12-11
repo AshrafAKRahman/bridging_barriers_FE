@@ -8,6 +8,14 @@ import Header from "../../components/header/header";
 const LogedIn = () => {
   const [savedEvents, setSavedEvents] = useState([]);
 
+  const handleDeleteEvent = (eventId) => {
+    const updatedSavedEvents = savedEvents.filter(
+      (savedEvent) => savedEvent.id !== eventId
+    );
+    setSavedEvents(updatedSavedEvents);
+    localStorage.setItem("savedEvents", JSON.stringify(updatedSavedEvents));
+  };
+
   useEffect(() => {
     const isLocalStorageAvailable =
       typeof window !== "undefined" && window.localStorage;
@@ -60,12 +68,21 @@ const LogedIn = () => {
                 </div>
               </div>
 
-              <div className="w-5/6 h-1/4 bg-white flex items-center justify-center border-solid border-2 border-sky-500 rounded-lg my-2">
+              <div className="w-5/6 h-1/4 bg-white flex items-center justify-evenly border-solid border-2 border-sky-500 rounded-lg my-2">
                 {savedEvents.map((savedEvent) => (
                   <div key={savedEvent.id}>
                     <p>{savedEvent.name.text}</p>
+                    <img
+                      src={savedEvent.logo.original.url}
+                      alt={savedEvent.name.text}
+                      className="mb-2 rounded-md w-36 h-24"
+                    />
+                    <button onClick={() => handleDeleteEvent(savedEvent.id)}>
+                      Delete
+                    </button>
                   </div>
                 ))}
+                {savedEvents.length === 0 && <p>No saved events</p>}
               </div>
 
               <div className="w-5/6 h-1/4 bg-white flex items-center justify-center border-solid border-2 border-sky-500 rounded-lg my-5">
