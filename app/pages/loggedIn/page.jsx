@@ -1,11 +1,24 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import { CgProfile } from "react-icons/cg";
 import Header from "../../components/header/header";
 
 const LogedIn = () => {
+  const [savedEvents, setSavedEvents] = useState([]);
+
+  useEffect(() => {
+    const isLocalStorageAvailable =
+      typeof window !== "undefined" && window.localStorage;
+
+    if (isLocalStorageAvailable) {
+      const storedEvents =
+        JSON.parse(localStorage.getItem("savedEvents")) || [];
+      setSavedEvents(storedEvents);
+    }
+  }, []);
+
   return (
     <div className="w-screen h-screen bg-blue-500 pb-10">
       <Navbar />
@@ -48,17 +61,11 @@ const LogedIn = () => {
               </div>
 
               <div className="w-5/6 h-1/4 bg-white flex items-center justify-center border-solid border-2 border-sky-500 rounded-lg my-2">
-                <img
-                  src="/events.png"
-                  alt="events image"
-                  className="w-1/6 h-5/6 pl-4"
-                />
-                <div className="w-3/4 h-5/6 md:px-10 ">
-                  <Header
-                    titleClassName="text-sm text-gray-700  text-center md:text-2xl"
-                    title="Your Saved Events"
-                  />
-                </div>
+                {savedEvents.map((savedEvent) => (
+                  <div key={savedEvent.id}>
+                    <p>{savedEvent.name.text}</p>
+                  </div>
+                ))}
               </div>
 
               <div className="w-5/6 h-1/4 bg-white flex items-center justify-center border-solid border-2 border-sky-500 rounded-lg my-5">
