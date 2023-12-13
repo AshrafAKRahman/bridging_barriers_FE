@@ -7,6 +7,7 @@ import Header from "../../components/header/header";
 
 const LogedIn = () => {
   const [savedEvents, setSavedEvents] = useState([]);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleDeleteEvent = (eventId) => {
     const updatedSavedEvents = savedEvents.filter(
@@ -14,6 +15,36 @@ const LogedIn = () => {
     );
     setSavedEvents(updatedSavedEvents);
     localStorage.setItem("savedEvents", JSON.stringify(updatedSavedEvents));
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setSelectedFile(file);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    formData.append("image", selectedFile);
+
+    const response = await fetch("http://localhost:3001/api/upload", {
+      method: "POST",
+      body: formData,
+    });
+    console.log("Server response:", response);
+    if (!response.ok) {
+      console.error("Error:", response.status, response.statusText);
+      const text = await response.text();
+      console.log("Response bodey:", text);
+      return;
+    }
+    try {
+      const data = await response.json();
+      console.log("File uploaded", data);
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    }
   };
 
   useEffect(() => {
@@ -32,17 +63,23 @@ const LogedIn = () => {
       <Navbar />
       <div className="w-full h-full flex flex-col justify-center items-center md:flex-row md:justify-center md:items-center">
         <div className="flex w-full h-full flex-col items-center justify-center md:mt-10 md:justify-center md:items-center md:w-1/2 md:h-full">
-          <div className="bg bg-gray-300 absolute w-5/6 h-2/6 mt-20  flex flex-col items-center justify-center bg-opacity-40 backdrop-blur-md rounded-2xl md:h-2/3 md:w-1/4 md:mt-0">
+          <form
+            onSubmit={handleSubmit}
+            encType="multipart/form-data"
+            className="bg bg-gray-300 absolute w-5/6 h-2/6 mt-20  flex flex-col items-center justify-center bg-opacity-40 backdrop-blur-md rounded-2xl md:h-2/3 md:w-1/4 md:mt-0"
+          >
             <div className="w-full h-1/2 flex justify-center items-center">
               <CgProfile size={104} />
+              <input type="file" onChange={handleFileChange} />
+              <button type="submit">Upload</button>
             </div>
-            <div className="w-full h-1/2 flex justify-center px-10">
+            {/* <div className="w-full h-1/2 flex justify-center px-10">
               <Header
                 titleClassName="text-xl text-gray-700  text-center md:text-4xl"
                 title="Thank you for creating your profile. We are currently bridging the barrier to your dashboard "
               />
-            </div>
-          </div>
+            </div> */}
+          </form>
         </div>
 
         <div className="h-1/2 w-full flex justify-center items-center pb-10 md:pb-0 md:mt-10 md:mr-10 md:w-1/2 md:h-full">
@@ -75,7 +112,7 @@ const LogedIn = () => {
                     <img
                       src={savedEvent.logo.original.url}
                       alt={savedEvent.name.text}
-                      className="mb-2 rounded-md w-36 h-24"
+                      className="mb-2 rounded-md w-20 h-16 md:w-36 md:h-24"
                     />
                     <button onClick={() => handleDeleteEvent(savedEvent.id)}>
                       Delete
