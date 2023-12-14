@@ -9,12 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/filestack-react": "^4.0.4",
     "autoprefixer": "10.4.14",
     "axios": "^1.4.0",
     "dotenv": "^16.3.1",
     "encoding": "^0.1.13",
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.13",
+    "filestack-js": "^3.28.0",
+    "filestack-react": "^5.0.0",
     "firebase": "^10.4.0",
     "gsap": "^3.12.2",
     "is-extglob": "^2.1.1",
@@ -31,7 +34,6 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@types/react": "18.2.42",
     "tsparticles-demo-configs": "^2.12.0"
   }
 }
