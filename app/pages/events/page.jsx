@@ -31,8 +31,7 @@ const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const apiKey = "PRNOOP6IZNQ75LZEVZWL";
-        // process.env.EVENTBRITE_API;
+        const apiKey = process.env.NEXT_PUBLIC_EVENTBRITE_API;
 
         const response = await fetch(
           `https://www.eventbriteapi.com/v3/organizations/1906592885563/events/?status=live&token=${apiKey}&expand=venue`,

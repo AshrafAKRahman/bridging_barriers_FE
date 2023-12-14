@@ -4,9 +4,12 @@ import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import { CgProfile } from "react-icons/cg";
 import Header from "../../components/header/header";
+import { PickerOverlay } from "filestack-react";
 
 const LogedIn = () => {
   const [savedEvents, setSavedEvents] = useState([]);
+  const [showPicker, setShowPicker] = useState(false);
+  const [uploadedFileHandle, setUploadedFileHandle] = useState("");
 
   const handleDeleteEvent = (eventId) => {
     const updatedSavedEvents = savedEvents.filter(
@@ -32,16 +35,38 @@ const LogedIn = () => {
       <Navbar />
       <div className="w-full h-full flex flex-col justify-center items-center md:flex-row md:justify-center md:items-center">
         <div className="flex w-full h-full flex-col items-center justify-center md:mt-10 md:justify-center md:items-center md:w-1/2 md:h-full">
-          <form
-            method="POST"
-            action="/upload"
-            encType="multipart/form-data"
-            className="bg bg-gray-300 absolute w-5/6 h-2/6 mt-20  flex flex-col items-center justify-center bg-opacity-40 backdrop-blur-md rounded-2xl md:h-2/3 md:w-1/4 md:mt-0"
-          >
-            <div className="w-full h-1/2 flex justify-center items-center">
+          <div className="bg bg-gray-300 absolute w-5/6 h-2/6 mt-20  flex flex-col items-center justify-center bg-opacity-40 backdrop-blur-md rounded-2xl md:h-2/3 md:w-1/4 md:mt-0">
+            <div className="w-full h-1/2 flex justify-center items-center md:flex-col">
+              {uploadedFileHandle && (
+                <img
+                  src={`https://cdn.filestackcontent.com/${uploadedFileHandle}`}
+                  alt="profile picture"
+                  className="rounded-full w-1/2 h-1/2 md:w-2/3 md:h-2/3"
+                />
+              )}
               <CgProfile size={104} />
+              {showPicker && (
+                <PickerOverlay
+                  apikey="AqutFwBhtQITdnIELHj2gz"
+                  pickerOptions={{
+                    accept: ["image/*"],
+                    fromSources: ["local_file_system"],
+                    onClose: () => setShowPicker(false),
+                    onUploadDone: (res) => {
+                      setUploadedFileHandle(res.filesUploaded[0].handle);
+                      setShowPicker(false);
+                    },
+                  }}
+                />
+              )}
+              <button
+                className="bg-white text-blue-500 oy-2 ox-4"
+                onClick={() => setShowPicker(true)}
+              >
+                Upload Image
+              </button>
             </div>
-          </form>
+          </div>
         </div>
 
         <div className="h-1/2 w-full flex justify-center items-center pb-10 md:pb-0 md:mt-10 md:mr-10 md:w-1/2 md:h-full">
