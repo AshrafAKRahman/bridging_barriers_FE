@@ -20,6 +20,20 @@ const LogedIn = () => {
   };
 
   useEffect(() => {
+    const isLocalStorageViable =
+      typeof window !== "undefined" && window.localStorage;
+
+    if (isLocalStorageViable) {
+      const handle = localStorage.getItem("uploadedFileHandle");
+      setUploadedFileHandle(handle);
+    }
+  }, []);
+
+  const saveImageHandleToLocal = (handle) => {
+    localStorage.setItem("uploadedFileHandle", handle);
+  };
+
+  useEffect(() => {
     const isLocalStorageAvailable =
       typeof window !== "undefined" && window.localStorage;
 
@@ -37,14 +51,15 @@ const LogedIn = () => {
         <div className="flex w-full h-full flex-col items-center justify-center md:mt-10 md:justify-center md:items-center md:w-1/2 md:h-full">
           <div className="bg bg-gray-300 absolute w-5/6 h-2/6 mt-20  flex flex-col items-center justify-center bg-opacity-40 backdrop-blur-md rounded-2xl md:h-2/3 md:w-1/4 md:mt-0">
             <div className="w-full h-1/2 flex justify-center items-center md:flex-col">
-              {uploadedFileHandle && (
+              {uploadedFileHandle ? (
                 <img
                   src={`https://cdn.filestackcontent.com/${uploadedFileHandle}`}
                   alt="profile picture"
                   className="rounded-full w-1/4 h-1/4 md:w-2/3 md:h-2/3"
                 />
+              ) : (
+                <CgProfile size={104} />
               )}
-              <CgProfile size={104} />
               {showPicker && (
                 <PickerOverlay
                   apikey="AqutFwBhtQITdnIELHj2gz"
@@ -53,7 +68,9 @@ const LogedIn = () => {
                     fromSources: ["local_file_system"],
                     onClose: () => setShowPicker(false),
                     onUploadDone: (res) => {
-                      setUploadedFileHandle(res.filesUploaded[0].handle);
+                      const handle = res.filesUploaded[0].handle;
+                      setUploadedFileHandle(handle);
+                      saveImageHandleToLocal(handle);
                       setShowPicker(false);
                     },
                   }}
