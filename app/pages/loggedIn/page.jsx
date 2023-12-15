@@ -41,7 +41,7 @@ const LogedIn = () => {
                 <img
                   src={`https://cdn.filestackcontent.com/${uploadedFileHandle}`}
                   alt="profile picture"
-                  className="rounded-full w-1/2 h-1/2 md:w-2/3 md:h-2/3"
+                  className="rounded-full w-1/4 h-1/4 md:w-2/3 md:h-2/3"
                 />
               )}
               <CgProfile size={104} />
