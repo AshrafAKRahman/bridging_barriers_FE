@@ -45,53 +45,47 @@ const LogedIn = () => {
   }, []);
 
   return (
-    <div className="w-screen h-screen bg-blue-500 pb-10">
+    <div className="w-screen h-screen bg-blue-500 pb-10 overflow-scroll ">
       <Navbar />
       <div className="w-full h-full flex flex-col justify-center items-center md:flex-row md:justify-center md:items-center">
-        <div className="flex w-full h-full flex-col items-center justify-center md:mt-10 md:justify-center md:items-center md:w-1/2 md:h-full">
-          <div className="bg bg-gray-300 absolute w-5/6 h-2/6 mt-20  flex flex-col items-center justify-center bg-opacity-40 backdrop-blur-md rounded-2xl md:h-2/3 md:w-1/4 md:mt-0">
-            <div className="w-full h-1/2 flex justify-center items-center md:flex-col">
-
-              {uploadedFileHandle ? (
-                <img
-                  src={`https://cdn.filestackcontent.com/${uploadedFileHandle}`}
-                  alt="profile picture"
-                  className="rounded-full w-1/4 h-1/4 md:w-2/3 md:h-2/3"
-                />
-              ) : (
+        <div className="flex w-full h-full flex-col items-center justify-center md:mt-10 md:justify-center md:items-center md:w-1/2 md:h-full bg-red-600">
+          <div className="bg bg-gray-300 mt-20 flex items-center bg-opacity-40 backdrop-blur-md rounded-2xl md:h-5/6 md:w-3/4 md:mt-5 md:flex-col">
+            {uploadedFileHandle ? (
+              <div className="h-1/4 w-1/4 md:w-1/2 md:h-1/2 md:mt-10 bg-pink-600">
+                <button className="" onClick={() => setShowPicker(true)}>
+                  <img
+                    src={`https://cdn.filestackcontent.com/${uploadedFileHandle}`}
+                    alt="profile picture"
+                    className="rounded-full"
+                  />
+                </button>
+              </div>
+            ) : (
+              <button className="" onClick={() => setShowPicker(true)}>
                 <CgProfile size={104} />
-              )}
-
-              {showPicker && (
-                <PickerOverlay
-                  apikey="AqutFwBhtQITdnIELHj2gz"
-                  pickerOptions={{
-                    accept: ["image/*"],
-                    fromSources: ["local_file_system"],
-                    onClose: () => setShowPicker(false),
-                    onUploadDone: (res) => {
-
-                      const handle = res.filesUploaded[0].handle;
-                      setUploadedFileHandle(handle);
-                      saveImageHandleToLocal(handle);
-
-                      setShowPicker(false);
-                    },
-                  }}
-                />
-              )}
-              <button
-                className="bg-white text-blue-500 oy-2 ox-4"
-                onClick={() => setShowPicker(true)}
-              >
-                Upload Image
               </button>
-            </div>
+            )}
+            {showPicker && (
+              <PickerOverlay
+                apikey="AqutFwBhtQITdnIELHj2gz"
+                pickerOptions={{
+                  accept: ["image/*"],
+                  fromSources: ["local_file_system"],
+                  onClose: () => setShowPicker(false),
+                  onUploadDone: (res) => {
+                    const handle = res.filesUploaded[0].handle;
+                    setUploadedFileHandle(handle);
+                    saveImageHandleToLocal(handle);
+                    setShowPicker(false);
+                  },
+                }}
+              />
+            )}
           </div>
         </div>
 
-        <div className="h-1/2 w-full flex justify-center items-center pb-10 md:pb-0 md:mt-10 md:mr-10 md:w-1/2 md:h-full">
-          <div className="bg bg-gray-300 absolute w-5/6 h-2/3 flex flex-col items-center justify-center bg-opacity-40 backdrop-blur-md rounded-2xl md:h-3/4 md:w-3/6 md:mt-10 md:mr-16">
+        <div className="h-full w-full flex justify-center items-center pt-40   pb-10 md:pb-0 md:pt-0 md:mt-10 md:w-1/2 md:h-full bg-green-600">
+          <div className="bg bg-gray-300 absolute w-5/6 h-2/3 flex flex-col items-center justify-center bg-opacity-40 backdrop-blur-md rounded-2xl md:h-3/4 md:w-3/6 ">
             <div className="w-fit h-fit flex justify-center pt-5 md:pt-16">
               <Header
                 titleClassName="text-2xl text-gray-700  text-center md:text-4xl"
