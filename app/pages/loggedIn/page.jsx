@@ -48,10 +48,10 @@ const LogedIn = () => {
     <div className="w-screen h-screen bg-blue-500 pb-10 overflow-scroll ">
       <Navbar />
       <div className="w-full h-full flex flex-col justify-center items-center md:flex-row md:justify-center md:items-center">
-        <div className="flex w-full h-full flex-col items-center justify-center md:mt-10 md:justify-center md:items-center md:w-1/2 md:h-full bg-red-600">
+        <div className="flex w-full h-full flex-col items-center justify-center md:mt-10 md:justify-center md:items-center md:w-1/2 md:h-full ">
           <div className="bg bg-gray-300 mt-20 flex items-center bg-opacity-40 backdrop-blur-md rounded-2xl md:h-5/6 md:w-3/4 md:mt-5 md:flex-col">
             {uploadedFileHandle ? (
-              <div className="h-1/4 w-1/4 md:w-1/2 md:h-1/2 md:mt-10 bg-pink-600">
+              <div className="h-1/4 w-1/4 md:w-1/2 md:h-1/2 md:mt-10">
                 <button className="" onClick={() => setShowPicker(true)}>
                   <img
                     src={`https://cdn.filestackcontent.com/${uploadedFileHandle}`}
@@ -84,7 +84,7 @@ const LogedIn = () => {
           </div>
         </div>
 
-        <div className="h-full w-full flex justify-center items-center pt-40   pb-10 md:pb-0 md:pt-0 md:mt-10 md:w-1/2 md:h-full bg-green-600">
+        <div className="h-full w-full flex justify-center items-center pt-40   pb-10 md:pb-0 md:pt-0 md:mt-10 md:w-1/2 md:h-full">
           <div className="bg bg-gray-300 absolute w-5/6 h-2/3 flex flex-col items-center justify-center bg-opacity-40 backdrop-blur-md rounded-2xl md:h-3/4 md:w-3/6 ">
             <div className="w-fit h-fit flex justify-center pt-5 md:pt-16">
               <Header
