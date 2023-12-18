@@ -5,19 +5,22 @@ import Footer from "../../components/footer/footer";
 import { CgProfile } from "react-icons/cg";
 import Header from "../../components/header/header";
 import { PickerOverlay } from "filestack-react";
+import { useEventContext } from "../../context/EventContext";
 
 const LogedIn = () => {
-  const [savedEvents, setSavedEvents] = useState([]);
+  const { savedEvents } = useEventContext();
+  // const [savedEvents, setSavedEvents] = useState([]);
   const [showPicker, setShowPicker] = useState(false);
   const [uploadedFileHandle, setUploadedFileHandle] = useState("");
+  console.log("Saved Events:", savedEvents);
 
-  const handleDeleteEvent = (eventId) => {
-    const updatedSavedEvents = savedEvents.filter(
-      (savedEvent) => savedEvent.id !== eventId
-    );
-    setSavedEvents(updatedSavedEvents);
-    localStorage.setItem("savedEvents", JSON.stringify(updatedSavedEvents));
-  };
+  // const handleDeleteEvent = (eventId) => {
+  //   const updatedSavedEvents = savedEvents.filter(
+  //     (savedEvent) => savedEvent.id !== eventId
+  //   );
+  //   setSavedEvents(updatedSavedEvents);
+  //   localStorage.setItem("savedEvents", JSON.stringify(updatedSavedEvents));
+  // };
 
   useEffect(() => {
     const isLocalStorageViable =
@@ -32,17 +35,6 @@ const LogedIn = () => {
   const saveImageHandleToLocal = (handle) => {
     localStorage.setItem("uploadedFileHandle", handle);
   };
-
-  useEffect(() => {
-    const isLocalStorageAvailable =
-      typeof window !== "undefined" && window.localStorage;
-
-    if (isLocalStorageAvailable) {
-      const storedEvents =
-        JSON.parse(localStorage.getItem("savedEvents")) || [];
-      setSavedEvents(storedEvents);
-    }
-  }, []);
 
   return (
     <div className="w-screen h-screen bg-blue-500 pb-10 overflow-scroll ">
@@ -108,21 +100,21 @@ const LogedIn = () => {
               </div>
 
               <div className="w-full h-2/3 bg-white flex items-center justify-evenly border-solid border-2 border-sky-500 rounded-lg my-2">
-                {savedEvents.map((savedEvent) => (
-                  <div key={savedEvent.id}>
-                    <p>{savedEvent.name.text}</p>
+                {savedEvents.map((event) => (
+                  <div key={event.id}>
+                    <p>{event.name.text}</p>
                     <img
-                      src={savedEvent.logo.original.url}
-                      alt={savedEvent.name.text}
+                      src={event.logo.original.url}
+                      alt={event.name.text}
                       className="mb-2 rounded-md w-20 h-16 md:w-36 md:h-24"
                     />
-                    <button onClick={() => handleDeleteEvent(savedEvent.id)}>
+                    {/* <button onClick={() => handleDeleteEvent(savedEvent.id)}>
                       Delete
-                    </button>
+                    </button> */}
                   </div>
                 ))}
-                {savedEvents.length === 0 && <p>No saved events</p>}
-                {savedEvents.id}
+                {/* {savedEvents.length === 0 && <p>No saved events</p>}
+                {savedEvents.id} */}
               </div>
 
               <div className="w-5/6 h-1/4 bg-white flex items-center justify-center border-solid border-2 border-sky-500 rounded-lg my-5">

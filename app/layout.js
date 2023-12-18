@@ -1,9 +1,8 @@
 "use client";
-
-import Footer from "./components/footer/footer";
 import { AuthContextProvider } from "./context/AuthContext";
 import "./globals.css";
 import { FormProvider } from "./context/FormContext";
+import { EventProvider } from "./context/EventContext";
 
 export default function RootLayout({ children }) {
   return (
@@ -11,8 +10,7 @@ export default function RootLayout({ children }) {
       <body>
         <AuthContextProvider>
           <FormProvider>
-            {children}
-            {/* <Footer /> */}
+            <EventProvider>{children}</EventProvider>
           </FormProvider>
         </AuthContextProvider>
       </body>
