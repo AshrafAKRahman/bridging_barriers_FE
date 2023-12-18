@@ -12,6 +12,7 @@ const LogedIn = () => {
   // const [savedEvents, setSavedEvents] = useState([]);
   const [showPicker, setShowPicker] = useState(false);
   const [uploadedFileHandle, setUploadedFileHandle] = useState("");
+  console.log("Saved Events:", savedEvents);
 
   // const handleDeleteEvent = (eventId) => {
   //   const updatedSavedEvents = savedEvents.filter(

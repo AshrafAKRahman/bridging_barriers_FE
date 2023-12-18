@@ -7,7 +7,11 @@ const EventProvider = ({ children }) => {
   const [savedEvents, setSavedEvents] = useState([]);
 
   const saveEvent = (event) => {
-    setSavedEvents((prevSavedEvents) => [...prevSavedEvents, event]);
+    setSavedEvents((prevEvents) => {
+      const updatedEvents = [...prevEvents, event];
+      console.log("Saved Event:", event);
+      return updatedEvents;
+    });
   };
 
   return (
