@@ -3,6 +3,7 @@ import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import Header from "../../components/header/header";
 import React, { useEffect, useState } from "react";
+import { useEventContext } from "../../context/EventContext";
 import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,23 +11,21 @@ import "react-toastify/dist/ReactToastify.css";
 require("dotenv").config();
 
 const Events = () => {
+  const { saveEvent } = useEventContext();
   const [events, setEvents] = useState([]);
-  const [savedEvents, setSavedEvents] = useState([]);
 
-  const saveEvent = (event) => {
-    if (!savedEvents.some((savedEvent) => savedEvent.id === event.id)) {
-      const updatedSavedEvents = [...savedEvents, event].slice(0, 3);
-      setSavedEvents(updatedSavedEvents);
-      localStorage.setItem("savedEvents", JSON.stringify(updatedSavedEvents));
-      toast.success(`Event "${event.name.text}" saved!`, {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-      });
-    }
-  };
+  // const saveEvent = (event) => {
+  //   if (!savedEvents.some((savedEvent) => savedEvent.id === event.id)) {
+  //     setSavedEvents((prevSavedEvents) => [...prevSavedEvents, event]);
+  //     toast.success(`Event "${event.name.text}" saved!`, {
+  //       position: "top-right",
+  //       autoClose: 3000,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //     });
+  //   }
+  // };
 
   useEffect(() => {
     const fetchEvents = async () => {
