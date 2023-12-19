@@ -8,19 +8,10 @@ import { PickerOverlay } from "filestack-react";
 import { useEventContext } from "../../context/EventContext";
 
 const LogedIn = () => {
-  const { savedEvents } = useEventContext();
-  // const [savedEvents, setSavedEvents] = useState([]);
+  const { savedEvents, handleDeleteEvent } = useEventContext();
   const [showPicker, setShowPicker] = useState(false);
   const [uploadedFileHandle, setUploadedFileHandle] = useState("");
   console.log("Saved Events:", savedEvents);
-
-  // const handleDeleteEvent = (eventId) => {
-  //   const updatedSavedEvents = savedEvents.filter(
-  //     (savedEvent) => savedEvent.id !== eventId
-  //   );
-  //   setSavedEvents(updatedSavedEvents);
-  //   localStorage.setItem("savedEvents", JSON.stringify(updatedSavedEvents));
-  // };
 
   useEffect(() => {
     const isLocalStorageViable =
@@ -108,13 +99,11 @@ const LogedIn = () => {
                       alt={event.name.text}
                       className="mb-2 rounded-md w-20 h-16 md:w-36 md:h-24"
                     />
-                    {/* <button onClick={() => handleDeleteEvent(savedEvent.id)}>
+                    <button onClick={() => handleDeleteEvent(event.id)}>
                       Delete
-                    </button> */}
+                    </button>
                   </div>
                 ))}
-                {/* {savedEvents.length === 0 && <p>No saved events</p>}
-                {savedEvents.id} */}
               </div>
 
               <div className="w-5/6 h-1/4 bg-white flex items-center justify-center border-solid border-2 border-sky-500 rounded-lg my-5">
