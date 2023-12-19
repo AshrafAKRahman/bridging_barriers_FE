@@ -14,19 +14,6 @@ const Events = () => {
   const { saveEvent } = useEventContext();
   const [events, setEvents] = useState([]);
 
-  // const saveEvent = (event) => {
-  //   if (!savedEvents.some((savedEvent) => savedEvent.id === event.id)) {
-  //     setSavedEvents((prevSavedEvents) => [...prevSavedEvents, event]);
-  //     toast.success(`Event "${event.name.text}" saved!`, {
-  //       position: "top-right",
-  //       autoClose: 3000,
-  //       hideProgressBar: false,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //     });
-  //   }
-  // };
-
   useEffect(() => {
     const fetchEvents = async () => {
       try {
