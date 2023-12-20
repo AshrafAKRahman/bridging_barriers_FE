@@ -1,9 +1,9 @@
 "use client";
-
-import Footer from "./components/footer/footer";
 import { AuthContextProvider } from "./context/AuthContext";
 import "./globals.css";
 import { FormProvider } from "./context/FormContext";
+import { EventProvider } from "./context/EventContext";
+import { BlogProvider } from "./context/BlogContext";
 
 export default function RootLayout({ children }) {
   return (
@@ -11,8 +11,9 @@ export default function RootLayout({ children }) {
       <body>
         <AuthContextProvider>
           <FormProvider>
-            {children}
-            {/* <Footer /> */}
+            <EventProvider>
+              <BlogProvider>{children}</BlogProvider>
+            </EventProvider>
           </FormProvider>
         </AuthContextProvider>
       </body>
