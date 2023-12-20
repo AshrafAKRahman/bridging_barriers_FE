@@ -6,9 +6,11 @@ import { CgProfile } from "react-icons/cg";
 import Header from "../../components/header/header";
 import { PickerOverlay } from "filestack-react";
 import { useEventContext } from "../../context/EventContext";
+import { useBlogContext } from "../../context/BlogContext";
 
 const LogedIn = () => {
   const { savedEvents, handleDeleteEvent } = useEventContext();
+  const { savedBlogs, handleDeleteBlog } = useBlogContext();
   const [showPicker, setShowPicker] = useState(false);
   const [uploadedFileHandle, setUploadedFileHandle] = useState("");
   console.log("Saved Events:", savedEvents);
@@ -65,33 +67,35 @@ const LogedIn = () => {
               />
             )}
           </div>
-          <div className="ml-10">
+          <div className="ml-5 md:ml-10">
             <div className="w-2/3">
-              <strong>
-                <p className="mt-10 text-lg text-blue-800 md:text-3xl">
-                  Name :{" "}
-                </p>
-                <p className="mt-5 text-lg text-blue-800 md:text-3xl md:mt-8">
-                  Location :{" "}
-                </p>
-                <p className="mt-5 text-lg text-blue-800 md:text-3xl md:mt-8">
-                  Sectors :{" "}
-                </p>
-              </strong>
+              <Header
+                titleClassName="text-lg text-gray-700 mt-5 md:mt-10 md:text-3xl"
+                title="Name :"
+              />
+              <Header
+                titleClassName="text-lg text-gray-700 mt-5 md:mt-8 md:text-3xl"
+                title="Location :"
+              />
+              <Header
+                titleClassName="text-lg text-gray-700 mt-5 md:mt-8  md:text-3xl"
+                title="Sectors :"
+              />
             </div>
           </div>
         </div>
 
-        <div className="h-5/6 w-full flex-col justify-center items-center mt-10 pb-10 md:pb-0 md:pt-0 md:mt-10 md:w-1/2 md:h-full overflow-scroll bg-yellow-400">
-          {/* <div className="bg bg-gray-300 absolute w-5/6 h-2/3 flex flex-col items-center justify-center bg-opacity-40 backdrop-blur-md rounded-2xl md:h-3/4 md:w-3/6 "> */}
-          <div className="w-fit h-fit flex justify-center pt-5 md:pt-16">
-            <Header
-              titleClassName="text-2xl text-gray-700  text-center md:text-4xl"
-              title="Your Saved Items"
-            />
+        <div className="h-full w-full flex-col pb-10 px-5 md:mt-10 md:w-2/3 md:h-5/6">
+          <div className="flex justify-center">
+            <div className="w-fit h-fit pt-5 md:pt-16">
+              {/* <Header
+                titleClassName="text-2xl text-white md:text-4xl"
+                title="Your Saved Items"
+              /> */}
+            </div>
           </div>
           <div className="h-full w-full flex flex-col items-center justify-evenly mb-5 ">
-            <div className="w-full h-2/3 bg-white flex items-center justify-center border-solid border-2 border-sky-500 rounded-lg my-2 md:w-5/6 md:h-1/4 ">
+            <div className="w-full h-2/3 bg-white flex items-center justify-evenly border-solid border-2 border-sky-500 rounded-lg my-2">
               <img
                 src="/blog.png"
                 alt="blog image"
@@ -125,7 +129,7 @@ const LogedIn = () => {
               ))}
             </div>
 
-            <div className="w-5/6 h-1/4 bg-white flex items-center justify-center border-solid border-2 border-sky-500 rounded-lg my-5">
+            <div className="w-full h-2/3 bg-white flex items-center justify-evenly border-solid border-2 border-sky-500 rounded-lg my-2">
               <img
                 src="/jobs.png"
                 alt="jobs image"
@@ -138,7 +142,6 @@ const LogedIn = () => {
                 />
               </div>
             </div>
-            {/* </div> */}
           </div>
         </div>
       </div>
