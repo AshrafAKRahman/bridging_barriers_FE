@@ -3,10 +3,10 @@ import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import Header from "../../components/header/header";
 import React, { useEffect, useState } from "react";
-import { useEventContext } from "../../context/EventContext";
 import Link from "next/link";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useEventContext } from "../../context/EventContext";
 
 require("dotenv").config();
 

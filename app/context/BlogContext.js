@@ -1,54 +1,43 @@
 "use client";
-import React, { createContext, useEffect, useState, useContext } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
 const BlogContext = createContext();
 
-const BlogProvider = ({ children }) => {
+export const BlogProvider = ({ children }) => {
   const [savedBlogs, setSavedBlogs] = useState([]);
 
   useEffect(() => {
-    const isLocalStorageViable =
-      typeof window !== "undefined" && window.localStorage;
-
-    if (isLocalStorageViable) {
-      const storedBlogs = JSON.parse(localStorage.getItem("savedBlogs"));
-      setSavedBlogs(storedBlogs);
-    }
+    const storedBlogs = JSON.parse(localStorage.getItem("savedBlogs")) || [];
+    setSavedBlogs(storedBlogs);
   }, []);
 
-  useEffect(() => {
-    const isLocalStorageViable =
-      typeof window !== "undefined" && window.localStorage;
-
-    if (isLocalStorageViable) {
-      localStorage.setItem("savedBlogs", JSON.stringify(savedBlogs));
-    }
-  }, [savedBlogs]);
-
   const saveBlog = (blog) => {
-    setSavedBlogs((prevBlogs) => {
-      const updatedBlogs = [...prevBlogs, blog];
-      console.log("Saved Blog:", blog);
-      return updatedBlogs;
-    });
+    const updatedBlog = {
+      ...blog,
+      id: Date.now(),
+    };
+    setSavedBlogs((prevBlogs) => [...prevBlogs, updatedBlog]);
   };
 
-  const handleDeleteBlog = (blogId) => {
+  const deleteBlog = (blogId) => {
     const updatedSavedBlogs = savedBlogs.filter((blog) => blog.id !== blogId);
 
     setSavedBlogs(updatedSavedBlogs);
     localStorage.setItem("savedBlogs", JSON.stringify(updatedSavedBlogs));
   };
 
+  useEffect(() => {
+    localStorage.setItem("savedBlogs", JSON.stringify(savedBlogs));
+  }, [savedBlogs]);
+
+  console.log(savedBlogs);
   return (
-    <BlogContext.Provider value={{ savedBlogs, saveBlog, handleDeleteBlog }}>
+    <BlogContext.Provider value={{ savedBlogs, saveBlog, deleteBlog }}>
       {children}
     </BlogContext.Provider>
   );
 };
 
-const useBlogContext = () => {
+export const useBlogContext = () => {
   return useContext(BlogContext);
 };
-
-export { BlogProvider, useBlogContext };

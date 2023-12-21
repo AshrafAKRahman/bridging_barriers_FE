@@ -10,7 +10,7 @@ import { useBlogContext } from "../../context/BlogContext";
 
 const LogedIn = () => {
   const { savedEvents, handleDeleteEvent } = useEventContext();
-  const { savedBlogs, handleDeleteBlog } = useBlogContext();
+  const { savedBlogs, deleteBlog } = useBlogContext();
   const [showPicker, setShowPicker] = useState(false);
   const [uploadedFileHandle, setUploadedFileHandle] = useState("");
   console.log("Saved Events:", savedEvents);
@@ -87,26 +87,18 @@ const LogedIn = () => {
 
         <div className="h-full w-full flex-col pb-10 px-5 md:mt-10 md:w-2/3 md:h-5/6">
           <div className="flex justify-center">
-            <div className="w-fit h-fit pt-5 md:pt-16">
-              {/* <Header
-                titleClassName="text-2xl text-white md:text-4xl"
-                title="Your Saved Items"
-              /> */}
-            </div>
+            <div className="w-fit h-fit pt-5 md:pt-16"></div>
           </div>
           <div className="h-full w-full flex flex-col items-center justify-evenly mb-5 ">
             <div className="w-full h-2/3 bg-white flex items-center justify-evenly border-solid border-2 border-sky-500 rounded-lg my-2">
-              <img
-                src="/blog.png"
-                alt="blog image"
-                className="w-1/6 h-5/6 pl-4"
-              />
-              <div className="w-3/4 h-5/6 md:px-10">
-                <Header
-                  titleClassName="text-sm text-gray-700  text-center md:text-2xl"
-                  title="Your Saved Bolgs"
-                />
-              </div>
+              <ul>
+                {savedBlogs.map((blog, index) => (
+                  <div key={index}>
+                    {blog.title}
+                    <button onClick={() => deleteBlog(blog.id)}>Delete</button>
+                  </div>
+                ))}
+              </ul>
             </div>
 
             <div className="w-full h-2/3 bg-white flex items-center justify-evenly border-solid border-2 border-sky-500 rounded-lg my-2">

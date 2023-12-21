@@ -6,6 +6,12 @@ import { useBlogContext } from "../../../context/BlogContext";
 
 const SubjectBlogComponent = ({ imageSrc, SubHeaderTitle, listItems }) => {
   const { saveBlog } = useBlogContext();
+
+  const handleSave = () => {
+    // You might want to pass relevant blog information here
+    saveBlog({ title: SubHeaderTitle, content: listItems });
+  };
+
   return (
     <div className="md:w-full md:h-full flex flex-col justify-center items-center px-5 md:px-0">
       <img
@@ -26,12 +32,7 @@ const SubjectBlogComponent = ({ imageSrc, SubHeaderTitle, listItems }) => {
           ))}
         </ol>
         <div className="flex justify-center">
-          <button
-            onClick={() => saveBlog(blog)}
-            className="mb-5 mt-3 w-32 h-12 hover:scale-110 transition-transform  shadow-lg shadow-black text-white bg-blue-500 "
-          >
-            Save Item
-          </button>
+          <button onClick={handleSave}>Save Item</button>
         </div>
       </div>
     </div>
