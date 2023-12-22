@@ -48,7 +48,7 @@ const Blogs = () => {
         title="BRIDGING BARRIERS BLOGS"
       />
       <div className="h-full w-full px-10 pb-10 grid  md:grid-cols-2 md:gap-4">
-        <div className="mt-10 md:h-full">
+        <div className="flex mt-10 md:h-full">
           <BlogsComponent
             imageSrc="/jobApplication.jpg"
             listItems={listItemsSet1}
