@@ -14,7 +14,26 @@ const LogedIn = () => {
   const { savedBlogs, deleteBlog } = useBlogContext();
   const [showPicker, setShowPicker] = useState(false);
   const [uploadedFileHandle, setUploadedFileHandle] = useState("");
+  const [userList, setUserList] = useState([]);
   console.log("Saved Events:", savedEvents);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch("http://localhost:5432/api/userdata");
+        if (response.ok) {
+          const data = await response.json();
+          setUserList(data.payload);
+        } else {
+          console.error("Failed to fetch user data");
+        }
+      } catch (error) {
+        console.error("An error occurred while fetching user data", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   useEffect(() => {
     const isLocalStorageViable =
@@ -37,6 +56,7 @@ const LogedIn = () => {
     }
     return title;
   };
+  console.log(userList);
   return (
     <div className="w-screen h-screen bg-blue-500 pb-10">
       <Navbar />
@@ -77,10 +97,21 @@ const LogedIn = () => {
           </div>
           <div className="ml-5 md:ml-10">
             <div className="w-2/3">
-              <Header
-                titleClassName="text-lg text-gray-700 mt-5 md:mt-10 md:text-3xl"
-                title="Name :"
-              />
+              {userList.length > 0 &&
+                userList[0].first_name &&
+                userList[0].sur_name && (
+                  <div className="flex  justify-between ">
+                    <Header
+                      titleClassName="text-lg text-gray-700 mt-5 md:mt-10 md:text-3xl"
+                      title="Name :"
+                    />
+                    <Header
+                      titleClassName="text-lg text-gray-700 mt-5 md:mt-10 md:text-3xl"
+                      title={`${userList[0].first_name} ${userList[0].sur_name}`}
+                    />
+                  </div>
+                )}
+
               <Header
                 titleClassName="text-lg text-gray-700 mt-5 md:mt-8 md:text-3xl"
                 title="Location :"
@@ -92,6 +123,8 @@ const LogedIn = () => {
             </div>
           </div>
         </div>
+
+        {/* Saved Blogs Section */}
 
         <div className="h-full w-full flex-col pb-10 px-5 md:mt-28 md:w-2/3 md:h-5/6">
           <div className="h-full w-full flex flex-col items-center justify-evenly mb-5 ">
@@ -128,6 +161,8 @@ const LogedIn = () => {
               )}
             </div>
 
+            {/* Saved Events Section */}
+
             <div className="w-full h-2/3 bg-white flex items-center justify-evenly border-solid border-2 border-sky-500 rounded-lg my-2">
               {savedEvents.length === 0 ? (
                 <Header
@@ -154,6 +189,8 @@ const LogedIn = () => {
                 ))
               )}
             </div>
+
+            {/* Saved Careers Sectiom */}
 
             <div className="w-full h-2/3 bg-white flex items-center justify-evenly border-solid border-2 border-sky-500 rounded-lg my-2">
               <div className="flex items-center justify-center w-3/4 h-5/6">
