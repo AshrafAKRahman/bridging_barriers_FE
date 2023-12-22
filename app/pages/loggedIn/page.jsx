@@ -7,13 +7,33 @@ import Header from "../../components/header/header";
 import { PickerOverlay } from "filestack-react";
 import { useEventContext } from "../../context/EventContext";
 import { useBlogContext } from "../../context/BlogContext";
+import NormalButton from "../../components/buttons/normalButton";
 
 const LogedIn = () => {
   const { savedEvents, handleDeleteEvent } = useEventContext();
   const { savedBlogs, deleteBlog } = useBlogContext();
   const [showPicker, setShowPicker] = useState(false);
   const [uploadedFileHandle, setUploadedFileHandle] = useState("");
+  const [userList, setUserList] = useState([]);
   console.log("Saved Events:", savedEvents);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch("http://localhost:5432/api/userdata");
+        if (response.ok) {
+          const data = await response.json();
+          setUserList(data.payload);
+        } else {
+          console.error("Failed to fetch user data");
+        }
+      } catch (error) {
+        console.error("An error occurred while fetching user data", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   useEffect(() => {
     const isLocalStorageViable =
@@ -29,6 +49,14 @@ const LogedIn = () => {
     localStorage.setItem("uploadedFileHandle", handle);
   };
 
+  const truncateTitle = (title, wordsLimit) => {
+    const words = title.split(" ");
+    if (words.length > wordsLimit) {
+      return words.slice(0, wordsLimit).join(" ") + "...";
+    }
+    return title;
+  };
+  console.log(userList);
   return (
     <div className="w-screen h-screen bg-blue-500 pb-10">
       <Navbar />
@@ -69,10 +97,21 @@ const LogedIn = () => {
           </div>
           <div className="ml-5 md:ml-10">
             <div className="w-2/3">
-              <Header
-                titleClassName="text-lg text-gray-700 mt-5 md:mt-10 md:text-3xl"
-                title="Name :"
-              />
+              {userList.length > 0 &&
+                userList[0].first_name &&
+                userList[0].sur_name && (
+                  <div className="flex  justify-between ">
+                    <Header
+                      titleClassName="text-lg text-gray-700 mt-5 md:mt-10 md:text-3xl"
+                      title="Name :"
+                    />
+                    <Header
+                      titleClassName="text-lg text-gray-700 mt-5 md:mt-10 md:text-3xl"
+                      title={`${userList[0].first_name} ${userList[0].sur_name}`}
+                    />
+                  </div>
+                )}
+
               <Header
                 titleClassName="text-lg text-gray-700 mt-5 md:mt-8 md:text-3xl"
                 title="Location :"
@@ -85,52 +124,79 @@ const LogedIn = () => {
           </div>
         </div>
 
-        <div className="h-full w-full flex-col pb-10 px-5 md:mt-10 md:w-2/3 md:h-5/6">
-          <div className="flex justify-center">
-            <div className="w-fit h-fit pt-5 md:pt-16"></div>
-          </div>
+        {/* Saved Blogs Section */}
+
+        <div className="h-full w-full flex-col pb-10 px-5 md:mt-28 md:w-2/3 md:h-5/6">
           <div className="h-full w-full flex flex-col items-center justify-evenly mb-5 ">
-            <div className="w-full h-2/3 bg-white flex items-center justify-evenly border-solid border-2 border-sky-500 rounded-lg my-2">
-              <ul>
-                {savedBlogs.map((blog, index) => (
-                  <div key={index}>
-                    {blog.title}
-                    <button onClick={() => deleteBlog(blog.id)}>Delete</button>
-                  </div>
-                ))}
-              </ul>
-            </div>
-
-            <div className="w-full h-2/3 bg-white flex items-center justify-evenly border-solid border-2 border-sky-500 rounded-lg my-2">
-              {savedEvents.map((event) => (
-                <div key={event.id}>
-                  <strong>
-                    <p className="mb-5 text-center">{event.name.text}</p>
-                  </strong>
-                  <img
-                    src={event.logo.original.url}
-                    alt={event.name.text}
-                    className="mb-2 rounded-md w-20 h-16 md:w-36 md:h-24"
-                  />
-                  <div className="text-center ">
-                    <button onClick={() => handleDeleteEvent(event.id)}>
-                      <strong>Delete</strong>
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="w-full h-2/3 bg-white flex items-center justify-evenly border-solid border-2 border-sky-500 rounded-lg my-2">
-              <img
-                src="/jobs.png"
-                alt="jobs image"
-                className="w-1/6 h-5/6 pl-4"
-              />
-              <div className="w-3/4 h-5/6 px-10 ">
+            <div className="w-full h-2/3 bg-white flex items-center justify-evenly border-solid border-2 border-sky-500 rounded-lg my-2 mb-5">
+              {savedBlogs.length === 0 ? (
                 <Header
-                  titleClassName="text-sm text-gray-700  text-center md:text-2xl"
-                  title="Your Saved Jobs"
+                  title="Your saved blogs will appear here"
+                  titleClassName="text-lg text-gray-700 mt-5 mb-5 md:mt-8  md:text-3xl"
+                />
+              ) : (
+                savedBlogs
+                  .slice(0, window.innerWidth >= 768 ? 4 : 3)
+                  .map((blog, index) => (
+                    <div
+                      className="w-20 md:w-36 text-center mb-5 mt-5"
+                      key={index}
+                    >
+                      <div className="text-xs md:text-sm mb-5 flex-col justify-center items-center">
+                        <strong>{truncateTitle(blog.title, 6)}</strong>
+                        <img
+                          src={blog.content.imageSrc}
+                          alt="blog image"
+                          className="mb-2 rounded-md w-20 h-16 md:w-36 md:h-24"
+                        />
+                      </div>
+                      <div className="flex justify-center">
+                        <NormalButton
+                          text="Delete"
+                          onClick={() => deleteBlog(blog.id)}
+                        />
+                      </div>
+                    </div>
+                  ))
+              )}
+            </div>
+
+            {/* Saved Events Section */}
+
+            <div className="w-full h-2/3 bg-white flex items-center justify-evenly border-solid border-2 border-sky-500 rounded-lg my-2">
+              {savedEvents.length === 0 ? (
+                <Header
+                  title="Your saved events will appear here"
+                  titleClassName="text-lg text-gray-700 mt-5 mb-5 md:mt-8  md:text-3xl"
+                />
+              ) : (
+                savedEvents.map((event) => (
+                  <div key={event.id}>
+                    <strong>
+                      <p className="mb-5 text-center">{event.name.text}</p>
+                    </strong>
+                    <img
+                      src={event.logo.original.url}
+                      alt={event.name.text}
+                      className="mb-2 rounded-md w-20 h-16 md:w-36 md:h-24"
+                    />
+                    <div className="text-center ">
+                      <button onClick={() => handleDeleteEvent(event.id)}>
+                        <strong>Delete</strong>
+                      </button>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+
+            {/* Saved Careers Sectiom */}
+
+            <div className="w-full h-2/3 bg-white flex items-center justify-evenly border-solid border-2 border-sky-500 rounded-lg my-2">
+              <div className="flex items-center justify-center w-3/4 h-5/6">
+                <Header
+                  title="Your saved Jobs will appear here"
+                  titleClassName="text-lg text-gray-700 mt-5 mb-5 md:mt-8  md:text-3xl"
                 />
               </div>
             </div>

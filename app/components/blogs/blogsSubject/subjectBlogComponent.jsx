@@ -1,19 +1,21 @@
 "use client";
-
 import React from "react";
 import SubHeader from "../../subHeader/subHeader";
 import { useBlogContext } from "../../../context/BlogContext";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SubjectBlogComponent = ({ imageSrc, SubHeaderTitle, listItems }) => {
   const { saveBlog } = useBlogContext();
 
   const handleSave = () => {
-    // You might want to pass relevant blog information here
-    saveBlog({ title: SubHeaderTitle, content: listItems });
+    saveBlog({ title: SubHeaderTitle, content: { imageSrc } });
+    toast.success("Blog saved!");
   };
 
   return (
     <div className="md:w-full md:h-full flex flex-col justify-center items-center px-5 md:px-0">
+      <ToastContainer />
       <img
         src={imageSrc}
         alt="cv layout photo"

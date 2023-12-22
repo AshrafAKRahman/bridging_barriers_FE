@@ -1,5 +1,7 @@
 "use client";
 import React, { createContext, useEffect, useState, useContext } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const EventContext = createContext();
 
@@ -28,6 +30,7 @@ const EventProvider = ({ children }) => {
   const saveEvent = (event) => {
     setSavedEvents((prevEvents) => {
       const updatedEvents = [...prevEvents, event];
+      toast.success("Event saved!");
       console.log("Saved Event:", event);
       return updatedEvents;
     });
