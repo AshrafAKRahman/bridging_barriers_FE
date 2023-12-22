@@ -26,7 +26,7 @@ const BlogsComponent = ({
 
   return (
     <div className="w-full h-full">
-      <div className="w-full relative group">
+      <div className="w-full relative group flex justify-center">
         <img
           src={imageSrc}
           alt="application image"
@@ -34,7 +34,7 @@ const BlogsComponent = ({
         />
         <div className="absolute flex flex-col items-center justify-center inset-0 opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 transition-opacity ease-out duration-100">
           <div className={raleway.className}>
-            <ul className="text-xs text-gray-200 w-full h-full bg-blue-700 bg-opacity-20 backdrop-blur-md rounded-md drop-shadow-lg text-center p-4  md:text-lg">
+            <ul className="text-xs w-full h-full bg-opacity-20 backdrop-blur-md rounded-md drop-shadow-lg text-center p-4  bg-blue-700 text-gray-200  md:text-lg">
               {listItems
                 .slice(
                   0,
