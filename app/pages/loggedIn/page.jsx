@@ -95,7 +95,7 @@ const LogedIn = () => {
               />
             )}
           </div>
-          <div className="ml-5 md:ml-10">
+          <div className="ml-5 md:ml-10 bg-yellow-400">
             <div className="w-2/3">
               {userList.length > 0 &&
                 userList[0].first_name &&
@@ -111,15 +111,35 @@ const LogedIn = () => {
                     />
                   </div>
                 )}
+              <div className="w-2/3">
+                {userList.length > 0 && userList[0].location && (
+                  <div className="flex justify-between">
+                    <Header
+                      titleClassName="text-lg text-gray-700 mt-5 md:mt-10 md:text-3xl"
+                      title="Location :"
+                    />
+                    <Header
+                      titleClassName="text-lg text-gray-700 mt-5 md:mt-10 md:text-3xl"
+                      title={`${userList[0].location}`}
+                    />
+                  </div>
+                )}
+              </div>
 
-              <Header
-                titleClassName="text-lg text-gray-700 mt-5 md:mt-8 md:text-3xl"
-                title="Location :"
-              />
-              <Header
-                titleClassName="text-lg text-gray-700 mt-5 md:mt-8  md:text-3xl"
-                title="Sectors :"
-              />
+              <div className="w-2/3">
+                {userList.length > 0 && userList[0].sector_one && (
+                  <div className="flex justify-between">
+                    <Header
+                      titleClassName="text-lg text-gray-700 mt-5 md:mt-10 md:text-3xl"
+                      title="Sectors :"
+                    />
+                    <Header
+                      titleClassName="text-lg text-gray-700 mt-5 md:mt-10 md:text-3xl"
+                      title={`${userList[0].sector_one}`}
+                    />
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
