@@ -126,10 +126,20 @@ const LogedIn = () => {
                 )}
               </div>
 
-              <Header
-                titleClassName="text-lg text-gray-700 mt-5 md:mt-8  md:text-3xl"
-                title="Sectors :"
-              />
+              <div className="w-2/3">
+                {userList.length > 0 && userList[0].sector_one && (
+                  <div className="flex justify-between">
+                    <Header
+                      titleClassName="text-lg text-gray-700 mt-5 md:mt-10 md:text-3xl"
+                      title="Sectors :"
+                    />
+                    <Header
+                      titleClassName="text-lg text-gray-700 mt-5 md:mt-10 md:text-3xl"
+                      title={`${userList[0].sector_one}`}
+                    />
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
