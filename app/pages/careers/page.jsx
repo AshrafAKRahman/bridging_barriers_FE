@@ -8,7 +8,7 @@ const Careers = () => {
       <Navbar />
       <div className="w-full h-full flex items-center justify-center">
         <Header
-          title="Coming Soon"
+          title="We are curently worknig on this section - Coming Soon"
           titleClassName="text-lg text-white md:text-3xl "
         />
       </div>
