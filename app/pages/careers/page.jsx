@@ -4,7 +4,7 @@ import Header from "../../components/header/header";
 
 const Careers = () => {
   return (
-    <div className="w-screen h-screen bg-green-500">
+    <div className="w-screen h-screen bg-blue-500">
       <Navbar />
       <div className="w-full h-full flex items-center justify-center">
         <Header
