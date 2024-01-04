@@ -200,9 +200,10 @@ const LogedIn = () => {
                       className="mb-2 rounded-md w-20 h-16 md:w-36 md:h-24"
                     />
                     <div className="text-center ">
-                      <button onClick={() => handleDeleteEvent(event.id)}>
-                        <strong>Delete</strong>
-                      </button>
+                      <NormalButton
+                        text="Delete"
+                        onClick={() => handleDeleteEvent(event.id)}
+                      />
                     </div>
                   </div>
                 ))
