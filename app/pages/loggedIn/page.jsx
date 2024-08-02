@@ -20,7 +20,7 @@ const LogedIn = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch("http://localhost:5432/api/userdata");
+        const response = await fetch("http://localhost:3001/api/userdata");
         if (response.ok) {
           const data = await response.json();
           setUserList(data.payload);
